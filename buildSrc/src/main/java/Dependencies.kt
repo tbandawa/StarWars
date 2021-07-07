@@ -22,6 +22,7 @@ object Versions {
     val retrofit = "2.9.0"
     val okhttp3 = "4.9.0"
     val junit = "4.13.2"
+    val mockito = "3.11.2"
     val junit_inst = "1.1.3"
     val espresso_inst = "3.4.0"
 }
