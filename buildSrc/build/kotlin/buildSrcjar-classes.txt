@@ -1,0 +1,1 @@
+/home/tee/Documents/Android/StarWars/buildSrc/build/classes/kotlin/main/Deps.class:/home/tee/Documents/Android/StarWars/buildSrc/build/classes/kotlin/main/Versions.class
