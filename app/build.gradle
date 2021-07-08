@@ -19,7 +19,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
     }
@@ -44,8 +44,11 @@ android {
 }
 
 dependencies {
-
     implementation (Deps.kotlin_stdlib)
+
+    implementation project(":commons")
+    implementation project(":data")
+
     implementation (Deps.ktx)
     implementation (Deps.appcompat)
     implementation (Deps.material)
@@ -53,12 +56,7 @@ dependencies {
 
     // Hilt
     implementation(Deps.hilt_android)
-    implementation(Deps.hilt_viewmodel)
-    kapt(Deps.hilt_android_comp)
     kapt(Deps.hilt_comp)
-
-    // Timber
-    implementation(Deps.timber)
 
     testImplementation "org.mockito:mockito-core:3.11.2"
     androidTestImplementation "org.mockito:mockito-android:3.11.2"

@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -15,15 +14,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        buildConfigField "String", 'SWAPI_BASE_URL', '"https://swapi.dev/"'
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
-            }
-        }
-
     }
 
     buildTypes {
@@ -31,6 +21,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,19 +36,29 @@ android {
 }
 
 dependencies {
-    implementation(Deps.kotlin_stdlib)
+    api(Deps.kotlin_stdlib)
 
-    implementation project(":commons")
+    // AndroidX
+    api(Deps.appcompat)
+    api(Deps.support)
+    api(Deps.constraint)
+    api(Deps.ktx)
 
-    // Hilt
-    implementation(Deps.hilt_android)
-    kapt(Deps.hilt_comp)
+    // Navigation
+    api(Deps.navigation_frag_ktx)
+    api(Deps.navigation_ui_ktx)
+    api(Deps.navigation_dyn)
 
-    // Retrofit
-    implementation(Deps.okhttp3)
-    implementation(Deps.logging_interceptor)
-    implementation(Deps.retrofit)
-    implementation(Deps.converter_gson)
+    // Recycler
+    api(Deps.recyclerview)
+
+    // Lifecycle
+    api(Deps.lifecycle_livedata)
+    api(Deps.lifecycle_ext)
+    kapt(Deps.lifecycle_comp)
+
+    // Timber
+    api(Deps.timber)
 
     testImplementation 'junit:junit:4.+'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'

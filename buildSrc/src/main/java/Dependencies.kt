@@ -15,8 +15,7 @@ object Versions {
     val lifecycle = "2.2.0"
     val constraint = "2.0.4"
     val navigation = "2.3.0"
-    val hilt = "2.29.1-alpha"
-    val hilt_androidx = "1.0.0-alpha02"
+    val hilt = "2.37"
     val timber = "4.7.1"
     val shimmer = "0.5.0"
     val retrofit = "2.9.0"
@@ -59,9 +58,7 @@ object Deps {
     // Hilt
     val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
     val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt}"
-    val hilt_viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_androidx}"
-    val hilt_android_comp = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
-    val hilt_comp = "androidx.hilt:hilt-compiler:${Versions.hilt_androidx}"
+    val hilt_comp = "com.google.dagger:hilt-compiler:${Versions.hilt}"
 
     // Material
     val material = "com.google.android.material:material:${Versions.material}"
