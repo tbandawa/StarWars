@@ -31,7 +31,6 @@ android {
 }
 
 dependencies {
-    api(Deps.kotlin_stdlib)
     api(Deps.appcompat)
     api(Deps.ktx)
     api(Deps.material)

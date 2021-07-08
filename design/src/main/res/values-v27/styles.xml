@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.StarWars" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:listDivider">@color/colorGray</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:navigationBarColor">@color/colorWhite</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:textColorSecondary">@color/colorGray</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+    </style>
+
+    <!-- ToolBar text styling -->
+    <style name="Toolbar.TitleText" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+</resources>
