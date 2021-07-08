@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    api(Deps.kotlin_stdlib)
+
+    // AndroidX
+    api(Deps.appcompat)
+    api(Deps.support)
+    api(Deps.constraint)
+    api(Deps.ktx)
+
+    // Navigation
+    api(Deps.navigation_frag_ktx)
+    api(Deps.navigation_ui_ktx)
+    api(Deps.navigation_dyn)
+
+    // Recycler
+    api(Deps.recyclerview)
+
+    // Lifecycle
+    api(Deps.lifecycle_livedata)
+    api(Deps.lifecycle_ext)
+    kapt(Deps.lifecycle_comp)
+
+    // Timber
+    api(Deps.timber)
+
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
