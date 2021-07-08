@@ -2,3 +2,4 @@ rootProject.name = "StarWars"
 include ':app'
 include ':data'
 include ':commons'
+include ':design'

@@ -47,12 +47,8 @@ dependencies {
     implementation (Deps.kotlin_stdlib)
 
     implementation project(":commons")
+    implementation project(":design")
     implementation project(":data")
-
-    implementation (Deps.ktx)
-    implementation (Deps.appcompat)
-    implementation (Deps.material)
-    implementation (Deps.constraint)
 
     // Hilt
     implementation(Deps.hilt_android)
