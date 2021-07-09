@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import starwars.data.api.response.Status
 import starwars.resources.R
 import starwars.resources.databinding.ResourcesFragmentBinding
 import timber.log.Timber
@@ -44,7 +45,21 @@ class ResourcesFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        viewModel.getResources(args.resourceType)
 
+        viewModel.resourceItems.observe(viewLifecycleOwner) { result ->
+            result?.let { resource ->
+                when (resource.status) {
+                    Status.LOADING -> { }
+                    Status.SUCCESS -> {
+                        Timber.d("${result.data}")
+                    }
+                    Status.ERROR -> {
+                        Timber.d("${result.message}")
+                    }
+                }
+            }
+        }
 
     }
 
