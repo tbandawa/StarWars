@@ -62,8 +62,7 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
                         binding.progressAction.visibility = View.GONE
                         binding.baseResult = result.data
 
-                        Timber.d("previous = ${resource.data?.previous}")
-                        Timber.d("next = ${resource.data?.next}")
+
 
                     }
                     Status.ERROR -> {
