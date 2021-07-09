@@ -15,6 +15,9 @@ interface SwApi {
     @GET("api/{resourceType}/")
     suspend fun fetchResources(@Path("resourceType") type: String) : Response<BaseResult<Any>>
 
+    @GET("api/{resourceType}/")
+    suspend fun fetchResourcesByPage(@Path("resourceType") type: String, @Query("page") page: Int) : Response<BaseResult<Any>>
+
     @GET("api/{resourceType}/{resourceId}/")
     suspend fun fetchResource(@Path("resourceType") type: String, @Path("resourceId") id: Int) : Response<Any>
 

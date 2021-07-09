@@ -78,6 +78,46 @@ class Repository @Inject constructor(
         }
     }
 
+    suspend fun getResourcesByPage(resourceType: String, page: Int): Resource<BaseResult<Any>> {
+        return try {
+            val response = swApi.fetchResourcesByPage(resourceType, page)
+            val data = if (response.isSuccessful) {
+                response.body()?.let { baseResult ->
+                    val resourcesList = when (resourceType) {
+                        "people" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Person>::class.java)
+                        }
+                        "planets" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Planet>::class.java)
+                        }
+                        "films" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Film>::class.java)
+                        }
+                        "species" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Species>::class.java)
+                        }
+                        "vehicles" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Vehicle>::class.java)
+                        }
+                        "starships" -> {
+                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Starship>::class.java)
+                        }
+                        else -> throw Exception("Can not parse $response.")
+                    }
+                    baseResult.results = resourcesList.toList()
+                    baseResult
+                } ?: run {
+                    null
+                }
+            } else {
+                null
+            }
+            Resource.success(data)
+        } catch (exception: Exception) {
+            Resource.error(exception.message ?: "Error Occurred!", null)
+        }
+    }
+
     /*fun getResource(resourceType: String, resourceId: Int) = liveData(contextProviders.IO) {
         emit(Resource.loading(null))
         try {

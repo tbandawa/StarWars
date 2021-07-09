@@ -38,4 +38,20 @@ class ResourcesViewModel @Inject constructor(
         }
     }
 
+    fun getResourcesByPage(resourceType: String, page: Int) {
+        viewModelScope.launch(contextProviders.IO) {
+            _resourceItems.postValue(Resource.loading(null))
+            val apiResponse = repository.getResourcesByPage(resourceType, page)
+            when (apiResponse.status) {
+                Status.SUCCESS -> {
+                    _resourceItems.postValue(Resource.success(apiResponse.data))
+                }
+                Status.ERROR -> {
+                    _resourceItems.postValue(Resource.error(apiResponse.message.toString(), null))
+                }
+                else -> {}
+            }
+        }
+    }
+
 }
