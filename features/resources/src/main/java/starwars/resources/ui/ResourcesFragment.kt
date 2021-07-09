@@ -65,7 +65,10 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
                             adapter = resource.data?.let { resources ->
                                 ResourcesAdapter(
                                     args.resourceType,
-                                    resources.results
+                                    resources.results,
+                                    ResourceClickListener { url ->
+
+                                    }
                                 )
                             }
                         }

@@ -10,6 +10,10 @@
             name="person"
             type="starwars.data.model.Person" />
 
+        <variable
+            name="resourceClickListener"
+            type="starwars.resources.ui.ResourceClickListener" />
+
     </data>
 
     <RelativeLayout
@@ -21,7 +25,8 @@
             android:backgroundTint="@color/colorWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardCornerRadius="4dp">
+            card_view:cardCornerRadius="4dp"
+            android:onClick="@{() -> resourceClickListener.onClick(person.url)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

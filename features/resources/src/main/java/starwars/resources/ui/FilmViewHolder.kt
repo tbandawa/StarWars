@@ -9,9 +9,11 @@ import starwars.resources.databinding.ItemFilmBinding
 class FilmViewHolder(private val binding: ItemFilmBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        film: Film
+        film: Film,
+        resourceClickListener: ResourceClickListener
     ) {
         binding.film = film
+        binding.resourceClickListener = resourceClickListener
         binding.executePendingBindings()
     }
 

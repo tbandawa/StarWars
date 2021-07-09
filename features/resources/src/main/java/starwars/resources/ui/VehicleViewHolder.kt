@@ -9,9 +9,11 @@ import starwars.resources.databinding.ItemVehicleBinding
 class VehicleViewHolder(private val binding: ItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        vehicle: Vehicle
+        vehicle: Vehicle,
+        resourceClickListener: ResourceClickListener
     ) {
         binding.vehicle = vehicle
+        binding.resourceClickListener = resourceClickListener
         binding.executePendingBindings()
     }
 

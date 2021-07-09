@@ -9,9 +9,11 @@ import starwars.resources.databinding.ItemPlanetBinding
 class PlanetViewHolder(private val binding: ItemPlanetBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        planet: Planet
+        planet: Planet,
+        resourceClickListener: ResourceClickListener
     ) {
         binding.planet = planet
+        binding.resourceClickListener = resourceClickListener
         binding.executePendingBindings()
     }
 

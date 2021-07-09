@@ -9,9 +9,11 @@ import starwars.resources.databinding.ItemPersonBinding
 class PersonViewHolder(private val binding: ItemPersonBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        person: Person
+        person: Person,
+        resourceClickListener: ResourceClickListener
     ) {
         binding.person = person
+        binding.resourceClickListener = resourceClickListener
         binding.executePendingBindings()
     }
 

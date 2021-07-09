@@ -9,9 +9,11 @@ import starwars.resources.databinding.ItemStarshipBinding
 class StarshipViewHolder(private val binding: ItemStarshipBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        starship: Starship
+        starship: Starship,
+        resourceClickListener: ResourceClickListener
     ) {
         binding.starship = starship
+        binding.resourceClickListener = resourceClickListener
         binding.executePendingBindings()
     }
 
