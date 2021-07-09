@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/resources" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
