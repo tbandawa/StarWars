@@ -15,7 +15,6 @@ import starwars.resources.R
 import starwars.resources.databinding.ResourcesFragmentBinding
 import java.util.*
 
-
 @AndroidEntryPoint
 class ResourcesFragment : Fragment(), ResourcesClickListener {
 
