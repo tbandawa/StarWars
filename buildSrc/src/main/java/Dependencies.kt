@@ -17,7 +17,6 @@ object Versions {
     val navigation = "2.3.0"
     val hilt = "2.37"
     val timber = "4.7.1"
-    val shimmer = "0.5.0"
     val retrofit = "2.9.0"
     val okhttp3 = "4.9.0"
     val junit = "4.13.2"
@@ -34,6 +33,7 @@ object Deps {
     // Kotlin
     val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     val kotlin_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
 
     // AndroidX
     val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
@@ -71,8 +71,5 @@ object Deps {
 
     // Timber
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-
-    // Shimmer
-    val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmer}"
 
 }

@@ -42,8 +42,6 @@ android {
 }
 
 dependencies {
-    implementation(Deps.kotlin_stdlib)
-
     implementation project(":commons")
 
     // Hilt

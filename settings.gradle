@@ -2,3 +2,6 @@ rootProject.name = "StarWars"
 include ':app'
 include ':data'
 include ':commons'
+include ':design'
+include ':features:home'
+include ':features:resources'

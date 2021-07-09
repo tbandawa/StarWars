@@ -1,5 +1,6 @@
 package starwars.data.api
 
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -9,15 +10,18 @@ import starwars.data.model.Root
 interface SwApi {
 
     @GET("api/")
-    suspend fun fetchRootData() : Root
+    suspend fun fetchRootData() : Response<Root>
 
     @GET("api/{resourceType}/")
-    suspend fun fetchResources(@Path("resourceType") type: String) : BaseResult<Any>
+    suspend fun fetchResources(@Path("resourceType") type: String) : Response<BaseResult<Any>>
+
+    @GET("api/{resourceType}/")
+    suspend fun fetchResourcesByPage(@Path("resourceType") type: String, @Query("page") page: Int) : Response<BaseResult<Any>>
 
     @GET("api/{resourceType}/{resourceId}/")
-    suspend fun fetchResource(@Path("resourceType") type: String, @Path("resourceId") id: Int) : Any
+    suspend fun fetchResource(@Path("resourceType") type: String, @Path("resourceId") id: Int) : Response<Any>
 
     @GET("api/{resourceType}/")
-    suspend fun searchResource(@Path("resourceType") type: String, @Query("search") query: String) : BaseResult<Any>
+    suspend fun searchResource(@Path("resourceType") type: String, @Query("search") query: String) : Response<BaseResult<Any>>
 
 }
