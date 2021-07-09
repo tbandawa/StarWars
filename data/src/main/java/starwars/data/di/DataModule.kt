@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import starwars.data.BuildConfig
 import starwars.data.api.SwApi
+import starwars.data.repository.Repository
 import starwars.data.util.ContextProviders
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -51,5 +52,9 @@ object CoreModule {
     @Provides
     @Singleton
     fun provideContextProviders(): ContextProviders = ContextProviders()
+
+    @Provides
+    @Singleton
+    fun providesRepository(swApi: SwApi) : Repository = Repository(swApi)
 
 }

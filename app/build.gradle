@@ -47,6 +47,7 @@ dependencies {
     implementation project(":commons")
     implementation project(":design")
     implementation project(":data")
+    implementation project(":features:home")
 
     // Hilt
     implementation(Deps.hilt_android)

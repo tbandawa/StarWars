@@ -7,8 +7,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:listDivider">@color/colorGray</item>
         <item name="android:dividerHeight">1dp</item>
-        <item name="android:statusBarColor">@color/colorWhite</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/colorBlack</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:textColorSecondary">@color/colorGray</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
@@ -18,7 +18,7 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
 </resources>

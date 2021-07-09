@@ -1,6 +1,6 @@
 package starwars.data.model
 
-data class Resource(
+data class Item(
     val type: String,
     val url: String
 )

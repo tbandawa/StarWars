@@ -15,16 +15,16 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <!-- Retry Button styling -->
     <style name="StarWars.Button.TextIcon" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="shapeAppearance">@style/buttonShape</item>
-        <item name="iconTint">@color/colorGray</item>
+        <item name="iconTint">@color/colorWhite</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45dp</item>
-        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textAppearance">@style/TextAppearance.StarWars.Button</item>
     </style>
 

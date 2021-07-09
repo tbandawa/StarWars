@@ -37,6 +37,7 @@ android {
 
 dependencies {
     api(Deps.kotlin_stdlib)
+    api(Deps.kotlin_reflect)
 
     // AndroidX
     api(Deps.appcompat)

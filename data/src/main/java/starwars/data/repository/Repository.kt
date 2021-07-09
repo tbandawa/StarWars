@@ -9,24 +9,36 @@ import starwars.data.util.ContextProviders
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.reflect.full.memberProperties
 
 @Singleton
 class Repository @Inject constructor(
-    private val swApi: SwApi,
-    private val contextProviders: ContextProviders
+    private val swApi: SwApi
 ) {
 
-    fun getRootData() = liveData(contextProviders.IO) {
-        emit(Resource.loading(null))
-        try {
+    suspend fun getRootData(): Resource<List<Item>> {
+        return try {
             val response = swApi.fetchRootData()
-            emit(Resource.success(response))
+            val data = if (response.isSuccessful) {
+                response.body()?.let { root ->
+                    val resources = mutableListOf<Item>()
+                    for (prop in Root::class.memberProperties) {
+                        resources.add(Item(prop.name, "${prop.get(root)}"))
+                    }
+                    resources
+                } ?: run {
+                    emptyList()
+                }
+            } else {
+                emptyList()
+            }
+            Resource.success(data)
         } catch (exception: Exception) {
-            emit(Resource.error(exception.message ?: "Error Occurred!", null))
+            Resource.error(exception.message ?: "Error Occurred!", null)
         }
     }
 
-    fun getResources(resourceType: String) = liveData(contextProviders.IO) {
+    /*fun getResources(resourceType: String) = liveData(contextProviders.IO) {
         emit(Resource.loading(null))
         try {
 
@@ -134,6 +146,6 @@ class Repository @Inject constructor(
             Timber.d("error = ${exception.message}")
             emit(Resource.error(exception.message ?: "Error Occurred!", null))
         }
-    }
+    }*/
 
 }
