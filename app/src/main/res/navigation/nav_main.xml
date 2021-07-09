@@ -9,4 +9,6 @@
         android:id="@+id/nav_home"
         android:name="starwars.home.ui.HomeFragment"/>
 
+    <include app:graph="@navigation/resources_navigation" />
+
 </navigation>

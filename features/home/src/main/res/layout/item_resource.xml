@@ -44,7 +44,7 @@
                     tools:text="Type"/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:src="@drawable/ic_open"
                     card_view:layout_constraintBottom_toBottomOf="@+id/textResource"

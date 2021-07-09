@@ -16,64 +16,20 @@
         app:layout_anchor="@+id/constraintLayout"
         app:layout_anchorGravity="center">
 
-        <!-- search -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_search"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="32dp"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/colorWhite"
-            app:cardCornerRadius="22dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Search"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginEnd="8dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_search"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
         <!-- items recyclerview -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_items"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/recycler_resources"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="16dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/card_search"
+            app:layout_constraintBottom_toTopOf="@id/layout_controls"
+            app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:spanCount="2"
             tools:itemCount="6"
-            tools:listitem="@layout/item_resource"
             android:visibility="gone"/>
 
         <!-- progress bar -->
@@ -84,10 +40,10 @@
             android:indeterminate="true"
             android:indeterminateTintMode="src_atop"
             android:indeterminateTint="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_controls"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_search"
+            app:layout_constraintTop_toTopOf="parent"
             android:visibility="gone"/>
 
         <!-- retry layout -->
@@ -97,7 +53,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginBottom="35dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_controls"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:visibility="gone">
@@ -113,19 +69,41 @@
                 android:textColor="@color/colorWhite"
                 android:text="Something went wrong,\ntry again."/>
 
+        </LinearLayout>
+
+        <!-- controls layout -->
+        <RelativeLayout
+            android:id="@+id/layout_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
             <Button
-                android:id="@+id/buttonRetry"
+                android:id="@+id/button_previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_alignParentStart="true"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
-                android:text="Retry"
-                app:icon="@drawable/ic_retry"
-                app:iconSize="16dp"
+                android:text="Previous"
+                app:icon="@drawable/ic_back"
+                android:drawableLeft="@drawable/ic_back"
                 style="@style/StarWars.Button.TextIcon" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:text="Next"
+                android:drawableEnd="@drawable/ic_next"
+                android:drawableRight="@drawable/ic_next"
+                style="@style/StarWars.Button.TextIcon" />
+
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -133,7 +111,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBlack"
+        android:background="@color/colorTrans"
         android:fitsSystemWindows="true"
         app:elevation="0dp">
 
@@ -142,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorGrayOverlay"
-            app:title="Star Wars"
+            app:title="title_stations"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:titleTextAppearance="@style/Toolbar.TitleText"/>

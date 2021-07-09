@@ -1,11 +1,13 @@
 package starwars.home.ui
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import starwars.data.api.response.Status
 import starwars.home.databinding.HomeFragmentBinding
 
@@ -46,7 +48,8 @@ class HomeFragment : Fragment() {
                                 ItemAdapter(
                                     items.toList(),
                                     ItemClickListener { item ->
-
+                                        val uri = Uri.parse("starwars://resources/${item.type}")
+                                        findNavController().navigate(uri)
                                     }
                                 )
                             }
