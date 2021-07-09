@@ -2,7 +2,7 @@ package starwars.data.model
 
 data class Person (
     val name : String,
-    val height : Int,
+    val height : String,
     val mass : String,
     val hair_color : String,
     val skin_color : String,

@@ -1,130 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorBlack">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- content -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <data>
+        <variable
+            name="baseResult"
+            type="starwars.data.model.BaseResult" />
+        <variable
+            name="view"
+            type="starwars.resources.ui.ResourcesClickListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingTop="56dp"
-        app:layout_anchor="@+id/constraintLayout"
-        app:layout_anchorGravity="center">
+        android:background="@color/colorBlack">
 
-        <!-- items recyclerview -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_resources"
+        <!-- content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:padding="16dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/layout_controls"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:spanCount="2"
-            tools:itemCount="6"
-            android:visibility="gone"/>
+            android:clipToPadding="false"
+            android:paddingTop="56dp"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="center">
 
-        <!-- progress bar -->
-        <ProgressBar
-            android:id="@+id/progress_action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTintMode="src_atop"
-            android:indeterminateTint="@color/colorWhite"
-            app:layout_constraintBottom_toTopOf="@id/layout_controls"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            <!-- items recyclerview -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_resources"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:spanCount="2"
+                tools:itemCount="6"
+                android:visibility="gone"/>
 
-        <!-- retry layout -->
-        <LinearLayout
-            android:id="@+id/layout_retry"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="35dp"
-            app:layout_constraintBottom_toTopOf="@id/layout_controls"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone">
+            <!-- progress bar -->
+            <ProgressBar
+                android:id="@+id/progress_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
 
-            <TextView
+            <!-- retry layout -->
+            <LinearLayout
+                android:id="@+id/layout_retry"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="35dp"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Something went wrong,\ntry again."/>
+
+            </LinearLayout>
+
+            <!-- controls layout -->
+            <RelativeLayout
+                android:id="@+id/layout_controls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:textSize="16sp"
-                android:textColor="@color/colorWhite"
-                android:text="Something went wrong,\ntry again."/>
+                app:layout_constraintBottom_toBottomOf="parent">
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/button_previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:text="Previous"
+                    app:icon="@drawable/ic_back"
+                    app:pageNavigation="@{baseResult.previous}"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:visibility="gone"
+                    android:onClick="@{() -> view.onPrevious(baseResult.previous)}"
+                    style="@style/StarWars.Button.TextIcon" />
 
-        <!-- controls layout -->
-        <RelativeLayout
-            android:id="@+id/layout_controls"
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:text="Next"
+                    android:drawableEnd="@drawable/ic_next"
+                    android:drawableRight="@drawable/ic_next"
+                    android:visibility="gone"
+                    app:pageNavigation="@{baseResult.next}"
+                    android:onClick="@{() -> view.onNextClick(baseResult.next)}"
+                    style="@style/StarWars.Button.TextIcon" />
+
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- appbar and toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:background="@color/colorTrans"
+            android:fitsSystemWindows="true"
+            app:elevation="0dp">
 
-            <Button
-                android:id="@+id/button_previous"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:text="Previous"
-                app:icon="@drawable/ic_back"
-                android:drawableLeft="@drawable/ic_back"
-                style="@style/StarWars.Button.TextIcon" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorGrayOverlay"
+                app:title="title_stations"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                app:titleTextAppearance="@style/Toolbar.TitleText"/>
 
-            <Button
-                android:id="@+id/button_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp"
-                android:text="Next"
-                android:drawableEnd="@drawable/ic_next"
-                android:drawableRight="@drawable/ic_next"
-                style="@style/StarWars.Button.TextIcon" />
+        </com.google.android.material.appbar.AppBarLayout>
 
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        </RelativeLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- appbar and toolbar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorTrans"
-        android:fitsSystemWindows="true"
-        app:elevation="0dp">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorGrayOverlay"
-            app:title="title_stations"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            app:titleTextAppearance="@style/Toolbar.TitleText"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

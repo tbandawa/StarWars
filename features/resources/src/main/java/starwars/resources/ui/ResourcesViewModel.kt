@@ -1,5 +1,6 @@
 package starwars.resources.ui
 
+import android.net.UrlQuerySanitizer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,7 +39,9 @@ class ResourcesViewModel @Inject constructor(
         }
     }
 
-    fun getResourcesByPage(resourceType: String, page: Int) {
+    fun getResourcesByPage(resourceType: String, url: String) {
+        val sanitizer = UrlQuerySanitizer(url)
+        val page = sanitizer.getValue("page").toInt()
         viewModelScope.launch(contextProviders.IO) {
             _resourceItems.postValue(Resource.loading(null))
             val apiResponse = repository.getResourcesByPage(resourceType, page)
