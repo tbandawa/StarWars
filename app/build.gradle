@@ -49,6 +49,7 @@ dependencies {
     implementation project(":data")
     implementation project(":features:home")
     implementation project(":features:resources")
+    implementation project(":features:resource")
 
     // Hilt
     implementation(Deps.hilt_android)
