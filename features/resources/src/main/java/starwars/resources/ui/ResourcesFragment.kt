@@ -1,6 +1,5 @@
 package starwars.resources.ui
 
-import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import me.tbandawa.android.commons.extensions.capitaliseFirst
 import starwars.data.api.response.Status
 import starwars.resources.R
 import starwars.resources.databinding.ResourcesFragmentBinding
-import timber.log.Timber
 import java.util.*
 
 
@@ -62,7 +60,15 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
                         binding.progressAction.visibility = View.GONE
                         binding.baseResult = result.data
 
-
+                        binding.recyclerResources.apply {
+                            visibility = View.VISIBLE
+                            adapter = resource.data?.let { resources ->
+                                ResourcesAdapter(
+                                    args.resourceType,
+                                    resources.results
+                                )
+                            }
+                        }
 
                     }
                     Status.ERROR -> {

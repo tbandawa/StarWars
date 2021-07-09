@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import starwars.data.model.*
 
-class OrderAdapter(
+class ResourcesAdapter(
     private var resourceType: String,
     private var resourceList: List<Any>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

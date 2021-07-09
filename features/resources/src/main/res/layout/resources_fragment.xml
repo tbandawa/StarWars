@@ -23,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingTop="56dp"
             app:layout_anchor="@+id/constraintLayout"
             app:layout_anchorGravity="center">
 
@@ -31,17 +30,16 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_resources"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
                 android:padding="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toTopOf="@id/layout_controls"
-                app:layout_constraintTop_toBottomOf="parent"
+                tools:listitem="@layout/item_person"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:spanCount="2"
-                tools:itemCount="6"
-                android:visibility="gone"/>
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                android:visibility="visible"/>
 
             <!-- progress bar -->
             <ProgressBar
@@ -86,7 +84,8 @@
             <RelativeLayout
                 android:id="@+id/layout_controls"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorBlack"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <Button
@@ -119,7 +118,6 @@
                     android:onClick="@{() -> view.onNextClick(baseResult.next)}"
                     style="@style/StarWars.Button.TextIcon" />
 
-
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,7 +126,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTrans"
+            android:background="@color/colorBlack"
             android:fitsSystemWindows="true"
             app:elevation="0dp">
 
