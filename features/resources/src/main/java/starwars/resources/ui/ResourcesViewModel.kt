@@ -1,12 +1,12 @@
 package starwars.resources.ui
 
-import android.net.UrlQuerySanitizer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import me.tbandawa.android.commons.extensions.getPageNumber
 import starwars.data.api.response.Resource
 import starwars.data.api.response.Status
 import starwars.data.model.BaseResult
@@ -40,8 +40,7 @@ class ResourcesViewModel @Inject constructor(
     }
 
     fun getResourcesByPage(resourceType: String, url: String) {
-        val sanitizer = UrlQuerySanitizer(url)
-        val page = sanitizer.getValue("page").toInt()
+        val page = url.getPageNumber()
         viewModelScope.launch(contextProviders.IO) {
             _resourceItems.postValue(Resource.loading(null))
             val apiResponse = repository.getResourcesByPage(resourceType, page)
