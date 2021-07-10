@@ -12,6 +12,7 @@ import starwars.data.api.response.Status
 import starwars.data.model.BaseResult
 import starwars.data.repository.Repository
 import starwars.data.util.ContextProviders
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,6 +26,8 @@ class ResourcesViewModel @Inject constructor(
 
     fun getResources(resourceType: String) {
         viewModelScope.launch(contextProviders.IO) {
+            if(_resourceItems.value != null)
+                return@launch
             _resourceItems.postValue(Resource.loading(null))
             val apiResponse = repository.getResources(resourceType)
             when (apiResponse.status) {

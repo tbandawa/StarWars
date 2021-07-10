@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import starwars.data.api.response.Status
 import starwars.data.model.*
 import starwars.resource.R
 import starwars.resource.databinding.ResourceFragmentBinding
 
+@AndroidEntryPoint
 class ResourceFragment : Fragment() {
 
-    private val viewModel: ResourceViewModel by activityViewModels()
+    private val viewModel: ResourceViewModel by viewModels()
 
     private var _binding: ResourceFragmentBinding? = null
     private val binding get() = _binding!!

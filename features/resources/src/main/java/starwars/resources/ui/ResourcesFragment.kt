@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import me.tbandawa.android.commons.extensions.capitaliseFirst
 import me.tbandawa.android.commons.extensions.getResourceId
 import starwars.data.api.response.Status
@@ -17,9 +19,10 @@ import starwars.resources.R
 import starwars.resources.databinding.ResourcesFragmentBinding
 import java.util.*
 
+@AndroidEntryPoint
 class ResourcesFragment : Fragment(), ResourcesClickListener {
 
-    private val viewModel: ResourcesViewModel by activityViewModels()
+    private val viewModel: ResourcesViewModel by viewModels()
 
     private var _binding: ResourcesFragmentBinding? = null
     private val binding get() = _binding!!
