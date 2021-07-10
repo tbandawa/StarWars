@@ -1,5 +1,6 @@
 package starwars.resource.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import me.tbandawa.android.commons.extensions.getResourceId
+import starwars.data.api.response.Status
+import starwars.data.model.Starship
 import starwars.resource.R
 import starwars.resource.databinding.ResourceFragmentBinding
 import timber.log.Timber
@@ -38,8 +43,37 @@ class ResourceFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-            Timber.d("resourceType = ${args.resourceType}")
-            Timber.d("resourceId = ${args.resourceId}")
+        viewModel.getResource(args.resourceType, args.resourceId)
+
+        viewModel.resource.observe(viewLifecycleOwner) { result ->
+            result?.let { resource ->
+                when (resource.status) {
+                    Status.LOADING -> {
+                        binding.progressAction.visibility = View.VISIBLE
+                        binding.layoutRetry.visibility = View.GONE
+                    }
+                    Status.SUCCESS -> {
+                        binding.layoutRetry.visibility = View.GONE
+                        binding.progressAction.visibility = View.GONE
+
+                        if (result.data is Starship) {
+                            binding.starship = result.data as Starship
+
+
+                        }
+
+                    }
+                    Status.ERROR -> {
+                        binding.layoutRetry.visibility = View.VISIBLE
+                        binding.progressAction.visibility = View.GONE
+                    }
+                }
+            }
+        }
+
+        binding.buttonRetry.setOnClickListener {
+            viewModel.getResource(args.resourceType, args.resourceId)
+        }
 
     }
 
