@@ -1,9 +1,9 @@
 package starwars.data.repository
 
-import com.google.gson.Gson
 import starwars.data.api.SwApi
 import starwars.data.api.response.Resource
 import starwars.data.model.*
+import starwars.data.util.ResourcesParser
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.reflect.full.memberProperties
@@ -40,29 +40,7 @@ class Repository @Inject constructor(
             val response = swApi.fetchResources(resourceType)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
-                    val resourcesList = when (resourceType) {
-                        "people" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Person>::class.java)
-                        }
-                        "planets" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Planet>::class.java)
-                        }
-                        "films" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Film>::class.java)
-                        }
-                        "species" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Species>::class.java)
-                        }
-                        "vehicles" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Vehicle>::class.java)
-                        }
-                        "starships" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Starship>::class.java)
-                        }
-                        else -> throw Exception("Can not parse $response.")
-                    }
-                    baseResult.results = resourcesList.toList()
-                    baseResult
+                    ResourcesParser.parseToBaseResult(resourceType, baseResult)
                 } ?: run {
                     null
                 }
@@ -80,29 +58,7 @@ class Repository @Inject constructor(
             val response = swApi.fetchResourcesByPage(resourceType, page)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
-                    val resourcesList = when (resourceType) {
-                        "people" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Person>::class.java)
-                        }
-                        "planets" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Planet>::class.java)
-                        }
-                        "films" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Film>::class.java)
-                        }
-                        "species" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Species>::class.java)
-                        }
-                        "vehicles" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Vehicle>::class.java)
-                        }
-                        "starships" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Starship>::class.java)
-                        }
-                        else -> throw Exception("Can not parse $response.")
-                    }
-                    baseResult.results = resourcesList.toList()
-                    baseResult
+                    ResourcesParser.parseToBaseResult(resourceType, baseResult)
                 } ?: run {
                     null
                 }
@@ -120,28 +76,7 @@ class Repository @Inject constructor(
             val response = swApi.fetchResource(resourceType, resourceId)
             val data = if (response.isSuccessful) {
                 response.body()?.let { resource ->
-                    val baseResource = when (resourceType) {
-                        "people" -> {
-                            Gson().fromJson(Gson().toJson(resource), Person::class.java)
-                        }
-                        "planets" -> {
-                            Gson().fromJson(Gson().toJson(resource), Planet::class.java)
-                        }
-                        "films" -> {
-                            Gson().fromJson(Gson().toJson(resource), Film::class.java)
-                        }
-                        "species" -> {
-                            Gson().fromJson(Gson().toJson(resource), Species::class.java)
-                        }
-                        "vehicles" -> {
-                            Gson().fromJson(Gson().toJson(resource), Vehicle::class.java)
-                        }
-                        "starships" -> {
-                            Gson().fromJson(Gson().toJson(resource), Starship::class.java)
-                        }
-                        else -> throw Exception("Can not parse $response.")
-                    }
-                    baseResource
+                    ResourcesParser.parseToBaseResource(resourceType, resource)
                 } ?: run {
                     null
                 }
@@ -159,29 +94,7 @@ class Repository @Inject constructor(
             val response = swApi.searchResource(resourceType, searchQuery)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
-                    val resourcesList = when (resourceType) {
-                        "people" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Person>::class.java)
-                        }
-                        "planets" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Planet>::class.java)
-                        }
-                        "films" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Film>::class.java)
-                        }
-                        "species" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Species>::class.java)
-                        }
-                        "vehicles" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Vehicle>::class.java)
-                        }
-                        "starships" -> {
-                            Gson().fromJson(Gson().toJson(baseResult.results), Array<Starship>::class.java)
-                        }
-                        else -> throw Exception("Can not parse $response.")
-                    }
-                    baseResult.results = resourcesList.toList()
-                    baseResult
+                    ResourcesParser.parseToBaseResult(resourceType, baseResult)
                 } ?: run {
                     null
                 }
