@@ -13,42 +13,42 @@ class ResourcesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (resourceType) {
             "people" -> {
-                PersonViewHolder.create(parent)
+                PersonSearchViewHolder.create(parent)
             }
             "planets" -> {
-                PlanetViewHolder.create(parent)
+                PlanetSearchViewHolder.create(parent)
             }
             "films" -> {
-                FilmViewHolder.create(parent)
+                FilmSearchViewHolder.create(parent)
             }
             "species" -> {
-                SpeciesViewHolder.create(parent)
+                SpeciesSearchViewHolder.create(parent)
             }
             "vehicles" -> {
-                VehicleViewHolder.create(parent)
+                VehicleSearchViewHolder.create(parent)
             }
             "starships" -> {
-                StarshipViewHolder.create(parent)
+                StarshipSearchViewHolder.create(parent)
             }
             else -> {
-                PersonViewHolder.create(parent)
+                PersonSearchViewHolder.create(parent)
             }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (resourceType == "people")
-            (holder as PersonViewHolder).bind(resourceList[position] as Person, resourceClickListener)
+            (holder as PersonSearchViewHolder).bind(resourceList[position] as Person, resourceClickListener)
         if (resourceType == "planets")
-            (holder as PlanetViewHolder).bind(resourceList[position] as Planet, resourceClickListener)
+            (holder as PlanetSearchViewHolder).bind(resourceList[position] as Planet, resourceClickListener)
         if (resourceType == "films")
-            (holder as FilmViewHolder).bind(resourceList[position] as Film, resourceClickListener)
+            (holder as FilmSearchViewHolder).bind(resourceList[position] as Film, resourceClickListener)
         if (resourceType == "species")
-            (holder as SpeciesViewHolder).bind(resourceList[position] as Species, resourceClickListener)
+            (holder as SpeciesSearchViewHolder).bind(resourceList[position] as Species, resourceClickListener)
         if (resourceType == "vehicles")
-            (holder as VehicleViewHolder).bind(resourceList[position] as Vehicle, resourceClickListener)
+            (holder as VehicleSearchViewHolder).bind(resourceList[position] as Vehicle, resourceClickListener)
         if (resourceType == "starships")
-            (holder as StarshipViewHolder).bind(resourceList[position] as Starship, resourceClickListener)
+            (holder as StarshipSearchViewHolder).bind(resourceList[position] as Starship, resourceClickListener)
     }
 
     override fun getItemCount(): Int = resourceList.size

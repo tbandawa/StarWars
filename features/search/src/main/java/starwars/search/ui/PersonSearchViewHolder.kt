@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import starwars.data.model.Person
-import starwars.search.databinding.ItemPersonBinding
+import starwars.search.databinding.ItemSearchPersonBinding
 
-class PersonViewHolder(private val binding: ItemPersonBinding) : RecyclerView.ViewHolder(binding.root) {
+class PersonSearchViewHolder(private val binding: ItemSearchPersonBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
         person: Person,
@@ -18,10 +18,10 @@ class PersonViewHolder(private val binding: ItemPersonBinding) : RecyclerView.Vi
     }
 
     companion object {
-        fun create(parent: ViewGroup): PersonViewHolder {
+        fun create(parent: ViewGroup): PersonSearchViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding = ItemPersonBinding.inflate(inflater)
-            return PersonViewHolder(binding)
+            val binding = ItemSearchPersonBinding.inflate(inflater)
+            return PersonSearchViewHolder(binding)
         }
     }
 

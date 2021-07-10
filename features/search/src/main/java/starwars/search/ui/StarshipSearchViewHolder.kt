@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import starwars.data.model.Starship
-import starwars.search.databinding.ItemStarshipBinding
+import starwars.search.databinding.ItemSearchStarshipBinding
 
-class StarshipViewHolder(private val binding: ItemStarshipBinding) : RecyclerView.ViewHolder(binding.root) {
+class StarshipSearchViewHolder(private val binding: ItemSearchStarshipBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
         starship: Starship,
@@ -18,10 +18,10 @@ class StarshipViewHolder(private val binding: ItemStarshipBinding) : RecyclerVie
     }
 
     companion object {
-        fun create(parent: ViewGroup): StarshipViewHolder {
+        fun create(parent: ViewGroup): StarshipSearchViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding = ItemStarshipBinding.inflate(inflater)
-            return StarshipViewHolder(binding)
+            val binding = ItemSearchStarshipBinding.inflate(inflater)
+            return StarshipSearchViewHolder(binding)
         }
     }
 

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import starwars.data.model.Film
-import starwars.search.databinding.ItemFilmBinding
+import starwars.search.databinding.ItemSearchFilmBinding
 
-class FilmViewHolder(private val binding: ItemFilmBinding) : RecyclerView.ViewHolder(binding.root) {
+class FilmSearchViewHolder(private val binding: ItemSearchFilmBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
         film: Film,
@@ -18,10 +18,10 @@ class FilmViewHolder(private val binding: ItemFilmBinding) : RecyclerView.ViewHo
     }
 
     companion object {
-        fun create(parent: ViewGroup): FilmViewHolder {
+        fun create(parent: ViewGroup): FilmSearchViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding = ItemFilmBinding.inflate(inflater)
-            return FilmViewHolder(binding)
+            val binding = ItemSearchFilmBinding.inflate(inflater)
+            return FilmSearchViewHolder(binding)
         }
     }
 

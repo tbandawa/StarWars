@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import starwars.data.model.Planet
-import starwars.search.databinding.ItemPlanetBinding
+import starwars.search.databinding.ItemSearchPlanetBinding
 
-class PlanetViewHolder(private val binding: ItemPlanetBinding) : RecyclerView.ViewHolder(binding.root) {
+class PlanetSearchViewHolder(private val binding: ItemSearchPlanetBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
         planet: Planet,
@@ -18,10 +18,10 @@ class PlanetViewHolder(private val binding: ItemPlanetBinding) : RecyclerView.Vi
     }
 
     companion object {
-        fun create(parent: ViewGroup): PlanetViewHolder {
+        fun create(parent: ViewGroup): PlanetSearchViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding = ItemPlanetBinding.inflate(inflater)
-            return PlanetViewHolder(binding)
+            val binding = ItemSearchPlanetBinding.inflate(inflater)
+            return PlanetSearchViewHolder(binding)
         }
     }
 
