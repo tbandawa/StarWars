@@ -105,7 +105,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -139,8 +140,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.name}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -166,8 +165,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.model}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -182,7 +179,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="manufacturer"
+                                android:text="Manufacturer"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -193,8 +190,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.manufacturer}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -209,7 +204,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="cost_in_credits"
+                                android:text="Cost In Credits"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -220,8 +215,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.cost_in_credits}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -236,7 +229,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="length"
+                                android:text="Length"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -247,8 +240,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.length}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -263,7 +254,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="max_atmosphering_speed"
+                                android:text="Max Atmosphering Speed"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -274,8 +265,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.max_atmosphering_speed}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -290,7 +279,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="crew"
+                                android:text="Crew"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -301,8 +290,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.crew}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -317,7 +304,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="passengers"
+                                android:text="Passengers"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -328,8 +315,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.passengers}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -344,7 +329,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="cargo_capacity"
+                                android:text="Cargo Capacity"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -355,8 +340,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.cargo_capacity}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -371,7 +354,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="consumables"
+                                android:text="Consumables"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -382,8 +365,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.consumables}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -398,7 +379,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="hyperdrive_rating"
+                                android:text="Hyperdrive Rating"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -409,8 +390,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.hyperdrive_rating}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -436,8 +415,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.mGLT}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -452,7 +429,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="starship_class"
+                                android:text="Starship Class"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -463,8 +440,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.starship_class}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -479,20 +454,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.created}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -506,20 +479,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{starship.edited}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -542,7 +513,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="title"
+                                android:text="Title"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -553,8 +524,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{film.title}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -569,7 +538,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="episode_id"
+                                android:text="Episode"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -580,8 +549,6 @@
                                 android:layout_height="wrap_content"
                                 android:text='@{film.episode_id + ""}'
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -596,7 +563,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="opening_crawl"
+                                android:text="Opening Crawl"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -621,7 +588,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="director"
+                                android:text="Director"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -632,8 +599,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{film.director}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -648,7 +613,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="producer"
+                                android:text="Producer"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -659,8 +624,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{film.producer}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -675,7 +638,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="release_date"
+                                android:text="Release Date"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -686,8 +649,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{film.release_date}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -702,20 +663,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{film.created}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -729,20 +688,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{film.edited}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -765,7 +722,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="name"
+                                android:text="Name"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -776,8 +733,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.name}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -792,7 +747,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="height"
+                                android:text="Height"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -803,8 +758,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.height}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -819,7 +772,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="mass"
+                                android:text="Mass"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -830,8 +783,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.mass}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -846,7 +797,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="hair_color"
+                                android:text="Hair Color"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -857,8 +808,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.hair_color}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -873,7 +822,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="skin_color"
+                                android:text="Skin Color"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -884,8 +833,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.skin_color}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -900,7 +847,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="eye_color"
+                                android:text="Eye Color"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -911,8 +858,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.eye_color}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -927,7 +872,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="birth_year"
+                                android:text="Birth Year"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -938,8 +883,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.birth_year}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -954,7 +897,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="gender"
+                                android:text="Gender"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -965,8 +908,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.gender}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -981,7 +922,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="homeworld"
+                                android:text="Home World"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -992,8 +933,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{person.homeworld}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1008,20 +947,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{person.created}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1035,20 +972,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{person.edited}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1071,7 +1006,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="name"
+                                android:text="Name"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1082,8 +1017,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.name}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1098,7 +1031,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="classification"
+                                android:text="Classification"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1109,8 +1042,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.classification}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1125,7 +1056,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="designation"
+                                android:text="Designation"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1136,8 +1067,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.designation}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1152,7 +1081,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="average_height"
+                                android:text="Average Height"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1163,8 +1092,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.average_height}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1179,7 +1106,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="skin_colors"
+                                android:text="Skin Colors"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1190,8 +1117,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.skin_colors}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1206,7 +1131,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="hair_colors"
+                                android:text="Hair Colors"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1217,8 +1142,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.hair_colors}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1233,7 +1156,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="eye_colors"
+                                android:text="Eye Colors"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1244,8 +1167,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.eye_colors}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1260,7 +1181,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="average_lifespan"
+                                android:text="Average Lifespan"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1271,8 +1192,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.average_lifespan}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1287,7 +1206,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="homeworld"
+                                android:text="Home World"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1298,8 +1217,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.homeworld}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1314,7 +1231,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="language"
+                                android:text="Language"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1325,8 +1242,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{species.language}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1341,11 +1256,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -1354,7 +1269,7 @@
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1368,11 +1283,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -1381,7 +1296,7 @@
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1404,7 +1319,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="name"
+                                android:text="Name"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1415,8 +1330,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.name}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1431,7 +1344,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="model"
+                                android:text="Model"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1442,8 +1355,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.model}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1458,7 +1369,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="manufacturer"
+                                android:text="Manufacturer"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1469,8 +1380,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.manufacturer}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1485,7 +1394,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="cost_in_credits"
+                                android:text="Cost In Credits"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1496,8 +1405,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.cost_in_credits}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1512,7 +1419,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="length"
+                                android:text="Length"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1523,8 +1430,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.length}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1539,7 +1444,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="max_atmosphering_speed"
+                                android:text="Max Atmosphering Speed"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1550,8 +1455,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.max_atmosphering_speed}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1566,7 +1469,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="crew"
+                                android:text="Crew"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1577,8 +1480,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.crew}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1593,7 +1494,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="passengers"
+                                android:text="Passengers"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1604,8 +1505,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.passengers}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1620,7 +1519,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="cargo_capacity"
+                                android:text="Cargo Capacity"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1631,8 +1530,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.cargo_capacity}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1647,7 +1544,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="consumables"
+                                android:text="Consumables"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1658,8 +1555,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.consumables}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1674,7 +1569,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="vehicle_class"
+                                android:text="Vehicle Class"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1685,8 +1580,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.vehicle_class}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1701,20 +1594,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.created}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1728,20 +1619,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{vehicle.edited}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -1764,7 +1653,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="name"
+                                android:text="Name"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1775,8 +1664,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.name}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1791,7 +1678,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="rotation_period"
+                                android:text="Rotation Period"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1802,8 +1689,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.rotation_period}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1818,7 +1703,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="orbital_period"
+                                android:text="Orbital Period"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1829,8 +1714,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.orbital_period}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1845,7 +1728,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="diameter"
+                                android:text="Diameter"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1856,8 +1739,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.diameter}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1872,7 +1753,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="climate"
+                                android:text="Climate"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1883,8 +1764,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.climate}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1899,7 +1778,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="gravity"
+                                android:text="Gravity"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1910,8 +1789,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.gravity}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1926,7 +1803,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="terrain"
+                                android:text="Terrain"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1937,8 +1814,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.terrain}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1953,7 +1828,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="surface_water"
+                                android:text="Surface Water"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1964,8 +1839,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.surface_water}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -1980,7 +1853,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="population"
+                                android:text="Population"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1991,8 +1864,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.population}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
                                 android:textSize="18dp"
                                 android:textStyle="bold" />
 
@@ -2007,20 +1878,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="created"
+                                android:text="Created"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.created}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -2034,20 +1903,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="edited"
+                                android:text="Edited"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
-                                android:textSize="16dp" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{planet.edited}"
                                 android:textColor="@color/colorWhite"
-                                android:singleLine="true"
-                                android:ellipsize="end"
-                                android:textSize="16dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
