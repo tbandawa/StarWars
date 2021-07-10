@@ -1,6 +1,5 @@
 package starwars.resource.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import me.tbandawa.android.commons.extensions.getResourceId
 import starwars.data.api.response.Status
-import starwars.data.model.Starship
+import starwars.data.model.*
 import starwars.resource.R
 import starwars.resource.databinding.ResourceFragmentBinding
-import timber.log.Timber
 
 class ResourceFragment : Fragment() {
 
@@ -50,22 +46,42 @@ class ResourceFragment : Fragment() {
                 when (resource.status) {
                     Status.LOADING -> {
                         binding.progressAction.visibility = View.VISIBLE
+                        binding.layoutDetails.visibility = View.GONE
                         binding.layoutRetry.visibility = View.GONE
                     }
                     Status.SUCCESS -> {
-                        binding.layoutRetry.visibility = View.GONE
-                        binding.progressAction.visibility = View.GONE
+                        binding.apply {
 
-                        if (result.data is Starship) {
-                            binding.starship = result.data as Starship
+                            species = null
+                            vehicle = null
+                            planet = null
+                            film = null
+                            person = null
+                            starship = null
 
+                            if (result.data is Person)
+                                person = result.data as Person
+                            if (result.data is Film)
+                                film = result.data as Film
+                            if (result.data is Planet)
+                                planet = result.data as Planet
+                            if (result.data is Vehicle)
+                                vehicle = result.data as Vehicle
+                            if (result.data is Species)
+                                species = result.data as Species
+                            if (result.data is Starship)
+                                starship = result.data as Starship
+
+                            layoutDetails.visibility = View.VISIBLE
+                            layoutRetry.visibility = View.GONE
+                            progressAction.visibility = View.GONE
 
                         }
-
                     }
                     Status.ERROR -> {
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.progressAction.visibility = View.GONE
+                        binding.layoutDetails.visibility = View.GONE
                     }
                 }
             }
