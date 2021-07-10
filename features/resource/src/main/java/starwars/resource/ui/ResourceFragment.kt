@@ -28,6 +28,7 @@ class ResourceFragment : Fragment() {
     ): View? {
         _binding = ResourceFragmentBinding.inflate(inflater, container, false).apply {
             (activity as AppCompatActivity?)!!.setSupportActionBar(toolBar)
+            toolBar.title = ""
             toolBar.setNavigationIcon(R.drawable.ic_exit)
             toolBar.setNavigationOnClickListener {
                 activity?.onBackPressed()

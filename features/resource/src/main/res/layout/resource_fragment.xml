@@ -463,7 +463,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{starship.created}"
+                                app:formatDate="@{starship.created}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -488,7 +488,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{starship.edited}"
+                                app:formatDate="@{starship.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -672,7 +672,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{film.created}"
+                                app:formatDate="@{film.created}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -697,7 +697,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{film.edited}"
+                                app:formatDate="@{film.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -956,7 +956,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{person.created}"
+                                app:formatDate="@{person.created}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -981,7 +981,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{person.edited}"
+                                app:formatDate="@{person.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -1265,7 +1265,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{species.created}"
+                                app:formatDate="@{species.created}"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1292,7 +1292,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{species.edited}"
+                                app:formatDate="@{species.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:singleLine="true"
                                 android:ellipsize="end"
@@ -1603,7 +1603,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{vehicle.created}"
+                                app:formatDate="@{vehicle.created}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -1628,7 +1628,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{vehicle.edited}"
+                                app:formatDate="@{vehicle.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -1887,7 +1887,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{planet.created}"
+                                app:formatDate="@{planet.created}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
@@ -1912,7 +1912,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{planet.edited}"
+                                app:formatDate="@{planet.edited}"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="12dp"
                                 android:textStyle="bold" />
