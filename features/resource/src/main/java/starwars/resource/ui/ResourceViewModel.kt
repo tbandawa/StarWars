@@ -39,4 +39,6 @@ class ResourceViewModel @Inject constructor(
     }
 
 
+
+
 }
