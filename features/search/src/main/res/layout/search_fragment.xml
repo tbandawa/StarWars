@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="baseResult"
+            type="starwars.data.model.BaseResult" />
+
+        <variable
+            name="view"
+            type="starwars.search.ui.ResourcesClickListener" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack">
+
+        <!-- content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_anchor="@+id/constraintLayout"
+            app:layout_anchorGravity="center">
+
+            <!-- search inputs -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_inputs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="66dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Spinner
+                    android:id="@+id/spinner_type"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/edit_query"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:hint="Search..."
+                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/colorBlack"
+                    android:singleLine="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/button_search"
+                    app:layout_constraintStart_toEndOf="@id/spinner_type"/>
+
+                <Button
+                    android:id="@+id/button_search"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:text="Search"
+                    style="@style/StarWars.Button.TextIcon"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- items recyclerview -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_resources"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="16dp"
+                tools:listitem="@layout/item_search_person"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/layout_inputs"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                android:visibility="gone"/>
+
+            <!-- progress bar -->
+            <ProgressBar
+                android:id="@+id/progress_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/colorWhite"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_inputs"
+                android:visibility="gone"/>
+
+            <!-- retry layout -->
+            <LinearLayout
+                android:id="@+id/layout_retry"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="35dp"
+                app:layout_constraintTop_toBottomOf="@id/layout_inputs"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Something went wrong,\ntry again."/>
+
+            </LinearLayout>
+
+            <!-- empty layout -->
+            <LinearLayout
+                android:id="@+id/layout_empty"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="35dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_controls"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="Found zero results."/>
+
+            </LinearLayout>
+
+            <!-- controls layout -->
+            <RelativeLayout
+                android:id="@+id/layout_controls"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <Button
+                    android:id="@+id/button_previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:text="Previous"
+                    app:icon="@drawable/ic_back"
+                    app:pageNavigation="@{baseResult.previous}"
+                    android:drawableLeft="@drawable/ic_back"
+                    android:visibility="gone"
+                    android:onClick="@{() -> view.onPrevious(baseResult.previous)}"
+                    style="@style/StarWars.Button.TextIcon" />
+
+                <Button
+                    android:id="@+id/button_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:text="Next"
+                    android:drawableEnd="@drawable/ic_next"
+                    android:drawableRight="@drawable/ic_next"
+                    android:visibility="gone"
+                    app:pageNavigation="@{baseResult.next}"
+                    android:onClick="@{() -> view.onNextClick(baseResult.next)}"
+                    style="@style/StarWars.Button.TextIcon" />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- appbar and toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack"
+            android:fitsSystemWindows="true"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorGrayOverlay"
+                app:title="Search"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                app:titleTextAppearance="@style/Toolbar.TitleText"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

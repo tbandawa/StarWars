@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -104,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
+                android:layout_marginBottom="25dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:visibility="visible">
@@ -1919,6 +1919,249 @@
 
                         </LinearLayout>
 
+                    </LinearLayout>
+
+                    <!-- films chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_films"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Films:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_films"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- characters chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_characters"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Characters:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_characters"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false" />
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- residents chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_residents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Residents:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_residents"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- people chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_people"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="People:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_people"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- pilots chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_pilots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Pilots:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_pilots"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- planets chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_planets"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Planets:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_planets"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- starships chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_starships"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Starships:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_starships"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- vehicles chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_vehicles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Vehicles:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_vehicles"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- species chip group -->
+                    <LinearLayout
+                        android:id="@+id/layout_group_species"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="16dp"
+                            android:text="Species:"/>
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/group_species"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleLine="true"
+                                app:selectionRequired="false"/>
+                        </HorizontalScrollView>
                     </LinearLayout>
 
                 </LinearLayout>

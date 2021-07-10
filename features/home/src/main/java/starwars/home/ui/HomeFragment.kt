@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,6 +56,7 @@ class HomeFragment : Fragment() {
                                 )
                             }
                         }
+
                     }
                     Status.ERROR -> {
                         binding.layoutRetry.visibility = View.VISIBLE
@@ -65,6 +65,11 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+        }
+
+        binding.cardSearch.setOnClickListener {
+            val uri = Uri.parse("starwars://search")
+            findNavController().navigate(uri)
         }
 
         binding.buttonRetry.setOnClickListener {

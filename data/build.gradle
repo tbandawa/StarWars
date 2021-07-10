@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -52,7 +52,7 @@ dependencies {
     implementation(Deps.okhttp3)
     implementation(Deps.logging_interceptor)
     implementation(Deps.retrofit)
-    implementation(Deps.converter_gson)
+    api(Deps.converter_gson)
 
     testImplementation 'junit:junit:4.+'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
