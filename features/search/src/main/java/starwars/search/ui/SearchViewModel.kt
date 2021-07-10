@@ -23,10 +23,10 @@ class SearchViewModel @Inject constructor(
     private val _resourceItems = MutableLiveData<Resource<BaseResult<Any>>>()
     val resourceItems: LiveData<Resource<BaseResult<Any>>> = _resourceItems
 
-    fun searchResource(resourceType: String, query: String) {
+    fun searchResource(resourceType: String, searchQuery: String) {
         viewModelScope.launch(contextProviders.IO) {
             _resourceItems.postValue(Resource.loading(null))
-            val apiResponse = repository.getResources(resourceType)
+            val apiResponse = repository.searchResource(resourceType, searchQuery)
             when (apiResponse.status) {
                 Status.SUCCESS -> {
                     _resourceItems.postValue(Resource.success(apiResponse.data))

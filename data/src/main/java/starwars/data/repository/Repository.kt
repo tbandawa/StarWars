@@ -1,13 +1,9 @@
 package starwars.data.repository
 
-import androidx.lifecycle.liveData
 import com.google.gson.Gson
-import retrofit2.Response
 import starwars.data.api.SwApi
 import starwars.data.api.response.Resource
 import starwars.data.model.*
-import starwars.data.util.ContextProviders
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.reflect.full.memberProperties
