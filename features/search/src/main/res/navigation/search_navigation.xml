@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_navigation"
+    app:startDestination="@+id/nav_search">
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="starwars.search.ui.SearchFragment"
+        tools:layout="@layout/search_fragment">
+        <deepLink app:uri="starwars://search" />
+    </fragment>
+
+</navigation>

@@ -13,4 +13,6 @@
 
     <include app:graph="@navigation/resource_navigation" />
 
+    <include app:graph="@navigation/search_navigation" />
+
 </navigation>

@@ -67,6 +67,11 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.cardSearch.setOnClickListener {
+            val uri = Uri.parse("starwars://search")
+            findNavController().navigate(uri)
+        }
+
         binding.buttonRetry.setOnClickListener {
             viewModel.getRootItems()
         }
