@@ -11,7 +11,7 @@ data class Starship (
     val passengers : String,
     val cargo_capacity : String,
     val consumables : String,
-    val hyperdrive_rating : Double,
+    val hyperdrive_rating : String,
     val mGLT : String,
     val starship_class : String,
     val pilots : List<String>,

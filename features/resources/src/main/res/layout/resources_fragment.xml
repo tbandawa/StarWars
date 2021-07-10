@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="baseResult"
             type="starwars.data.model.BaseResult" />
+
         <variable
             name="view"
             type="starwars.resources.ui.ResourcesClickListener" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -39,7 +42,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/layout_controls"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
             <!-- progress bar -->
             <ProgressBar
