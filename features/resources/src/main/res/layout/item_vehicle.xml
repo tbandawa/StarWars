@@ -39,7 +39,7 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
                     android:text="@{vehicle.name}"
                     tools:text="Name"/>
 
@@ -50,7 +50,7 @@
                     card_view:layout_constraintTop_toBottomOf="@id/textName"
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
-                    android:text="@{vehicle.model}"
+                    android:text='@{"Model: " + vehicle.model}'
                     tools:text="model"/>
 
                 <TextView
@@ -60,8 +60,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/textModel"
                     app:layout_constraintEnd_toEndOf="@+id/textModel"
                     android:textColor="@color/colorGray"
-                    android:textSize="18sp"
-                    android:text="@{vehicle.vehicle_class}"
+                    android:textSize="16sp"
+                    android:text='@{"Class: " + vehicle.vehicle_class}'
                     tools:text="language"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
