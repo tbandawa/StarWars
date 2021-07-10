@@ -120,7 +120,7 @@ class Repository @Inject constructor(
             val response = swApi.fetchResource(resourceType, resourceId)
             val data = if (response.isSuccessful) {
                 response.body()?.let { resource ->
-                    val resourcesList = when (resourceType) {
+                    val baseResource = when (resourceType) {
                         "people" -> {
                             Gson().fromJson(Gson().toJson(resource), Person::class.java)
                         }
@@ -141,7 +141,7 @@ class Repository @Inject constructor(
                         }
                         else -> throw Exception("Can not parse $response.")
                     }
-                    resourcesList
+                    baseResource
                 } ?: run {
                     null
                 }

@@ -20,3 +20,8 @@ fun String.getPageNumber() : Int {
 fun String.getResourceId() : Int {
     return this.replace(Regex("[^0-9]"), "").toInt()
 }
+
+fun String.getResourceType() : String {
+    val urlParts = this.split("/")
+    return urlParts[urlParts.size - 3]
+}

@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import me.tbandawa.android.commons.extensions.getResourceId
+import me.tbandawa.android.commons.extensions.getResourceType
 import starwars.data.api.response.Resource
 import starwars.data.api.response.Status
-import starwars.data.model.BaseResult
 import starwars.data.repository.Repository
 import starwars.data.util.ContextProviders
 import javax.inject.Inject
@@ -38,7 +39,19 @@ class ResourceViewModel @Inject constructor(
         }
     }
 
-
-
+    fun getResourceTitle(resourceUrl: String, callback: (Any) -> Unit) {
+        val resourceId = resourceUrl.getResourceId()
+        val resourceType = resourceUrl.getResourceType()
+        viewModelScope.launch(contextProviders.IO) {
+            val apiResponse = repository.getResource(resourceType, resourceId)
+            when (apiResponse.status) {
+                Status.SUCCESS -> {
+                    apiResponse.data?.let { any ->
+                        callback.invoke(any)
+                    }
+                }
+            }
+        }
+    }
 
 }
