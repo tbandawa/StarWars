@@ -39,7 +39,7 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
                     android:text="@{species.name}"
                     tools:text="Name"/>
 
@@ -50,18 +50,19 @@
                     card_view:layout_constraintTop_toBottomOf="@id/textName"
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
-                    android:text="@{species.classification}"
+                    android:text='@{"Classification: " + species.classification}'
                     tools:text="amphibian"/>
 
                 <TextView
                     android:id="@+id/textLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintTop_toBottomOf="@+id/textClassification"
                     app:layout_constraintEnd_toEndOf="@+id/textClassification"
                     android:textColor="@color/colorGray"
-                    android:textSize="18sp"
-                    android:text="@{species.language}"
+                    android:textSize="16sp"
+                    android:text='@{"Language: " + species.language}'
                     tools:text="language"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,10 +34,11 @@
                 android:id="@+id/layout_inputs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@drawable/bg_search"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="66dp"
+                android:padding="5dp"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <Spinner
@@ -63,17 +64,16 @@
 
                 <Button
                     android:id="@+id/button_search"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorBlack"
                     android:text="Search"
-                    style="@style/StarWars.Button.TextIcon"/>
+                    app:icon="@drawable/ic_search"
+                    style="@style/StarWars.Button.TextIcon.Black"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
