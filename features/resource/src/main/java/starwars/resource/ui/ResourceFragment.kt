@@ -61,23 +61,6 @@ class ResourceFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.apply {
 
-                            species = null
-                            vehicle = null
-                            planet = null
-                            film = null
-                            person = null
-                            starship = null
-
-                            layoutGroupCharacters.visibility = View.GONE
-                            layoutGroupFilms.visibility = View.GONE
-                            layoutGroupResidents.visibility = View.GONE
-                            layoutGroupPeople.visibility = View.GONE
-                            layoutGroupPilots.visibility = View.GONE
-                            layoutGroupPlanets.visibility = View.GONE
-                            layoutGroupStarships.visibility = View.GONE
-                            layoutGroupVehicles.visibility = View.GONE
-                            layoutGroupSpecies.visibility = View.GONE
-
                             if (result.data is Person) person = result.data as Person
                             if (result.data is Film) film = result.data as Film
                             if (result.data is Planet) planet = result.data as Planet
