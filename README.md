@@ -21,5 +21,5 @@ Browse Films, People, Planets, Species, Starships and Vehicles from Star Wars AP
 * [Kotlin](https://kotlinlang.org/)
 * Android Architecture Components (LiveData, Lifecycle, ViewModel, Navigation Component, ConstraintLayout)
 * [Hilt](https://dagger.dev/hilt/) for dependency injection.
-* [Gson](https://github.com/google/gson) for corversion of json objects to kotlin data classes.
+* [Retrofit](https://square.github.io/retrofit) for fetching data from SWAPI.
 * [Timber](https://github.com/JakeWharton/timber) for logging events.
