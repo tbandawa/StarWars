@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -61,7 +62,10 @@ class ResourceFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.apply {
 
-                            if (result.data is Person) person = result.data as Person
+                            if (result.data is Person) {
+                                person = result.data as Person
+                                setHomeWorld(textHomeWorld, (result.data as Person).homeworld)
+                            }
                             if (result.data is Film) film = result.data as Film
                             if (result.data is Planet) planet = result.data as Planet
                             if (result.data is Vehicle) vehicle = result.data as Vehicle
@@ -161,6 +165,18 @@ class ResourceFragment : Fragment() {
             viewModel.getResource(args.resourceType, args.resourceId)
         }
 
+    }
+
+    private fun setHomeWorld(textView: TextView, resourceLink: String) {
+        viewModel.getResourceTitle(resourceLink){ any ->
+            val resourceName = when(any) {
+                is Planet -> { any.name }
+                else -> resourceLink
+            }
+            runBlocking(Dispatchers.Main) {
+                textView.text = resourceName
+            }
+        }
     }
 
     private fun populateChips(chipGroup: ChipGroup, resourceLink: String) {
