@@ -23,15 +23,15 @@
 
         <androidx.cardview.widget.CardView
             android:backgroundTint="@color/colorWhite"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_width="162dp"
+            android:layout_height="162dp"
             card_view:cardCornerRadius="4dp"
             android:onClick="@{() -> itemClickListener.onClick(item)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:padding="15dp">
+                android:layout_width="162dp"
+                android:layout_height="162dp"
+                android:padding="12dp">
 
                 <TextView
                     android:id="@+id/textResource"
