@@ -8,6 +8,7 @@ import starwars.data.api.response.Status
 import starwars.data.model.Item
 import starwars.data.repository.Repository
 import starwars.data.util.ContextProviders
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel

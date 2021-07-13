@@ -59,6 +59,7 @@ class HomeFragment : Fragment() {
 
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.progressAction.visibility = View.GONE
                         binding.recyclerItems.visibility = View.GONE
