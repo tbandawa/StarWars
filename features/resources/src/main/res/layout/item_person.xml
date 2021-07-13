@@ -50,10 +50,10 @@
                     android:layout_marginTop="20dp"
                     android:text='@{"Birth Year: " + person.birth_year}'
                     android:textColor="@color/colorGray"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/textTitle"
                     app:layout_constraintTop_toBottomOf="@+id/textTitle"
-                    tools:text="123456" />
+                    tools:text="Birth Year: 123456" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

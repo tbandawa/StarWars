@@ -51,7 +51,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
                     android:text='@{"Classification: " + species.classification}'
-                    tools:text="amphibian"/>
+                    tools:text="Classification: amphibian"/>
 
                 <TextView
                     android:id="@+id/textLanguage"
@@ -63,7 +63,7 @@
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"
                     android:text='@{"Language: " + species.language}'
-                    tools:text="language"/>
+                    tools:text="Language: language"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

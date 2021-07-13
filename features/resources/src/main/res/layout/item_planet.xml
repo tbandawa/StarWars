@@ -63,7 +63,7 @@
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"
                     android:text='@{"Terrain: " + planet.terrain}'
-                    tools:text="desert"/>
+                    tools:text="Terrain: desert"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

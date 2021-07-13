@@ -51,7 +51,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
                     android:text='@{"Model: " + starship.model}'
-                    tools:text="model"/>
+                    tools:text="Model: model"/>
 
                 <TextView
                     android:id="@+id/textClass"
@@ -63,7 +63,7 @@
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"
                     android:text='@{"Class: " + starship.starship_class}'
-                    tools:text="class"/>
+                    tools:text="Class: class"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
