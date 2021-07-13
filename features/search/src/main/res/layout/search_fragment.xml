@@ -119,6 +119,7 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/text_error"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -127,7 +128,7 @@
                     android:gravity="center_horizontal"
                     android:textSize="16sp"
                     android:textColor="@color/colorWhite"
-                    android:text="Something went wrong,\ntry again."/>
+                    tools:text="Something went wrong,\ntry again."/>
 
             </LinearLayout>
 
@@ -138,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="35dp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_inputs"
                 app:layout_constraintBottom_toTopOf="@id/layout_controls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

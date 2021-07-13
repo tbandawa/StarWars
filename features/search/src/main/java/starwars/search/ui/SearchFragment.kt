@@ -85,6 +85,7 @@ class SearchFragment : Fragment(), ResourcesClickListener {
 
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.layoutControls.visibility = View.VISIBLE
                         binding.layoutEmpty.visibility = View.GONE

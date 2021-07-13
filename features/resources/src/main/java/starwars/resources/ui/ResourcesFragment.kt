@@ -81,6 +81,7 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
 
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.layoutControls.visibility = View.VISIBLE
                         binding.progressAction.visibility = View.GONE
