@@ -77,11 +77,7 @@ class SearchFragment : Fragment(), ResourcesClickListener {
                             ResourcesAdapter(
                                 searchTye,
                                 it.results,
-                                ResourceClickListener { url ->
-                                    val page = url.getResourceId()
-                                    val uri = Uri.parse("starwars://resource/${searchTye}/${page}")
-                                    findNavController().navigate(uri)
-                                }
+                                this@SearchFragment
                             )
                         }
 
@@ -125,6 +121,12 @@ class SearchFragment : Fragment(), ResourcesClickListener {
 
     override fun onPrevious(url: String) {
         viewModel.getResourcesByPage(searchTye, url)
+    }
+
+    override fun onResourceClick(url: String) {
+        val page = url.getResourceId()
+        val uri = Uri.parse("starwars://resource/${searchTye}/${page}")
+        findNavController().navigate(uri)
     }
 
     override fun onDestroyView() {

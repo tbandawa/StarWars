@@ -10,10 +10,10 @@ class VehicleViewHolder(private val binding: ItemVehicleBinding) : RecyclerView.
 
     fun bind(
         vehicle: Vehicle,
-        resourceClickListener: ResourcesClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.vehicle = vehicle
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

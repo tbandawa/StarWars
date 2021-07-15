@@ -10,10 +10,10 @@ class FilmViewHolder(private val binding: ItemFilmBinding) : RecyclerView.ViewHo
 
     fun bind(
         film: Film,
-        resourceClickListener: ResourcesClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.film = film
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

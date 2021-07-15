@@ -10,10 +10,10 @@ class StarshipSearchViewHolder(private val binding: ItemSearchStarshipBinding) :
 
     fun bind(
         starship: Starship,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.starship = starship
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

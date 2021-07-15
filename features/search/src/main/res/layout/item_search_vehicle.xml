@@ -11,8 +11,8 @@
             type="starwars.data.model.Vehicle" />
 
         <variable
-            name="resourceClickListener"
-            type="starwars.search.ui.ResourceClickListener" />
+            name="resourcesClickListener"
+            type="starwars.search.ui.ResourcesClickListener" />
 
     </data>
 
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="4dp"
-            android:onClick="@{() -> resourceClickListener.onClick(vehicle.url)}">
+            android:onClick="@{() -> resourcesClickListener.onResourceClick(vehicle.url)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
