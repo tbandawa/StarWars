@@ -10,10 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import starwars.data.api.response.Status
+import starwars.data.model.Item
 import starwars.home.databinding.HomeFragmentBinding
+import timber.log.Timber
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ItemClickListener {
 
     private val viewModel: HomeViewModel by viewModels()
 
@@ -49,14 +51,10 @@ class HomeFragment : Fragment() {
                             adapter = resource.data?.let { items ->
                                 ItemAdapter(
                                     items.toList(),
-                                    ItemClickListener { item ->
-                                        val uri = Uri.parse("starwars://resources/${item.type}")
-                                        findNavController().navigate(uri)
-                                    }
+                                    this@HomeFragment
                                 )
                             }
                         }
-
                     }
                     Status.ERROR -> {
                         binding.textError.text = resource.message
@@ -77,6 +75,11 @@ class HomeFragment : Fragment() {
             viewModel.getRootItems()
         }
 
+    }
+
+    override fun onClick(item: Item) {
+        val uri = Uri.parse("starwars://resources/${item.type}")
+        findNavController().navigate(uri)
     }
 
     override fun onDestroyView() {

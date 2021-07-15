@@ -19,7 +19,3 @@ class ItemAdapter(
 
     override fun getItemCount(): Int = itemList.size
 }
-
-class ItemClickListener(val itemClickListener: (item: Item) -> Unit) {
-    fun onClick(item: Item) = itemClickListener(item)
-}
