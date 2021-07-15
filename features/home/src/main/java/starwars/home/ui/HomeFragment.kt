@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import starwars.data.api.response.Status
 import starwars.data.model.Item
 import starwars.home.databinding.HomeFragmentBinding
-import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), ItemClickListener {

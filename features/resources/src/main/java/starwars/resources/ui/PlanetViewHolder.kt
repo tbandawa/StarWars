@@ -10,7 +10,7 @@ class PlanetViewHolder(private val binding: ItemPlanetBinding) : RecyclerView.Vi
 
     fun bind(
         planet: Planet,
-        resourceClickListener: ResourceClickListener
+        resourceClickListener: ResourcesClickListener
     ) {
         binding.planet = planet
         binding.resourceClickListener = resourceClickListener

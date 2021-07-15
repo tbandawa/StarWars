@@ -12,7 +12,7 @@
 
         <variable
             name="resourceClickListener"
-            type="starwars.resources.ui.ResourceClickListener" />
+            type="starwars.resources.ui.ResourcesClickListener" />
 
     </data>
 
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="4dp"
-            android:onClick="@{() -> resourceClickListener.onClick(starship.url)}">
+            android:onClick="@{() -> resourceClickListener.onResourceClick(starship.url)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

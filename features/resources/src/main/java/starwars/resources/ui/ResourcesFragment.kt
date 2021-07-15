@@ -16,6 +16,7 @@ import me.tbandawa.android.commons.extensions.getResourceId
 import starwars.data.api.response.Status
 import starwars.resources.R
 import starwars.resources.databinding.ResourcesFragmentBinding
+import timber.log.Timber
 import java.util.*
 
 @AndroidEntryPoint
@@ -70,11 +71,7 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
                                 ResourcesAdapter(
                                     args.resourceType,
                                     resources.results,
-                                    ResourceClickListener { url ->
-                                        val page = url.getResourceId()
-                                        val uri = Uri.parse("starwars://resource/${args.resourceType}/${page}")
-                                        findNavController().navigate(uri)
-                                    }
+                                    this@ResourcesFragment
                                 )
                             }
                         }
@@ -99,6 +96,12 @@ class ResourcesFragment : Fragment(), ResourcesClickListener {
 
     override fun onPrevious(url: String) {
         viewModel.getResourcesByPage(args.resourceType, url)
+    }
+
+    override fun onResourceClick(url: String) {
+        val page = url.getResourceId()
+        val uri = Uri.parse("starwars://resource/${args.resourceType}/${page}")
+        findNavController().navigate(uri)
     }
 
     override fun onDestroyView() {
