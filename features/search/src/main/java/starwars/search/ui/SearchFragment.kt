@@ -112,7 +112,7 @@ class SearchFragment : Fragment(), ResourcesClickListener {
             searchTye = items[typeIndex]
             binding.editQuery.clearFocus()
             if(binding.editQuery.text.isNotBlank()) {
-                binding.editQuery.onEditorAction(EditorInfo.IME_ACTION_SEARCH)
+                binding.editQuery.onEditorAction(EditorInfo.IME_ACTION_DONE)
                 viewModel.searchResource(searchTye, binding.editQuery.text.toString())
             }
         }
