@@ -111,7 +111,7 @@
                     android:drawableLeft="@drawable/ic_back"
                     android:visibility="gone"
                     android:onClick="@{() -> view.onPrevious(baseResult.previous)}"
-                    style="@style/StarWars.Button.TextIcon.Black" />
+                    style="@style/StarWars.Button.TextIcon.White" />
 
                 <Button
                     android:id="@+id/button_next"
@@ -125,7 +125,7 @@
                     android:visibility="gone"
                     app:pageNavigation="@{baseResult.next}"
                     android:onClick="@{() -> view.onNextClick(baseResult.next)}"
-                    style="@style/StarWars.Button.TextIcon.Black" />
+                    style="@style/StarWars.Button.TextIcon.White" />
 
             </RelativeLayout>
 
