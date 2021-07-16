@@ -22,36 +22,46 @@
     <style name="StarWars.Button.TextIcon.Black" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="shapeAppearance">@style/buttonShape</item>
         <item name="iconTint">@color/colorWhite</item>
+        <item name="drawableTint">@color/colorWhite</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">45dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="elevation">3dp</item>
+        <item name="android:layout_height">35dp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:backgroundTint">@color/colorBlack</item>
         <item name="rippleColor">@color/colorLightGray</item>
         <item name="android:textAppearance">@style/TextAppearance.StarWars.Button.Black</item>
     </style>
 
-    <style name="StarWars.Button.TextIcon" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="shapeAppearance">@style/buttonShape</item>
-        <item name="iconTint">@color/colorWhite</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">45dp</item>
+    <style name="TextAppearance.StarWars.Button.Black" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textAppearance">@style/TextAppearance.StarWars.Button</item>
+    </style>
+
+    <style name="StarWars.Button.TextIcon.White" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="shapeAppearance">@style/buttonShape</item>
+        <item name="iconTint">@color/colorBlack</item>
+        <item name="drawableTint">@color/colorBlack</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="elevation">3dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:backgroundTint">@color/colorWhite</item>
+        <item name="rippleColor">@color/colorLightGray</item>
+        <item name="android:textAppearance">@style/TextAppearance.StarWars.Button.White</item>
+    </style>
+
+    <style name="TextAppearance.StarWars.Button.White" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
     <style name="buttonShape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-    </style>
-
-    <style name="TextAppearance.StarWars.Button" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/colorWhite</item>
-    </style>
-
-    <style name="TextAppearance.StarWars.Button.Black" parent="TextAppearance.MaterialComponents.Button">
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
 </resources>

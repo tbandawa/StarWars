@@ -129,7 +129,7 @@
                 android:text="Retry"
                 app:icon="@drawable/ic_retry"
                 app:iconSize="16dp"
-                style="@style/StarWars.Button.TextIcon" />
+                style="@style/StarWars.Button.TextIcon.White" />
 
         </LinearLayout>
 
