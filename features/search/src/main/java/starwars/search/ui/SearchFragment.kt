@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -94,7 +93,7 @@ class SearchFragment : Fragment(), ResourcesClickListener {
             }
         }
 
-        binding.buttonSearch.setOnEditorActionListener { _, actionId, _ ->
+        binding.editQuery.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH && binding.editQuery.text.isNotBlank()) {
                 val typeIndex = binding.spinnerType.selectedItemPosition
                 searchTye = items[typeIndex]

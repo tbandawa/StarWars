@@ -68,7 +68,6 @@
                 <Button
                     android:id="@+id/button_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +163,11 @@
             <RelativeLayout
                 android:id="@+id/layout_controls"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
                 android:background="@color/colorBlack"
                 app:layout_constraintBottom_toBottomOf="parent">
 
@@ -173,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:textColor="@color/colorWhite"
+                    android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:text="Previous"
                     app:icon="@drawable/ic_back"
@@ -188,7 +191,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@color/colorWhite"
+                    android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:text="Next"
                     android:drawableEnd="@drawable/ic_next"
