@@ -1930,23 +1930,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Films:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_films"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_films"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- characters chip group -->
@@ -1957,23 +1954,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Characters:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_characters"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_characters"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false" />
-                        </HorizontalScrollView>
+                            app:selectionRequired="false" />
+
                     </LinearLayout>
 
                     <!-- residents chip group -->
@@ -1984,23 +1978,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Residents:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_residents"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_residents"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- people chip group -->
@@ -2011,23 +2002,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="People:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_people"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_people"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- pilots chip group -->
@@ -2038,23 +2026,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Pilots:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_pilots"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_pilots"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- planets chip group -->
@@ -2065,23 +2050,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Planets:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_planets"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_planets"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- starships chip group -->
@@ -2092,23 +2074,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Starships:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_starships"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_starships"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- vehicles chip group -->
@@ -2119,23 +2098,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Vehicles:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_vehicles"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_vehicles"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                     <!-- species chip group -->
@@ -2146,23 +2122,20 @@
                         android:layout_marginTop="20dp"
                         android:orientation="vertical"
                         android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorWhite"
                             android:textSize="16dp"
                             android:text="Species:"/>
-                        <HorizontalScrollView
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/group_species"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="none">
-                            <com.google.android.material.chip.ChipGroup
-                                android:id="@+id/group_species"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:singleLine="true"
-                                app:selectionRequired="false"/>
-                        </HorizontalScrollView>
+                            app:selectionRequired="false"/>
+
                     </LinearLayout>
 
                 </LinearLayout>
