@@ -10,10 +10,10 @@ class PersonSearchViewHolder(private val binding: ItemSearchPersonBinding) : Rec
 
     fun bind(
         person: Person,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.person = person
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

@@ -10,10 +10,10 @@ class PersonViewHolder(private val binding: ItemPersonBinding) : RecyclerView.Vi
 
     fun bind(
         person: Person,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.person = person
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

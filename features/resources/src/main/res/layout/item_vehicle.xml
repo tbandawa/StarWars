@@ -11,8 +11,8 @@
             type="starwars.data.model.Vehicle" />
 
         <variable
-            name="resourceClickListener"
-            type="starwars.resources.ui.ResourceClickListener" />
+            name="resourcesClickListener"
+            type="starwars.resources.ui.ResourcesClickListener" />
 
     </data>
 
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="4dp"
-            android:onClick="@{() -> resourceClickListener.onClick(vehicle.url)}">
+            android:onClick="@{() -> resourcesClickListener.onResourceClick(vehicle.url)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
                     android:text='@{"Model: " + vehicle.model}'
-                    tools:text="model"/>
+                    tools:text="Model: model"/>
 
                 <TextView
                     android:id="@+id/textClass"
@@ -63,7 +63,7 @@
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"
                     android:text='@{"Class: " + vehicle.vehicle_class}'
-                    tools:text="language"/>
+                    tools:text="Class: language"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

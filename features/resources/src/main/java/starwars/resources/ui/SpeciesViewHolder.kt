@@ -10,10 +10,10 @@ class SpeciesViewHolder(private val binding: ItemSpeciesBinding) : RecyclerView.
 
     fun bind(
         species: Species,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.species = species
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

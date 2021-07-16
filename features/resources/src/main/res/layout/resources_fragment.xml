@@ -35,7 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="40dp"
-                android:padding="16dp"
+                android:paddingTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 tools:listitem="@layout/item_person"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toTopOf="parent"
@@ -72,6 +74,7 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/text_error"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -80,7 +83,7 @@
                     android:gravity="center_horizontal"
                     android:textSize="16sp"
                     android:textColor="@color/colorWhite"
-                    android:text="Something went wrong,\ntry again."/>
+                    tools:text="Something went wrong,\ntry again."/>
 
             </LinearLayout>
 
@@ -88,16 +91,19 @@
             <RelativeLayout
                 android:id="@+id/layout_controls"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="wrap_content"
                 android:background="@color/colorBlack"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <Button
                     android:id="@+id/button_previous"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:textColor="@color/colorWhite"
+                    android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:text="Previous"
                     app:icon="@drawable/ic_back"
@@ -105,14 +111,13 @@
                     android:drawableLeft="@drawable/ic_back"
                     android:visibility="gone"
                     android:onClick="@{() -> view.onPrevious(baseResult.previous)}"
-                    style="@style/StarWars.Button.TextIcon" />
+                    style="@style/StarWars.Button.TextIcon.White" />
 
                 <Button
                     android:id="@+id/button_next"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@color/colorWhite"
+                    android:layout_centerVertical="true"
                     android:textSize="18sp"
                     android:text="Next"
                     android:drawableEnd="@drawable/ic_next"
@@ -120,7 +125,7 @@
                     android:visibility="gone"
                     app:pageNavigation="@{baseResult.next}"
                     android:onClick="@{() -> view.onNextClick(baseResult.next)}"
-                    style="@style/StarWars.Button.TextIcon" />
+                    style="@style/StarWars.Button.TextIcon.White" />
 
             </RelativeLayout>
 

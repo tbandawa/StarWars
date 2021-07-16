@@ -10,10 +10,10 @@ class FilmSearchViewHolder(private val binding: ItemSearchFilmBinding) : Recycle
 
     fun bind(
         film: Film,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.film = film
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

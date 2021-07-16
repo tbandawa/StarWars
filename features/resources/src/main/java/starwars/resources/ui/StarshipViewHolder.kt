@@ -10,10 +10,10 @@ class StarshipViewHolder(private val binding: ItemStarshipBinding) : RecyclerVie
 
     fun bind(
         starship: Starship,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.starship = starship
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

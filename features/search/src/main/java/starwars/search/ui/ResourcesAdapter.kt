@@ -7,7 +7,7 @@ import starwars.data.model.*
 class ResourcesAdapter(
     private var resourceType: String,
     private var resourceList: List<Any>,
-    private val resourceClickListener: ResourceClickListener
+    private val resourceClickListener: ResourcesClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -57,8 +57,4 @@ class ResourcesAdapter(
 
     override fun getItemViewType(position: Int): Int =  position
 
-}
-
-class ResourceClickListener(val resourceClickListener: (url: String) -> Unit) {
-    fun onClick(url: String) = resourceClickListener(url)
 }

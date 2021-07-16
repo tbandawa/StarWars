@@ -10,10 +10,10 @@ class VehicleSearchViewHolder(private val binding: ItemSearchVehicleBinding) : R
 
     fun bind(
         vehicle: Vehicle,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.vehicle = vehicle
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

@@ -10,10 +10,10 @@ class PlanetSearchViewHolder(private val binding: ItemSearchPlanetBinding) : Rec
 
     fun bind(
         planet: Planet,
-        resourceClickListener: ResourceClickListener
+        resourcesClickListener: ResourcesClickListener
     ) {
         binding.planet = planet
-        binding.resourceClickListener = resourceClickListener
+        binding.resourcesClickListener = resourcesClickListener
         binding.executePendingBindings()
     }
 

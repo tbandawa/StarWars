@@ -11,8 +11,8 @@
             type="starwars.data.model.Person" />
 
         <variable
-            name="resourceClickListener"
-            type="starwars.search.ui.ResourceClickListener" />
+            name="resourcesClickListener"
+            type="starwars.search.ui.ResourcesClickListener" />
 
     </data>
 
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="4dp"
-            android:onClick="@{() -> resourceClickListener.onClick(person.url)}">
+            android:onClick="@{() -> resourcesClickListener.onResourceClick(person.url)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:layout_height="match_parent"
                     android:text="@{person.name}"
                     android:textColor="@color/colorBlack"
-                    android:textSize="28sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     tools:text="Name" />
 
@@ -47,9 +47,10 @@
                     android:id="@+id/textBirthYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{person.birth_year}"
+                    android:layout_marginTop="20dp"
+                    android:text='@{"Birth Year: " + person.birth_year}'
                     android:textColor="@color/colorGray"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/textTitle"
                     app:layout_constraintTop_toBottomOf="@+id/textTitle"
                     tools:text="123456" />

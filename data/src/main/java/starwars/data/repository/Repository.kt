@@ -4,7 +4,6 @@ import starwars.data.api.SwApi
 import starwars.data.api.response.Resource
 import starwars.data.model.*
 import starwars.data.util.ResourcesParser
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.reflect.full.memberProperties

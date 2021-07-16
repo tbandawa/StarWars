@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -75,16 +76,13 @@ class SearchFragment : Fragment(), ResourcesClickListener {
                             ResourcesAdapter(
                                 searchTye,
                                 it.results,
-                                ResourceClickListener { url ->
-                                    val page = url.getResourceId()
-                                    val uri = Uri.parse("starwars://resource/${searchTye}/${page}")
-                                    findNavController().navigate(uri)
-                                }
+                                this@SearchFragment
                             )
                         }
 
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.layoutControls.visibility = View.VISIBLE
                         binding.layoutEmpty.visibility = View.GONE
@@ -95,10 +93,21 @@ class SearchFragment : Fragment(), ResourcesClickListener {
             }
         }
 
+        binding.editQuery.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH && binding.editQuery.text.isNotBlank()) {
+                val typeIndex = binding.spinnerType.selectedItemPosition
+                searchTye = items[typeIndex]
+                viewModel.searchResource(searchTye, binding.editQuery.text.toString())
+            }
+            false
+        }
+
         binding.buttonSearch.setOnClickListener {
             val typeIndex = binding.spinnerType.selectedItemPosition
             searchTye = items[typeIndex]
+            binding.editQuery.clearFocus()
             if(binding.editQuery.text.isNotBlank()) {
+                binding.editQuery.onEditorAction(EditorInfo.IME_ACTION_DONE)
                 viewModel.searchResource(searchTye, binding.editQuery.text.toString())
             }
         }
@@ -111,6 +120,12 @@ class SearchFragment : Fragment(), ResourcesClickListener {
 
     override fun onPrevious(url: String) {
         viewModel.getResourcesByPage(searchTye, url)
+    }
+
+    override fun onResourceClick(url: String) {
+        val page = url.getResourceId()
+        val uri = Uri.parse("starwars://resource/${searchTye}/${page}")
+        findNavController().navigate(uri)
     }
 
     override fun onDestroyView() {
