@@ -12,13 +12,11 @@ import me.tbandawa.android.commons.extensions.getPageNumber
 import starwars.data.api.response.Resource
 import starwars.data.model.BaseResult
 import starwars.data.repository.Repository
-import starwars.data.util.ContextProviders
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    private val repository: Repository,
-    private val contextProviders: ContextProviders
+    private val repository: Repository
 ) : ViewModel() {
 
     private val _resourceItems = MutableLiveData<Resource<BaseResult<Any>>>()

@@ -15,12 +15,14 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import starwars.data.api.response.Status
 import starwars.data.model.*
 import starwars.resource.R
 import starwars.resource.databinding.ResourceFragmentBinding
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class ResourceFragment : Fragment() {
 
@@ -46,6 +48,7 @@ class ResourceFragment : Fragment() {
         return binding.root
     }
 
+    @InternalCoroutinesApi
     override fun onStart() {
         super.onStart()
 

@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
 import me.tbandawa.android.commons.extensions.getResourceId
 import starwars.data.api.response.Status
 import starwars.search.R
 import starwars.search.databinding.SearchFragmentBinding
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class SearchFragment : Fragment(), ResourcesClickListener {
 

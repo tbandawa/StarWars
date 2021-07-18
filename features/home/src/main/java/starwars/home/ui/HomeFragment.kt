@@ -14,6 +14,7 @@ import starwars.data.api.response.Status
 import starwars.data.model.Item
 import starwars.home.databinding.HomeFragmentBinding
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class HomeFragment : Fragment(), ItemClickListener {
 
@@ -30,7 +31,6 @@ class HomeFragment : Fragment(), ItemClickListener {
         return binding.root
     }
 
-    @InternalCoroutinesApi
     override fun onStart() {
         super.onStart()
 

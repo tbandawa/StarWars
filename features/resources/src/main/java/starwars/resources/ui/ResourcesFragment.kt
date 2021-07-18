@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
 import me.tbandawa.android.commons.extensions.capitaliseFirst
 import me.tbandawa.android.commons.extensions.getResourceId
 import starwars.data.api.response.Status
@@ -19,6 +20,7 @@ import starwars.resources.databinding.ResourcesFragmentBinding
 import timber.log.Timber
 import java.util.*
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class ResourcesFragment : Fragment(), ResourcesClickListener {
 
