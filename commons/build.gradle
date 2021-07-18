@@ -58,6 +58,9 @@ dependencies {
     api(Deps.lifecycle_ext)
     kapt(Deps.lifecycle_comp)
 
+    // Coroutines
+    api(Deps.coroutines)
+
     // Timber
     api(Deps.timber)
 

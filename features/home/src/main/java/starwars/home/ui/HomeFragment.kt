@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
 import starwars.data.api.response.Status
 import starwars.data.model.Item
 import starwars.home.databinding.HomeFragmentBinding
@@ -29,6 +30,7 @@ class HomeFragment : Fragment(), ItemClickListener {
         return binding.root
     }
 
+    @InternalCoroutinesApi
     override fun onStart() {
         super.onStart()
 
