@@ -19,30 +19,31 @@ class Repository @Inject constructor(
 ) {
 
     suspend fun getRootData() : Flow<Resource<List<Item>>> = flow {
-            try {
-                emit(Resource.loading(null))
-                val response = swApi.fetchRootData()
-                val data = if (response.isSuccessful) {
-                    response.body()?.let { root ->
-                        val resources = mutableListOf<Item>()
-                        for (prop in Root::class.memberProperties) {
-                            resources.add(Item(prop.name, "${prop.get(root)}"))
-                        }
-                        resources
-                    } ?: run {
-                        emptyList()
+        try {
+            emit(Resource.loading(null))
+            val response = swApi.fetchRootData()
+            val data = if (response.isSuccessful) {
+                response.body()?.let { root ->
+                    val resources = mutableListOf<Item>()
+                    for (prop in Root::class.memberProperties) {
+                        resources.add(Item(prop.name, "${prop.get(root)}"))
                     }
-                } else {
+                    resources
+                } ?: run {
                     emptyList()
                 }
-                emit(Resource.success(data))
-            } catch (exception: Exception) {
-                emit(Resource.error(exception.message ?: "Error Occurred!", null))
+            } else {
+                emptyList()
             }
-        }.flowOn(contextProviders.IO)
+            emit(Resource.success(data))
+        } catch (exception: Exception) {
+            emit(Resource.error(exception.message ?: "Error Occurred!", null))
+        }
+    }.flowOn(contextProviders.IO)
 
-    suspend fun getResources(resourceType: String): Resource<BaseResult<Any>> {
-        return try {
+    suspend fun getResources(resourceType: String): Flow<Resource<BaseResult<Any>>> = flow {
+        try {
+            emit(Resource.loading(null))
             val response = swApi.fetchResources(resourceType)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
@@ -53,14 +54,15 @@ class Repository @Inject constructor(
             } else {
                 null
             }
-            Resource.success(data)
+            emit(Resource.success(data))
         } catch (exception: Exception) {
-            Resource.error(exception.message ?: "Error Occurred!", null)
+            emit(Resource.error(exception.message ?: "Error Occurred!", null))
         }
-    }
+    }.flowOn(contextProviders.IO)
 
-    suspend fun getResourcesByPage(resourceType: String, page: Int): Resource<BaseResult<Any>> {
-        return try {
+    suspend fun getResourcesByPage(resourceType: String, page: Int): Flow<Resource<BaseResult<Any>>> = flow {
+        try {
+            emit(Resource.loading(null))
             val response = swApi.fetchResourcesByPage(resourceType, page)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
@@ -71,14 +73,15 @@ class Repository @Inject constructor(
             } else {
                 null
             }
-            Resource.success(data)
+            emit(Resource.success(data))
         } catch (exception: Exception) {
-            Resource.error(exception.message ?: "Error Occurred!", null)
+            emit(Resource.error(exception.message ?: "Error Occurred!", null))
         }
-    }
+    }.flowOn(contextProviders.IO)
 
-    suspend fun getResource(resourceType: String, resourceId: Int) : Resource<Any> {
-        return try {
+    suspend fun getResource(resourceType: String, resourceId: Int) : Flow<Resource<Any>> = flow {
+        try {
+            emit(Resource.loading(null))
             val response = swApi.fetchResource(resourceType, resourceId)
             val data = if (response.isSuccessful) {
                 response.body()?.let { resource ->
@@ -89,14 +92,15 @@ class Repository @Inject constructor(
             } else {
                 null
             }
-            Resource.success(data)
+            emit(Resource.success(data))
         } catch (exception: Exception) {
-            Resource.error(exception.message ?: "Error Occurred!", null)
+            emit(Resource.error(exception.message ?: "Error Occurred!", null))
         }
-    }
+    }.flowOn(contextProviders.IO)
 
-    suspend fun searchResource(resourceType: String, searchQuery: String): Resource<BaseResult<Any>> {
-        return try {
+    suspend fun searchResource(resourceType: String, searchQuery: String): Flow<Resource<BaseResult<Any>>> = flow {
+        try {
+            emit(Resource.loading(null))
             val response = swApi.searchResource(resourceType, searchQuery)
             val data = if (response.isSuccessful) {
                 response.body()?.let { baseResult ->
@@ -107,10 +111,10 @@ class Repository @Inject constructor(
             } else {
                 null
             }
-            Resource.success(data)
+            emit(Resource.success(data))
         } catch (exception: Exception) {
-            Resource.error(exception.message ?: "Error Occurred!", null)
+            emit(Resource.error(exception.message ?: "Error Occurred!", null))
         }
-    }
+    }.flowOn(contextProviders.IO)
 
 }
