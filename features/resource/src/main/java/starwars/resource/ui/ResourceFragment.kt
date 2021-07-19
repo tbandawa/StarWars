@@ -65,6 +65,8 @@ class ResourceFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.apply {
 
+                            toolBar.title = ""
+
                             if (result.data is Person) {
                                 person = result.data as Person
                                 setHomeWorld(textHomeWorld, (result.data as Person).homeworld)
@@ -156,6 +158,7 @@ class ResourceFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.progressAction.visibility = View.GONE
                         binding.layoutDetails.visibility = View.GONE
