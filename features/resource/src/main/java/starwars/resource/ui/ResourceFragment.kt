@@ -68,10 +68,13 @@ class ResourceFragment : Fragment() {
                                 person = result.data as Person
                                 setHomeWorld(textHomeWorld, (result.data as Person).homeworld)
                             }
+                            if (result.data is Species) {
+                                species = result.data as Species
+                                setHomeWorld(textSpeciesHomeWorld, (result.data as Species).homeworld)
+                            }
                             if (result.data is Film) film = result.data as Film
                             if (result.data is Planet) planet = result.data as Planet
                             if (result.data is Vehicle) vehicle = result.data as Vehicle
-                            if (result.data is Species) species = result.data as Species
                             if (result.data is Starship) starship = result.data as Starship
 
                             val externalLinks = result.data as BaseResource

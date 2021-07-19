@@ -1215,6 +1215,7 @@
                                 android:textSize="16dp" />
 
                             <TextView
+                                android:id="@+id/text_species_home_world"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{species.homeworld}"
