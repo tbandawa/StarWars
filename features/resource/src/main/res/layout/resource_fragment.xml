@@ -70,9 +70,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/text_error"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -1213,6 +1215,7 @@
                                 android:textSize="16dp" />
 
                             <TextView
+                                android:id="@+id/text_species_home_world"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@{species.homeworld}"

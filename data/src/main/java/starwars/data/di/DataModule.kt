@@ -55,6 +55,6 @@ object CoreModule {
 
     @Provides
     @Singleton
-    fun providesRepository(swApi: SwApi) : Repository = Repository(swApi)
+    fun providesRepository(swApi: SwApi, contextProviders: ContextProviders) : Repository = Repository(swApi, contextProviders)
 
 }

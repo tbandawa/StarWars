@@ -14,13 +14,13 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.InternalCoroutinesApi
 import starwars.data.api.response.Status
 import starwars.data.model.*
 import starwars.resource.R
 import starwars.resource.databinding.ResourceFragmentBinding
 
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class ResourceFragment : Fragment() {
 
@@ -62,14 +62,19 @@ class ResourceFragment : Fragment() {
                     Status.SUCCESS -> {
                         binding.apply {
 
+                            toolBar.title = ""
+
                             if (result.data is Person) {
                                 person = result.data as Person
                                 setHomeWorld(textHomeWorld, (result.data as Person).homeworld)
                             }
+                            if (result.data is Species) {
+                                species = result.data as Species
+                                setHomeWorld(textSpeciesHomeWorld, (result.data as Species).homeworld)
+                            }
                             if (result.data is Film) film = result.data as Film
                             if (result.data is Planet) planet = result.data as Planet
                             if (result.data is Vehicle) vehicle = result.data as Vehicle
-                            if (result.data is Species) species = result.data as Species
                             if (result.data is Starship) starship = result.data as Starship
 
                             val externalLinks = result.data as BaseResource
@@ -153,6 +158,7 @@ class ResourceFragment : Fragment() {
                         }
                     }
                     Status.ERROR -> {
+                        binding.textError.text = resource.message
                         binding.layoutRetry.visibility = View.VISIBLE
                         binding.progressAction.visibility = View.GONE
                         binding.layoutDetails.visibility = View.GONE
@@ -173,9 +179,7 @@ class ResourceFragment : Fragment() {
                 is Planet -> { any.name }
                 else -> resourceLink
             }
-            runBlocking(Dispatchers.Main) {
-                textView.text = resourceName
-            }
+            textView.text = resourceName
         }
     }
 
@@ -190,14 +194,12 @@ class ResourceFragment : Fragment() {
                 is Starship -> { any.name }
                 else -> resourceLink
             }
-            runBlocking(Dispatchers.Main) {
-                val chip = Chip(requireContext())
-                chip.text = resourceName
-                chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-                chipGroup.addView(chip as View)
-                chip.isClickable = false
-            }
+            val chip = Chip(requireContext())
+            chip.text = resourceName
+            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+            chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+            chipGroup.addView(chip as View)
+            chip.isClickable = false
         }
     }
 

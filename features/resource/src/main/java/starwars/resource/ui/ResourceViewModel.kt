@@ -5,48 +5,41 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.tbandawa.android.commons.extensions.getResourceId
 import me.tbandawa.android.commons.extensions.getResourceType
 import starwars.data.api.response.Resource
 import starwars.data.api.response.Status
 import starwars.data.repository.Repository
-import starwars.data.util.ContextProviders
 import javax.inject.Inject
 
 @HiltViewModel
 class ResourceViewModel @Inject constructor(
-    private val repository: Repository,
-    private val contextProviders: ContextProviders
+    private val repository: Repository
 ) : ViewModel() {
 
     private val _resource = MutableLiveData<Resource<Any>>()
     val resource: LiveData<Resource<Any>> = _resource
 
+    @InternalCoroutinesApi
     fun getResource(resourceType: String, resourceId: Int) {
-        viewModelScope.launch(contextProviders.IO) {
-            _resource.postValue(Resource.loading(null))
-            val apiResponse = repository.getResource(resourceType, resourceId)
-            when (apiResponse.status) {
-                Status.SUCCESS -> {
-                    _resource.postValue(Resource.success(apiResponse.data))
-                }
-                Status.ERROR -> {
-                    _resource.postValue(Resource.error(apiResponse.message.toString(), null))
-                }
-                else -> {}
+        viewModelScope.launch() {
+            repository.getResource(resourceType, resourceId).collect { value ->
+                _resource.postValue(value)
             }
         }
     }
 
+    @InternalCoroutinesApi
     fun getResourceTitle(resourceUrl: String, callback: (Any) -> Unit) {
         val resourceId = resourceUrl.getResourceId()
         val resourceType = resourceUrl.getResourceType()
-        viewModelScope.launch(contextProviders.IO) {
-            val apiResponse = repository.getResource(resourceType, resourceId)
-            when (apiResponse.status) {
-                Status.SUCCESS -> {
-                    apiResponse.data?.let { any ->
+        viewModelScope.launch {
+            repository.getResource(resourceType, resourceId).collect { value ->
+                if (value.status == Status.SUCCESS) {
+                    value.data?.let { any ->
                         callback.invoke(any)
                     }
                 }

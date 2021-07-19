@@ -19,6 +19,7 @@ object Versions {
     val timber = "4.7.1"
     val retrofit = "2.9.0"
     val okhttp3 = "4.9.0"
+    val coroutines = "1.3.9"
     val junit = "4.13.2"
     val mockito = "3.11.2"
     val junit_inst = "1.1.3"
@@ -68,6 +69,9 @@ object Deps {
     val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp3}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val converter_gson =  "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
+    // Coroutines
+    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     // Timber
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
