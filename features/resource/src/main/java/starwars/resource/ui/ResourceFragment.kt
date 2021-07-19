@@ -14,9 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import starwars.data.api.response.Status
 import starwars.data.model.*
 import starwars.resource.R
@@ -48,7 +46,6 @@ class ResourceFragment : Fragment() {
         return binding.root
     }
 
-    @InternalCoroutinesApi
     override fun onStart() {
         super.onStart()
 
@@ -179,9 +176,7 @@ class ResourceFragment : Fragment() {
                 is Planet -> { any.name }
                 else -> resourceLink
             }
-            runBlocking(Dispatchers.Main) {
-                textView.text = resourceName
-            }
+            textView.text = resourceName
         }
     }
 
@@ -196,14 +191,12 @@ class ResourceFragment : Fragment() {
                 is Starship -> { any.name }
                 else -> resourceLink
             }
-            runBlocking(Dispatchers.Main) {
-                val chip = Chip(requireContext())
-                chip.text = resourceName
-                chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-                chipGroup.addView(chip as View)
-                chip.isClickable = false
-            }
+            val chip = Chip(requireContext())
+            chip.text = resourceName
+            chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+            chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+            chipGroup.addView(chip as View)
+            chip.isClickable = false
         }
     }
 
