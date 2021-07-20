@@ -21,6 +21,8 @@ class HomeViewModel @Inject constructor(
     @InternalCoroutinesApi
     fun getRootItems() {
         viewModelScope.launch {
+            if(_rootItems.value != null)
+                return@launch
             repository.getRootData().collect { value ->
                 _rootItems.postValue(value)
             }
