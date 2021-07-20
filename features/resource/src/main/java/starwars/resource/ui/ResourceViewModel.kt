@@ -20,6 +20,8 @@ class ResourceViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
+    private val resourcesMap = HashMap<String, Any>()
+
     private val _resource = MutableLiveData<Resource<Any>>()
     val resource: LiveData<Resource<Any>> = _resource
 
@@ -36,12 +38,15 @@ class ResourceViewModel @Inject constructor(
 
     @InternalCoroutinesApi
     fun getResourceTitle(resourceUrl: String, callback: (Any) -> Unit) {
+        if (resourcesMap.containsKey(resourceUrl))
+            return
         val resourceId = resourceUrl.getResourceId()
         val resourceType = resourceUrl.getResourceType()
         viewModelScope.launch {
             repository.getResource(resourceType, resourceId).collect { value ->
                 if (value.status == Status.SUCCESS) {
                     value.data?.let { any ->
+                        resourcesMap[resourceUrl] = any
                         callback.invoke(any)
                     }
                 }
