@@ -25,7 +25,9 @@ class ResourceViewModel @Inject constructor(
 
     @InternalCoroutinesApi
     fun getResource(resourceType: String, resourceId: Int) {
-        viewModelScope.launch() {
+        viewModelScope.launch {
+            if(_resource.value != null)
+                return@launch
             repository.getResource(resourceType, resourceId).collect { value ->
                 _resource.postValue(value)
             }
