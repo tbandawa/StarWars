@@ -173,13 +173,15 @@ class ResourceFragment : Fragment() {
 
     }
 
-    private fun setHomeWorld(textView: TextView, resourceLink: String) {
-        viewModel.getResourceTitle(resourceLink){ any ->
-            val resourceName = when(any) {
-                is Planet -> { any.name }
-                else -> resourceLink
+    private fun setHomeWorld(textView: TextView, resourceLink: String?) {
+        resourceLink?.let { link ->
+            viewModel.getResourceTitle(link){ any ->
+                val name = when(any) {
+                    is Planet -> { any.name }
+                    else -> link
+                }
+                textView.text = name
             }
-            textView.text = resourceName
         }
     }
 
