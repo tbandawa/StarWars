@@ -1,5 +1,5 @@
 target 'iosStarWars' do
   use_frameworks!
-  platform :ios, '14.1'
+  platform :ios, '15.0'
   pod 'commons', :path => '../commons'
 end
