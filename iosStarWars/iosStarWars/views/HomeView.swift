@@ -39,7 +39,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 LazyVGrid(columns: gridItems, spacing: 10) {
-                    ForEach((0...6), id: \.self) { index in
+                    ForEach((0...5), id: \.self) { index in
                         CellContent(index: index, color: colors[index % colors.count])
                     }
                 }
