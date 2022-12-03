@@ -11,8 +11,36 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         NavigationView {
-            VStack{
+            VStack {
+                List {
+                    Section {
+                        HStack {
+                            Image(systemName: "paintpalette")
+                            Text("Theme")
+                            Spacer()
+                            Text("Light")
+                                .fontWeight(.light)
+                        }
+                    }
+                    Section {
+                        HStack {
+                            Image(systemName: "ellipsis.curlybraces")
+                            Text("Github")
+                            Spacer()
+                            Image(systemName: "chevron.forward")
+                        }
+                        HStack {
+                            Image(systemName: "photo")
+                            Text("Icons")
+                            Spacer()
+                            Image(systemName: "chevron.forward")
+                        }
+                    }
+                }
+                .listStyle(.insetGrouped)
                 Spacer()
+                Text("Version 1.0.1")
+                    .font(.system(size: 14, weight: .light))
             }
             .navigationTitle("Settings")
         }

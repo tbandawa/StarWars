@@ -14,14 +14,17 @@ struct ContentView: View {
             HomeView()
                  .tabItem {
                      Image(systemName: "star")
+                     Text("StarWars")
                  }
             SearchView()
                  .tabItem {
                      Image(systemName: "magnifyingglass")
+                     Text("Search")
                  }
             SettingsView()
                  .tabItem {
                      Image(systemName: "gearshape")
+                     Text("Settings")
                  }
         }
         .accentColor(.black)
