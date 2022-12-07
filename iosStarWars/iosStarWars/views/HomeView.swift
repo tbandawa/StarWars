@@ -40,13 +40,16 @@ struct HomeView: View {
             VStack {
                 LazyVGrid(columns: gridItems, spacing: 10) {
                     ForEach((0...5), id: \.self) { index in
-                        CellContent(index: index, color: colors[index % colors.count])
+                        NavigationLink(destination: ResourcesView()){
+                            CellContent(index: index, color: colors[index % colors.count])
+                        }
                     }
                 }
                 Spacer()
             }
-            .padding(15)
-            .navigationBarTitle("StarWars")
+            .navigationTitle("StarWars")
+            .padding(.leading, 15)
+            .padding(.trailing, 15)
         }
 	}
 }

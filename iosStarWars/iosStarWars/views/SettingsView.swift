@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Environment(\.openURL) private var openURL
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,18 +32,27 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "chevron.forward")
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if let url = URL(string:"https://github.com/tbandawa/StarWars") {
+                                openURL(url)
+                            }
+                        }
                         HStack {
                             Image(systemName: "photo")
                             Text("Icons")
                             Spacer()
                             Image(systemName: "chevron.forward")
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if let url = URL(string: "https://www.svgrepo.com/") {
+                                openURL(url)
+                            }
+                        }
                     }
                 }
                 .listStyle(.insetGrouped)
-                Spacer()
-                Text("Version 1.0.1")
-                    .font(.system(size: 14, weight: .light))
             }
             .navigationTitle("Settings")
         }

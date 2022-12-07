@@ -11,9 +11,11 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
+		838369692940345C00D0131F /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838369682940345C00D0131F /* ResourcesView.swift */; };
 		839152AF2938187900D375DC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152AE2938187900D375DC /* SearchView.swift */; };
 		839152B1293913D200D375DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B0293913D200D375DC /* ContentView.swift */; };
 		839152B32939158600D375DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B22939158600D375DC /* SettingsView.swift */; };
+		839152B5293BEED100D375DC /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B4293BEED100D375DC /* ResourceView.swift */; };
 		CFD8D5A99589B832DA356B8E /* Pods_iosStarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD0F3A153A6DE5C992603C3 /* Pods_iosStarWars.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,9 +27,11 @@
 		7555FF7B242A565900829871 /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		838369682940345C00D0131F /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		839152AE2938187900D375DC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		839152B0293913D200D375DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		839152B22939158600D375DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		839152B4293BEED100D375DC /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
 		EF284A47CB6F0BC54D58BEA0 /* Pods-iosStarWars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosStarWars.release.xcconfig"; path = "Target Support Files/Pods-iosStarWars/Pods-iosStarWars.release.xcconfig"; sourceTree = "<group>"; };
 		FAD0F3A153A6DE5C992603C3 /* Pods_iosStarWars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosStarWars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,6 +102,8 @@
 				839152AE2938187900D375DC /* SearchView.swift */,
 				839152B0293913D200D375DC /* ContentView.swift */,
 				839152B22939158600D375DC /* SettingsView.swift */,
+				839152B4293BEED100D375DC /* ResourceView.swift */,
+				838369682940345C00D0131F /* ResourcesView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 			files = (
 				839152B32939158600D375DC /* SettingsView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				839152B5293BEED100D375DC /* ResourceView.swift in Sources */,
+				838369692940345C00D0131F /* ResourcesView.swift in Sources */,
 				839152AF2938187900D375DC /* SearchView.swift in Sources */,
 				839152B1293913D200D375DC /* ContentView.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,

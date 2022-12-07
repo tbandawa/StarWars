@@ -9,26 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    //@State var tabSelection: Tabs = .homeTab
+    
     var body: some View {
         TabView {
+
             HomeView()
-                 .tabItem {
-                     Image(systemName: "star")
-                     Text("StarWars")
-                 }
+                .tabItem {
+                    Image(systemName: "star")
+                    Text("StarWars")
+                }
+            
             SearchView()
-                 .tabItem {
-                     Image(systemName: "magnifyingglass")
-                     Text("Search")
-                 }
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            
             SettingsView()
-                 .tabItem {
-                     Image(systemName: "gearshape")
-                     Text("Settings")
-                 }
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Settings")
+                }
+            
         }
         .accentColor(.black)
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {

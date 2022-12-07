@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Friend: Identifiable, Hashable { // Example model
+struct Friend: Identifiable, Hashable {
     let id: UUID = .init()
     let name: String
 }
@@ -16,8 +16,6 @@ struct Friend: Identifiable, Hashable { // Example model
 struct SearchView: View {
     
     @State private var query = ""
-    
-    @State var isSearching = false
     
     @State var resources: [Friend] = [
         .init(name: "People"),
@@ -43,12 +41,8 @@ struct SearchView: View {
                 .listStyle(.plain)
             }
             .navigationTitle("Search")
-            .searchable(text: $query){
-                
-            }
-            .onChange(of: query) { newQuery in
-                print(query)
-            }
+            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always))
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }
