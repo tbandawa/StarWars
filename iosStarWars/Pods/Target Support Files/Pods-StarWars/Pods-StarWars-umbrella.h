@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_iosStarWarsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_iosStarWarsVersionString[];
+FOUNDATION_EXPORT double Pods_StarWarsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_StarWarsVersionString[];
 

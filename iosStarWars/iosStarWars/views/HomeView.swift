@@ -1,11 +1,9 @@
 import SwiftUI
 import Foundation
-import commons
 
 struct HomeView: View {
     
     @State private var query: String = ""
-	let greet = Greeting().greeting()
     private var colors: [Color] = [.blue, .yellow, .green]
     private var gridItems = [
         GridItem(.flexible()),
