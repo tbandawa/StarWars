@@ -1,9 +1,9 @@
-package me.tbandawa.starwars
+package starwars.data
 
 class Greeting {
     private val platform: Platform = getPlatform()
 
-    fun greeting(): String {
+    fun greet(): String {
         return "Hello, ${platform.name}!"
     }
 }

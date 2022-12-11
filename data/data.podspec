@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'commons'
+    spec.name                     = 'data'
     spec.version                  = '1.0'
-    spec.homepage                 = 'Link to the Shared Module homepage'
+    spec.homepage                 = 'https://github.com/tbandawa/StarWars'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/commons.framework'
+    spec.summary                  = 'Data provider for All the Star Wars information: Planets, Spaceships, Vehicles, People, Films and Species'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/data.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '15.0'
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':commons',
-        'PRODUCT_MODULE_NAME' => 'commons',
+        'KOTLIN_PROJECT_PATH' => ':data',
+        'PRODUCT_MODULE_NAME' => 'data',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build commons',
+            :name => 'Build data',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

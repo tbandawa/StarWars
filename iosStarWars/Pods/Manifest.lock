@@ -1,16 +1,16 @@
 PODS:
-  - commons (1.0)
+  - data (1.0)
 
 DEPENDENCIES:
-  - commons (from `../commons`)
+  - data (from `../data`)
 
 EXTERNAL SOURCES:
-  commons:
-    :path: "../commons"
+  data:
+    :path: "../data"
 
 SPEC CHECKSUMS:
-  commons: 0726b52dcf00ac4a66ec4000815aee51c94bd4d2
+  data: 665bb27938f3dec73f4b36596bcdac4afb70a128
 
-PODFILE CHECKSUM: 5395dc1893bf348a60d64e5ea54bba3fc64499c3
+PODFILE CHECKSUM: d42a73476ba35726aaf1734c0e1de9c0dc06faac
 
 COCOAPODS: 1.11.3

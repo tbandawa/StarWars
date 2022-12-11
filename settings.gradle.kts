@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "StarWars"
 include(":androidStarWars")
-include(":commons")
+include(":data")

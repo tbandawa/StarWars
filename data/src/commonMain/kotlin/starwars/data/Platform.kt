@@ -1,4 +1,4 @@
-package me.tbandawa.starwars
+package starwars.data
 
 interface Platform {
     val name: String

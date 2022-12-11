@@ -10,14 +10,13 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		38B13A087BED4453F0A291D5 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C75E123C6B39B364CF238B1 /* Pods_StarWars.framework */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
-		836C2AAE2946538200A04E44 /* commons.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 839B935F29455C860000DE6A /* commons.podspec */; };
 		838369692940345C00D0131F /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838369682940345C00D0131F /* ResourcesView.swift */; };
 		839152AF2938187900D375DC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152AE2938187900D375DC /* SearchView.swift */; };
 		839152B1293913D200D375DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B0293913D200D375DC /* ContentView.swift */; };
 		839152B32939158600D375DC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B22939158600D375DC /* SettingsView.swift */; };
 		839152B5293BEED100D375DC /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B4293BEED100D375DC /* ResourceView.swift */; };
-		839B9364294561CC0000DE6A /* commons in Resources */ = {isa = PBXBuildFile; fileRef = 839B935E29455C100000DE6A /* commons */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +35,7 @@
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C75E123C6B39B364CF238B1 /* Pods_StarWars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		4229C83F43F8E3DB5A7E752A /* Pods-StarWars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.debug.xcconfig"; path = "Target Support Files/Pods-StarWars/Pods-StarWars.debug.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,8 +47,6 @@
 		839152B0293913D200D375DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		839152B22939158600D375DC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		839152B4293BEED100D375DC /* ResourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceView.swift; sourceTree = "<group>"; };
-		839B935E29455C100000DE6A /* commons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commons; path = ../commons; sourceTree = "<group>"; };
-		839B935F29455C860000DE6A /* commons.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = commons.podspec; path = ../commons/commons.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B13A087BED4453F0A291D5 /* Pods_StarWars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +124,7 @@
 		BA2A4BFF52982BF3093728EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				839B935F29455C860000DE6A /* commons.podspec */,
-				839B935E29455C100000DE6A /* commons */,
+				1C75E123C6B39B364CF238B1 /* Pods_StarWars.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,10 +189,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839B9364294561CC0000DE6A /* commons in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
-				836C2AAE2946538200A04E44 /* commons.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +364,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosStarWars/Preview Content\"";
 				DEVELOPMENT_TEAM = Q4B4MYV5B5;
 				ENABLE_PREVIEWS = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = iosStarWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (

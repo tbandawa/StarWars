@@ -11,13 +11,13 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
+        summary = "Data provider for All the Star Wars information: Planets, Spaceships, Vehicles, People, Films and Species"
+        homepage = "https://github.com/tbandawa/StarWars"
         version = "1.0"
         ios.deploymentTarget = "15.0"
         podfile = project.file("../iosStarWars/Podfile")
         framework {
-            baseName = "commons"
+            baseName = "data"
         }
     }
     
@@ -52,10 +52,10 @@ kotlin {
 }
 
 android {
-    namespace = "me.tbandawa.starwars"
-    compileSdk = 32
+    namespace = "starwars.data"
+    compileSdk = 33
     defaultConfig {
         minSdk = 24
-        targetSdk = 32
+        targetSdk = 33
     }
 }
