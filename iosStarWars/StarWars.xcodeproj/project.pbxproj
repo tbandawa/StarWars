@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
+		836C2AAE2946538200A04E44 /* commons.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 839B935F29455C860000DE6A /* commons.podspec */; };
 		838369692940345C00D0131F /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838369682940345C00D0131F /* ResourcesView.swift */; };
 		839152AF2938187900D375DC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152AE2938187900D375DC /* SearchView.swift */; };
 		839152B1293913D200D375DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B0293913D200D375DC /* ContentView.swift */; };
@@ -193,6 +194,7 @@
 				839B9364294561CC0000DE6A /* commons in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				836C2AAE2946538200A04E44 /* commons.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +368,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosStarWars/Preview Content\"";
 				DEVELOPMENT_TEAM = Q4B4MYV5B5;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = iosStarWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -394,6 +397,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosStarWars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -10,8 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //@State var tabSelection: Tabs = .homeTab
-    
     var body: some View {
         TabView {
 

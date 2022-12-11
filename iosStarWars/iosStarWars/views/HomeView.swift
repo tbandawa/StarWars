@@ -3,7 +3,6 @@ import Foundation
 
 struct HomeView: View {
     
-    @State private var query: String = ""
     private var colors: [Color] = [.blue, .yellow, .green]
     private var gridItems = [
         GridItem(.flexible()),

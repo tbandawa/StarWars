@@ -3,6 +3,7 @@
 
     <application
         android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:label="StarWars"
         android:theme="@style/AppTheme">
