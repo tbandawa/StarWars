@@ -3,7 +3,7 @@ import Foundation
 
 struct HomeView: View {
     
-    private var colors: [Color] = [.blue, .yellow, .green]
+    private var colors: [Color] = [.black, .black, .black]
     private var gridItems = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -16,12 +16,14 @@ struct HomeView: View {
                 VStack{
                     Text("\(index)")
                         .font(.system(.title))
+                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity, alignment: .topLeading)
                         .padding(10)
                     Spacer()
-                    Image("ic_right_arrow")
+                    Image(systemName: "arrow.right")
                         .resizable()
                         .scaledToFit()
+                        .foregroundColor(.white)
                         .frame(width: 30, height: 30)
                         .padding(10)
                         .offset(x: 40)

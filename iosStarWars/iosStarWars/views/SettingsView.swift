@@ -27,7 +27,7 @@ struct SettingsView: View {
                     }
                     Section {
                         HStack {
-                            Image(systemName: "ellipsis.curlybraces")
+                            Image(systemName: "chevron.left.forwardslash.chevron.right")
                             Text("Github")
                             Spacer()
                             Image(systemName: "chevron.forward")
