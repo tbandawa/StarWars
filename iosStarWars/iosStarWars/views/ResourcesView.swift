@@ -10,16 +10,19 @@ import SwiftUI
 
 struct ResourcesView: View {
     
+    var title: String
+    var resourceUrl: String
+    
     var body: some View {
         NavigationLink(destination: ResourceView()){
-            Text("Resources list with pagging")
+            Text(resourceUrl)
         }
-        .navigationBarTitle("Resources")
+        .navigationBarTitle(title)
     }
 }
 
 struct ResourcesView_Previews: PreviewProvider {
     static var previews: some View {
-        ResourcesView()
+        ResourcesView(title: "Title", resourceUrl: "url")
     }
 }

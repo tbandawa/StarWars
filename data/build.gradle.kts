@@ -23,7 +23,9 @@ kotlin {
     }
 
     val coroutinesVersion = "1.6.4"
+    val viewmodelVersion = "2.5.1"
     val ktorVersion = "2.1.2"
+    val koinVersion = "3.2.0"
     
     sourceSets {
         val commonMain by getting {
@@ -32,6 +34,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                api("io.insert-koin:koin-core:$koinVersion")
             }
         }
         val commonTest by getting {
@@ -42,6 +46,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                api("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelVersion")
             }
         }
         val androidTest by getting

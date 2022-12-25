@@ -1,18 +1,16 @@
 package me.tbandawa.starwars.android.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -22,17 +20,24 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
+import starwars.data.viewmodel.StarWarsViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    viewModel: StarWarsViewModel
+) {
 
     val navController = rememberNavController()
 
     Scaffold(
         content = { padding ->
             Box(modifier = Modifier.padding(padding)) {
-                MainNavigation(navController = navController)
+                MainNavigation(
+                    viewModel = viewModel,
+                    navController = navController
+                )
             }
         },
         bottomBar = { BottomNavigationBar(navController) }
@@ -40,13 +45,16 @@ fun MainScreen() {
 }
 
 @Composable
-fun MainNavigation(navController: NavHostController) {
+fun MainNavigation(
+    viewModel: StarWarsViewModel,
+    navController: NavHostController
+) {
     NavHost(
         navController,
         startDestination = NavigationItem.Home.route
     ) {
         composable(route = NavigationItem.Home.route) {
-            HomeScreen()
+            HomeScreen(viewModel)
         }
         composable(route = NavigationItem.Search.route) {
             SearchScreen()
@@ -68,9 +76,9 @@ fun BottomNavigationBar(
         NavigationItem.Settings
     )
 
-    BottomNavigation(
-        elevation = 10.dp,
-        backgroundColor = Color.White,
+    NavigationBar(
+        tonalElevation = 10.dp,
+        containerColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
     ) {
@@ -80,7 +88,7 @@ fun BottomNavigationBar(
 
         items.forEach { item ->
 
-            BottomNavigationItem(
+            NavigationBarItem(
                 icon = {
                     Icon(
                         painterResource(
@@ -98,8 +106,13 @@ fun BottomNavigationBar(
                     )
                 },
                 selected = currentRoute == item.route,
-                selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Black.copy(0.4f),
+                colors = NavigationBarItemDefaults.colors(
+                    indicatorColor = Color.White,
+                    selectedIconColor = Color.Black,
+                    selectedTextColor = Color.Black,
+                    unselectedIconColor = Color.Black.copy(0.4f),
+                    unselectedTextColor = Color.Black.copy(0.4f)
+                ),
                 onClick = {
                     navController.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { route ->
@@ -123,8 +136,9 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
     object Settings : NavigationItem("settings", R.drawable.ic_settings ,"Settings")
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
     MainScreen()
-}
+}*/

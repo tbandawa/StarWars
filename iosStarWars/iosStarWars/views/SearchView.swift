@@ -15,27 +15,22 @@ struct Friend: Identifiable, Hashable {
 
 struct SearchView: View {
     
-    @State private var query = ""
+    var resources: [String:String]?
     
-    @State var resources: [Friend] = [
-        .init(name: "People"),
-        .init(name: "Vehicles"),
-        .init(name: "Planets"),
-        .init(name: "Films"),
-        .init(name: "Species"),
-        .init(name: "Starships"),
-    ]
+    @State private var query = ""
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
                     Section {
-                        ForEach(resources, id: \.self) { resource in
-                            Text(resource.name)
+                        if let resourcesDictionary = resources {
+                            ForEach(Array(resourcesDictionary), id:\.key) { key, value in
+                                Text(key.capitalized)
+                            }
                         }
                     } header: {
-                        Text("Recent Searches")
+                        Text("Search Filter")
                     }
                 }
                 .listStyle(.plain)
@@ -47,8 +42,8 @@ struct SearchView: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
+/*struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
     }
-}
+}*/

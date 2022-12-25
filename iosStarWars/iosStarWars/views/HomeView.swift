@@ -1,60 +1,106 @@
 import SwiftUI
 import Foundation
+import data
 
 struct HomeView: View {
     
-    private var colors: [Color] = [.black, .black, .black]
-    private var gridItems = [
+    var loading: Bool
+    var resources: [String:String]?
+    var error: String?
+    var loadResources: () -> Void
+    var retry: () -> Void
+    
+    var colors: [Color] = [.black, .black, .black]
+    
+    var gridItems = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    struct CellContent: View {
-            var index: Int
-            var color: Color
-            var body: some View {
-                VStack{
-                    Text("\(index)")
-                        .font(.system(.title))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                        .padding(10)
-                    Spacer()
-                    Image(systemName: "arrow.right")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.white)
-                        .frame(width: 30, height: 30)
-                        .padding(10)
-                        .offset(x: 40)
-                }
-                .frame(minWidth: 40, maxWidth: .infinity, minHeight: 150)
-                .background(color)
-                .cornerRadius(8)
-            }
-        }
 
     var body: some View {
         NavigationView {
             VStack {
-                LazyVGrid(columns: gridItems, spacing: 10) {
-                    ForEach((0...5), id: \.self) { index in
-                        NavigationLink(destination: ResourcesView()){
-                            CellContent(index: index, color: colors[index % colors.count])
+                if loading {
+                    LoadingContent()
+                }
+                if let resourcesDictionary = resources {
+                    LazyVGrid(columns: gridItems, spacing: 10) {
+                        ForEach(Array(resourcesDictionary), id:\.key) { key, value in
+                            NavigationLink(destination: ResourcesView(title: key.capitalized, resourceUrl: value)){
+                                CellContent(title: key, url: value)
+                            }
                         }
                     }
+                    Spacer()
                 }
-                Spacer()
+                if let errorMessage = error {
+                    RetryContent(
+                        error: errorMessage,
+                        retry: retry
+                    )
+                }
             }
             .navigationTitle("StarWars")
             .padding(.leading, 15)
             .padding(.trailing, 15)
+        }.onAppear {
+            loadResources()
         }
 	}
 }
 
-struct HomeViewView_Previews: PreviewProvider {
+struct CellContent: View {
+    var title: String
+    var url: String
+    var body: some View {
+        VStack {
+            Text(title.capitalized)
+                .font(.system(size: 20))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(10)
+            Spacer()
+            Image(systemName: "arrow.right")
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(.white)
+                .frame(width: 30, height: 30)
+                .padding(10)
+                .offset(x: 40)
+        }
+        .frame(minWidth: 40, maxWidth: .infinity, minHeight: 150)
+        .background(Color.black)
+        .cornerRadius(8)
+    }
+}
+
+struct LoadingContent: View {
+    var body: some View {
+        ProgressView()
+        Text("Loading...")
+    }
+}
+
+struct RetryContent: View {
+    var error: String
+    var retry: () -> Void
+    var body: some View {
+        VStack {
+            Text(error)
+            Button("Retry") {
+                retry()
+            }
+            .frame(width: 80, height: 35)
+            .foregroundColor(Color.white)
+            .background(Color.black)
+            .cornerRadius(15)
+        }
+    }
+}
+
+/*struct HomeViewView_Previews: PreviewProvider {
 	static var previews: some View {
         HomeView()
 	}
-}
+}*/
