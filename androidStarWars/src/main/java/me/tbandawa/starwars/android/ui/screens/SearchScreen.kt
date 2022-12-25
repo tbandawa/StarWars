@@ -101,7 +101,7 @@ fun SearchScreen(
                         Spacer(modifier = Modifier.height(25.dp))
 
                         Text(
-                            text = "Recent Searches",
+                            text = "Search Filter",
                             style = TextStyle(
                                 color = Color.LightGray,
                                 fontWeight = FontWeight.Bold,
