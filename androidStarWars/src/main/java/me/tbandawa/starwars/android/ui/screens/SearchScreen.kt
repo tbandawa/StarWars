@@ -14,22 +14,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.RecentItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
+import starwars.data.models.BaseResource
+import starwars.data.models.ResourceResult
+import starwars.data.models.iterator
+import starwars.data.viewmodel.StarWarsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SearchScreen() {
+fun SearchScreen(
+    starWarsViewModel: StarWarsViewModel
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val viewModel = remember { starWarsViewModel }
+        val resources by viewModel.resources.collectAsState()
 
         Scaffold(
             topBar = {
@@ -49,7 +56,7 @@ fun SearchScreen() {
                         .padding(16.dp)
                 ) {
 
-                    val data = listOf("Films", "People", "Planets", "Species", "Starships", "Vehicles")
+                    //val data = listOf("Films", "People", "Planets", "Species", "Starships", "Vehicles")
                     var searchText by remember { mutableStateOf(TextFieldValue("")) }
 
                     TextField(
@@ -112,10 +119,17 @@ fun SearchScreen() {
                         )
 
                         LazyColumn {
-                            items(6) { item ->
-                                RecentItem(title = data[item])
+                            when (resources) {
+                                is ResourceResult.Success -> {
+                                    val baseResource = (resources as ResourceResult.Success<BaseResource>).data
+                                    items(baseResource.iterator().size) { index ->
+                                        RecentItem(title = baseResource.iterator()[index].first)
+                                    }
+                                }
+                                else -> {}
                             }
                         }
+
                     }
 
                 }
@@ -124,8 +138,8 @@ fun SearchScreen() {
     }
 }
 
-@Preview
+/*@Preview
 @Composable
 fun SearchScreenPreview() {
     SearchScreen()
-}
+}*/

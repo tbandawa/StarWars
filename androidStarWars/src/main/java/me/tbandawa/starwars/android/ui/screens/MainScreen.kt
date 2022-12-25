@@ -57,7 +57,7 @@ fun MainNavigation(
             HomeScreen(viewModel)
         }
         composable(route = NavigationItem.Search.route) {
-            SearchScreen()
+            SearchScreen(viewModel)
         }
         composable(route = NavigationItem.Settings.route) {
             SettingsScreen()
