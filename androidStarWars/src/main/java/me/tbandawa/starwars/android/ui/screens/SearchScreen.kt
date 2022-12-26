@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -22,6 +23,7 @@ import starwars.data.models.BaseResource
 import starwars.data.models.ResourceResult
 import starwars.data.models.iterator
 import starwars.data.viewmodel.StarWarsViewModel
+import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -45,7 +47,7 @@ fun SearchScreen(
                     scrollBehavior
                 )
             }
-        ) {
+        ) { it ->
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -123,7 +125,11 @@ fun SearchScreen(
                                 is ResourceResult.Success -> {
                                     val baseResource = (resources as ResourceResult.Success<BaseResource>).data
                                     items(baseResource.iterator().size) { index ->
-                                        RecentItem(title = baseResource.iterator()[index].first)
+                                        RecentItem(title = baseResource.iterator()[index].first.replaceFirstChar { char ->
+                                            if (char.isLowerCase()) char.titlecase(
+                                                Locale.getDefault()
+                                            ) else char.toString()
+                                        })
                                     }
                                 }
                                 else -> {}
