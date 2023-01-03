@@ -1,5 +1,8 @@
 package starwars.data.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Film (
     val title : String,
     val episode_id : Int,

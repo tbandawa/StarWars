@@ -1,5 +1,8 @@
 package starwars.data.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Vehicle (
     val name : String,
     val model : String,

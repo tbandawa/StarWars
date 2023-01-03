@@ -9,6 +9,7 @@ import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import starwars.data.models.BaseResource
+import starwars.data.models.BaseResult
 
 class StarWarsApi {
 
@@ -31,6 +32,10 @@ class StarWarsApi {
     }
 
     suspend fun getBaseResources(): BaseResource {
+        return httpClient.get(baseUrl).body()
+    }
+
+    suspend fun <T>getBaseResource(): BaseResult<T> {
         return httpClient.get(baseUrl).body()
     }
 

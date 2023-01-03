@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.flowOn
 import starwars.data.api.BaseApiCall
 import starwars.data.api.StarWarsApi
 import starwars.data.models.BaseResource
+import starwars.data.models.BaseResult
+import starwars.data.models.Film
 import starwars.data.models.ResourceResult
 
 class StarWarsSDK(private val starWarsApi: StarWarsApi): BaseApiCall() {
@@ -17,5 +19,9 @@ class StarWarsSDK(private val starWarsApi: StarWarsApi): BaseApiCall() {
             starWarsApi.getBaseResources()
         })
     }.flowOn(Dispatchers.Default)
+
+    suspend fun getFilms(): BaseResult<Film> {
+        return starWarsApi.getBaseResource()
+    }
 
 }

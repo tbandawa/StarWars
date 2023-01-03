@@ -1,5 +1,8 @@
 package starwars.data.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Planet (
     val name : String,
     val rotation_period : String,
