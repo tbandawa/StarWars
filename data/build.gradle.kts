@@ -26,7 +26,7 @@ kotlin {
     val viewmodelVersion = "2.5.1"
     val ktorVersion = "2.1.2"
     val koinVersion = "3.2.0"
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
