@@ -7,7 +7,6 @@ plugins {
 
 kotlin {
     android()
-    iosX64()
     iosArm64()
     iosSimulatorArm64()
 
@@ -60,12 +59,10 @@ kotlin {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
-        val iosX64Test by getting
         val iosArm64Test by getting
         val iosSimulatorArm64Test by getting
         val iosTest by creating {
             dependsOn(commonTest)
-            iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
         }
