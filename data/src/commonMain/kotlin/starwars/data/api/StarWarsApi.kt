@@ -13,6 +13,10 @@ import starwars.data.models.BaseResult
 
 class StarWarsApi {
 
+    companion object {
+        private const val baseUrl = "https://swapi.dev/api/"
+    }
+
     private val httpClient = HttpClient {
         expectSuccess = true
         install(HttpTimeout) {
@@ -37,9 +41,5 @@ class StarWarsApi {
 
     suspend fun <T>getBaseResource(): BaseResult<T> {
         return httpClient.get(baseUrl).body()
-    }
-
-    companion object {
-        private const val baseUrl = "https://swapi.dev/api/"
     }
 }

@@ -6,6 +6,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 
 actual open class BaseViewModel {
+
     actual val coroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     actual fun dispose() {
