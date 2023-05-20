@@ -12,7 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		38B13A087BED4453F0A291D5 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C75E123C6B39B364CF238B1 /* Pods_StarWars.framework */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
-		832F1F472951344D00C22FD6 /* ResourceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832F1F462951344D00C22FD6 /* ResourceState.swift */; };
+		832F1F472951344D00C22FD6 /* RootResourcesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832F1F462951344D00C22FD6 /* RootResourcesState.swift */; };
 		838369692940345C00D0131F /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838369682940345C00D0131F /* ResourcesView.swift */; };
 		839152AF2938187900D375DC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152AE2938187900D375DC /* SearchView.swift */; };
 		839152B1293913D200D375DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839152B0293913D200D375DC /* ContentView.swift */; };
@@ -43,7 +43,7 @@
 		7555FF82242A565900829871 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DE4D1704F92017FF899B525 /* Pods-StarWars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWars.release.xcconfig"; path = "Target Support Files/Pods-StarWars/Pods-StarWars.release.xcconfig"; sourceTree = "<group>"; };
-		832F1F462951344D00C22FD6 /* ResourceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceState.swift; sourceTree = "<group>"; };
+		832F1F462951344D00C22FD6 /* RootResourcesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootResourcesState.swift; sourceTree = "<group>"; };
 		838369682940345C00D0131F /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		839152AE2938187900D375DC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		839152B0293913D200D375DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,25 +101,81 @@
 		7555FF7D242A565900829871 /* iosStarWars */ = {
 			isa = PBXGroup;
 			children = (
+				8315AB4A2A196C29009325D4 /* utils */,
+				8315AB492A196BC3009325D4 /* lifecycle */,
 				839152AD2938175500D375DC /* views */,
+				058557D7273AAEEB004C7B11 /* Preview Content */,
+				839152B0293913D200D375DC /* ContentView.swift */,
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosStarWars;
+			sourceTree = "<group>";
+		};
+		8315AB442A196A2E009325D4 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				7555FF82242A565900829871 /* HomeView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		8315AB452A196A36009325D4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				838369682940345C00D0131F /* ResourcesView.swift */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		8315AB462A196A40009325D4 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				839152B4293BEED100D375DC /* ResourceView.swift */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		8315AB472A196A64009325D4 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				839152AE2938187900D375DC /* SearchView.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		8315AB482A196A71009325D4 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				839152B22939158600D375DC /* SettingsView.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		8315AB492A196BC3009325D4 /* lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				832F1F462951344D00C22FD6 /* RootResourcesState.swift */,
+			);
+			path = lifecycle;
+			sourceTree = "<group>";
+		};
+		8315AB4A2A196C29009325D4 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		839152AD2938175500D375DC /* views */ = {
 			isa = PBXGroup;
 			children = (
-				7555FF82242A565900829871 /* HomeView.swift */,
-				839152AE2938187900D375DC /* SearchView.swift */,
-				839152B0293913D200D375DC /* ContentView.swift */,
-				839152B22939158600D375DC /* SettingsView.swift */,
-				839152B4293BEED100D375DC /* ResourceView.swift */,
-				838369682940345C00D0131F /* ResourcesView.swift */,
-				832F1F462951344D00C22FD6 /* ResourceState.swift */,
+				8315AB482A196A71009325D4 /* settings */,
+				8315AB472A196A64009325D4 /* search */,
+				8315AB462A196A40009325D4 /* resource */,
+				8315AB452A196A36009325D4 /* resources */,
+				8315AB442A196A2E009325D4 /* home */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -236,7 +292,7 @@
 				839152AF2938187900D375DC /* SearchView.swift in Sources */,
 				839152B1293913D200D375DC /* ContentView.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
-				832F1F472951344D00C22FD6 /* ResourceState.swift in Sources */,
+				832F1F472951344D00C22FD6 /* RootResourcesState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import data
 
-class ResourceState: ObservableObject {
+class RootResourcesState: ObservableObject {
     
     @Published var loading = false
     @Published var resources: [String:String]?
