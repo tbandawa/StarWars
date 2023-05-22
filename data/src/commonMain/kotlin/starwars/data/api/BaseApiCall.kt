@@ -5,7 +5,7 @@ import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ResponseException
 import io.ktor.utils.io.errors.IOException
 import starwars.data.models.ErrorResponse
-import starwars.data.models.ResourceResult
+import starwars.data.state.ResourceResult
 
 abstract class BaseApiCall {
 
@@ -27,6 +27,7 @@ abstract class BaseApiCall {
         } catch (e: IOException) {
             ResourceResult.Error(ErrorResponse("Unable to connect to host"))
         } catch (e: Exception) {
+            println(e.message)
             ResourceResult.Error(ErrorResponse("Unknown Error"))
         }
     }

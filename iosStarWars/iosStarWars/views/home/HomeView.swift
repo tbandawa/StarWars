@@ -74,33 +74,3 @@ struct CellContent: View {
         .cornerRadius(8)
     }
 }
-
-struct LoadingContent: View {
-    var body: some View {
-        ProgressView()
-        Text("Loading...")
-    }
-}
-
-struct RetryContent: View {
-    var error: String
-    var retry: () -> Void
-    var body: some View {
-        VStack {
-            Text(error)
-            Button("Retry") {
-                retry()
-            }
-            .frame(width: 80, height: 35)
-            .foregroundColor(Color.white)
-            .background(Color.black)
-            .cornerRadius(15)
-        }
-    }
-}
-
-/*struct HomeViewView_Previews: PreviewProvider {
-	static var previews: some View {
-        HomeView()
-	}
-}*/

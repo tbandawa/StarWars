@@ -52,6 +52,26 @@ class RootResourcesState: ObservableObject {
                     
             }
         }
+        
+        viewModel.observeResourceItems { result in
+            
+            switch result {
+                
+                case _ as ResourceResultLoading:
+                    print("Loading...")
+                
+                case let success as ResourceResultSuccess<Films>:
+                    print(success.data!)
+                
+                case let error as ResourceResultError<ErrorResponse>:
+                    print(error.data!.detail!)
+                
+                default:
+                    break
+                    
+            }
+        }
+        
     }
     
     deinit {
@@ -60,5 +80,6 @@ class RootResourcesState: ObservableObject {
     
     func getResources() {
         viewModel.getResources()
+        viewModel.getResources(resourceType: "films")
     }
 }

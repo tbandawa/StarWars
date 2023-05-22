@@ -10,14 +10,21 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import starwars.data.models.BaseResource
 import starwars.data.models.BaseResult
+import starwars.data.models.Film
+import starwars.data.models.Films
+import starwars.data.models.People
+import starwars.data.models.Planets
+import starwars.data.models.Species
+import starwars.data.models.Starships
+import starwars.data.models.Vehicles
 
 class StarWarsApi {
 
     companion object {
-        private const val baseUrl = "https://swapi.dev/api/"
+        const val baseUrl = "https://swapi.dev/api/"
     }
 
-    private val httpClient = HttpClient {
+    val httpClient = HttpClient {
         expectSuccess = true
         install(HttpTimeout) {
             requestTimeoutMillis = 15000L
@@ -35,11 +42,35 @@ class StarWarsApi {
         }
     }
 
-    suspend fun getBaseResources(): BaseResource {
+    suspend fun getRootResources(): BaseResource {
         return httpClient.get(baseUrl).body()
     }
 
-    suspend fun <T>getBaseResource(): BaseResult<T> {
-        return httpClient.get(baseUrl).body()
+    suspend fun getFilms(resourceType: String): Films {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend fun getPeople(resourceType: String): People {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend fun getPlanets(resourceType: String): Planets {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend fun getVehicles(resourceType: String): Vehicles {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend fun getStarships(resourceType: String): Starships {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend fun getSpecies(resourceType: String): Species {
+        return httpClient.get(baseUrl + resourceType).body()
+    }
+
+    suspend inline fun <reified T> getResource(resourceType: String): BaseResult<T> {
+        return httpClient.get(baseUrl + resourceType).body()
     }
 }

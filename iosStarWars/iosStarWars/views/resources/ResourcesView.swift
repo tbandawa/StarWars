@@ -15,6 +15,7 @@ struct ResourcesView: View {
     
     var body: some View {
         NavigationLink(destination: ResourceView()){
+            Text(title.lowercased())
             Text(resourceUrl)
         }
         .navigationBarTitle(title)
