@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.ResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.BaseResource
-import starwars.data.models.ResourceResult
+import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
 import starwars.data.viewmodel.StarWarsViewModel
 

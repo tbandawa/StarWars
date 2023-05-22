@@ -70,7 +70,4 @@ class StarWarsApi {
         return httpClient.get(baseUrl + resourceType).body()
     }
 
-    suspend inline fun <reified T> getResource(resourceType: String): BaseResult<T> {
-        return httpClient.get(baseUrl + resourceType).body()
-    }
 }
