@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import starwars.data.StarWarsRepo
 import starwars.data.models.BaseResource
 import starwars.data.models.BaseResult
+import starwars.data.models.ErrorResponse
 import starwars.data.models.Film
 import starwars.data.models.Films
 import starwars.data.state.ResourceResult
@@ -23,7 +24,7 @@ class StarWarsViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel()
     private val _resourceItems = MutableStateFlow<ResourceResult<Any>>(ResourceResult.Empty)
     val resourceItems: StateFlow<ResourceResult<Any>> = _resourceItems
 
-    fun getResources() {
+    fun getRootResources() {
         coroutineScope.launch {
             if (!isRootLoaded) {
                 starWarsRepo.getRootResources().collect { results ->
@@ -35,10 +36,40 @@ class StarWarsViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel()
         }
     }
 
-    fun getResources(resourceType: String) {
+    fun getResources(resourceType: String, page: Int) {
         coroutineScope.launch {
-            starWarsRepo.getResource(resourceType).collect { results ->
-                _resourceItems.value = results
+            when (resourceType) {
+                "people" -> {
+                    starWarsRepo.getPeople(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                "planets" -> {
+                    starWarsRepo.getPlanets(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                "films" -> {
+                    starWarsRepo.getFilms(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                "species" -> {
+                    starWarsRepo.getSpecies(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                "vehicles" -> {
+                    starWarsRepo.getVehicles(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                "starships" -> {
+                    starWarsRepo.getStarships(resourceType, page).collect { results ->
+                        _resourceItems.value = results
+                    }
+                }
+                else -> { _resourceItems.value = ResourceResult.Error(ErrorResponse("Invalid resource type")) }
             }
         }
     }

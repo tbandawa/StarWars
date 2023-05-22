@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import data
 
-class RootResourcesState: ObservableObject {
+class ResourcesState: ObservableObject {
     
     @Published var loading = false
     @Published var resources: [String:String]?
@@ -60,7 +60,7 @@ class RootResourcesState: ObservableObject {
                 case _ as ResourceResultLoading:
                     print("Loading...")
                 
-                case let success as ResourceResultSuccess<Films>:
+                case let success as ResourceResultSuccess<People>:
                     print(success.data!)
                 
                 case let error as ResourceResultError<ErrorResponse>:
@@ -79,7 +79,7 @@ class RootResourcesState: ObservableObject {
     }
     
     func getResources() {
-        viewModel.getResources()
-        viewModel.getResources(resourceType: "films")
+        viewModel.getRootResources()
+        viewModel.getResources(resourceType: "people", page: 1)
     }
 }

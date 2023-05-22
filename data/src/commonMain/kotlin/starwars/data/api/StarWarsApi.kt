@@ -1,16 +1,19 @@
 package starwars.data.api
 
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.plugins.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.plugins.logging.*
-import io.ktor.client.request.*
-import io.ktor.serialization.kotlinx.json.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import io.ktor.client.request.url
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import starwars.data.models.BaseResource
-import starwars.data.models.BaseResult
-import starwars.data.models.Film
 import starwars.data.models.Films
 import starwars.data.models.People
 import starwars.data.models.Planets
@@ -22,9 +25,10 @@ class StarWarsApi {
 
     companion object {
         const val baseUrl = "https://swapi.dev/api/"
+        const val PAGE = "page"
     }
 
-    val httpClient = HttpClient {
+    private val httpClient = HttpClient {
         expectSuccess = true
         install(HttpTimeout) {
             requestTimeoutMillis = 15000L
@@ -46,28 +50,45 @@ class StarWarsApi {
         return httpClient.get(baseUrl).body()
     }
 
-    suspend fun getFilms(resourceType: String): Films {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getFilms(resourceType: String, page: Int): Films {
+        return httpClient.get {
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
 
-    suspend fun getPeople(resourceType: String): People {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getPeople(resourceType: String, page: Int): People {
+        return httpClient.get{
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
 
-    suspend fun getPlanets(resourceType: String): Planets {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getPlanets(resourceType: String, page: Int): Planets {
+        return httpClient.get{
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
 
-    suspend fun getVehicles(resourceType: String): Vehicles {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getVehicles(resourceType: String, page: Int): Vehicles {
+        return httpClient.get{
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
 
-    suspend fun getStarships(resourceType: String): Starships {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getStarships(resourceType: String, page: Int): Starships {
+        return httpClient.get{
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
 
-    suspend fun getSpecies(resourceType: String): Species {
-        return httpClient.get(baseUrl + resourceType).body()
+    suspend fun getSpecies(resourceType: String, page: Int): Species {
+        return httpClient.get{
+            url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
     }
-
 }
