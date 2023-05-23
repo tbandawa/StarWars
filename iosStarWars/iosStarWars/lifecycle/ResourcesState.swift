@@ -22,7 +22,7 @@ class ResourcesState: ObservableObject {
         
         viewModel = KotlinDependencies.shared.getStarWarsViewModel()
         
-        viewModel.observeResources { result in
+        viewModel.observeRootResources { result in
             
             switch result {
                 
@@ -31,7 +31,7 @@ class ResourcesState: ObservableObject {
                     self.loading = true
                     self.error = nil
                 
-                case let success as ResourceResultSuccess<BaseResource>:
+                case let success as ResourceResultSuccess<RootResource>:
                     self.resources = [:]
                     success.data!.iterator().forEach {
                         let resourceKey: String = $0.first! as String
@@ -60,7 +60,26 @@ class ResourcesState: ObservableObject {
                 case _ as ResourceResultLoading:
                     print("Loading...")
                 
-                case let success as ResourceResultSuccess<People>:
+                case let success as ResourceResultSuccess<Person>:
+                    print(success.data!)
+                
+                case let error as ResourceResultError<ErrorResponse>:
+                    print(error.data!.detail!)
+                
+                default:
+                    break
+                    
+            }
+        }
+        
+        viewModel.observeResourceItem { result in
+            
+            switch result {
+                
+                case _ as ResourceResultLoading:
+                    print("Loading...")
+                
+                case let success as ResourceResultSuccess<Vehicle>:
                     print(success.data!)
                 
                 case let error as ResourceResultError<ErrorResponse>:
@@ -79,7 +98,8 @@ class ResourcesState: ObservableObject {
     }
     
     func getResources() {
-        viewModel.getRootResources()
+        //viewModel.getRootResources()
         viewModel.getResources(resourceType: "people", page: 1)
+        //viewModel.getResource(resourceType: "vehicles", resourceId: 4)
     }
 }

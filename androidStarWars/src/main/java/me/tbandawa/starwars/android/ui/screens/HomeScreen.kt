@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.ResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
-import starwars.data.models.BaseResource
+import starwars.data.models.RootResource
 import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
 import starwars.data.viewmodel.StarWarsViewModel
@@ -35,8 +35,8 @@ fun HomeScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val viewModel = remember { starWarsViewModel }.also { it.getResources() }
-        val resources by viewModel.resources.collectAsState()
+        val viewModel = remember { starWarsViewModel }.also { it.getRootResources() }
+        val rootResources by viewModel.rootResources.collectAsState()
 
         Scaffold(
             topBar = {
@@ -51,21 +51,21 @@ fun HomeScreen(
                     .fillMaxSize()
                     .padding(it)
             ) {
-                when (resources) {
+                when (rootResources) {
                     is ResourceResult.Empty -> {}
                     is ResourceResult.Loading -> {
                         LoadingContent()
                     }
                     is ResourceResult.Success -> {
-                        val baseResource = (resources as ResourceResult.Success<BaseResource>).data
+                        val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
                         ResourceContent(
-                            resource = baseResource
+                            resource = rootResource
                         )
                     }
                     is ResourceResult.Error -> {
                         RetryContent(
-                            errorMessage = (resources as ResourceResult.Error).data?.detail!!,
-                            retry = { viewModel.getResources() }
+                            errorMessage = (rootResources as ResourceResult.Error).data?.detail!!,
+                            retry = { viewModel.getRootResources() }
                         )
                     }
                 }
@@ -103,7 +103,7 @@ fun LoadingContent() {
 
 @Composable
 fun ResourceContent(
-    resource: BaseResource
+    resource: RootResource
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -167,10 +167,3 @@ fun RetryContent(
         }
     }
 }
-
-/*
-@Preview
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
-}*/

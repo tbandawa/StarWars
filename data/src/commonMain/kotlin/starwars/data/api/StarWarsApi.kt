@@ -13,13 +13,8 @@ import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import starwars.data.models.RootResource
 import starwars.data.models.BaseResource
-import starwars.data.models.Films
-import starwars.data.models.People
-import starwars.data.models.Planets
-import starwars.data.models.Species
-import starwars.data.models.Starships
-import starwars.data.models.Vehicles
 
 class StarWarsApi {
 
@@ -28,16 +23,16 @@ class StarWarsApi {
         const val PAGE = "page"
     }
 
-    private val httpClient = HttpClient {
+    val httpClient = HttpClient {
         expectSuccess = true
         install(HttpTimeout) {
             requestTimeoutMillis = 15000L
             connectTimeoutMillis = 15000L
         }
-        install(Logging) {
+        /*install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
-        }
+        }*/
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
@@ -46,49 +41,20 @@ class StarWarsApi {
         }
     }
 
-    suspend fun getRootResources(): BaseResource {
+    suspend fun getRootResources(): RootResource {
         return httpClient.get(baseUrl).body()
     }
 
-    suspend fun getFilms(resourceType: String, page: Int): Films {
+    suspend inline fun <reified R> getResources(resourceType: String, page: Int): BaseResource<R> {
         return httpClient.get {
             url(baseUrl + resourceType)
             parameter(PAGE, page)
         }.body()
     }
 
-    suspend fun getPeople(resourceType: String, page: Int): People {
-        return httpClient.get{
-            url(baseUrl + resourceType)
-            parameter(PAGE, page)
-        }.body()
-    }
-
-    suspend fun getPlanets(resourceType: String, page: Int): Planets {
-        return httpClient.get{
-            url(baseUrl + resourceType)
-            parameter(PAGE, page)
-        }.body()
-    }
-
-    suspend fun getVehicles(resourceType: String, page: Int): Vehicles {
-        return httpClient.get{
-            url(baseUrl + resourceType)
-            parameter(PAGE, page)
-        }.body()
-    }
-
-    suspend fun getStarships(resourceType: String, page: Int): Starships {
-        return httpClient.get{
-            url(baseUrl + resourceType)
-            parameter(PAGE, page)
-        }.body()
-    }
-
-    suspend fun getSpecies(resourceType: String, page: Int): Species {
-        return httpClient.get{
-            url(baseUrl + resourceType)
-            parameter(PAGE, page)
+    suspend inline fun <reified R> getResource(resourceType: String, resourceId: Int): R {
+        return httpClient.get {
+            url("$baseUrl$resourceType/$resourceId")
         }.body()
     }
 }

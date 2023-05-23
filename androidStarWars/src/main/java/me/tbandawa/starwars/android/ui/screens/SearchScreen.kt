@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.RecentItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
-import starwars.data.models.BaseResource
+import starwars.data.models.RootResource
 import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
 import starwars.data.viewmodel.StarWarsViewModel
@@ -38,7 +38,7 @@ fun SearchScreen(
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         val viewModel = remember { starWarsViewModel }
-        val resources by viewModel.resources.collectAsState()
+        val rootResources by viewModel.rootResources.collectAsState()
 
         Scaffold(
             topBar = {
@@ -121,11 +121,11 @@ fun SearchScreen(
                         )
 
                         LazyColumn {
-                            when (resources) {
+                            when (rootResources) {
                                 is ResourceResult.Success -> {
-                                    val baseResource = (resources as ResourceResult.Success<BaseResource>).data
-                                    items(baseResource.iterator().size) { index ->
-                                        RecentItem(title = baseResource.iterator()[index].first.replaceFirstChar { char ->
+                                    val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
+                                    items(rootResource.iterator().size) { index ->
+                                        RecentItem(title = rootResource.iterator()[index].first.replaceFirstChar { char ->
                                             if (char.isLowerCase()) char.titlecase(
                                                 Locale.getDefault()
                                             ) else char.toString()
@@ -143,9 +143,3 @@ fun SearchScreen(
         }
     }
 }
-
-/*@Preview
-@Composable
-fun SearchScreenPreview() {
-    SearchScreen()
-}*/
