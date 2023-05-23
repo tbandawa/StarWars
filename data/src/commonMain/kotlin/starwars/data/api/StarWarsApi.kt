@@ -29,10 +29,10 @@ class StarWarsApi {
             requestTimeoutMillis = 15000L
             connectTimeoutMillis = 15000L
         }
-        /*install(Logging) {
+        install(Logging) {
             logger = Logger.DEFAULT
             level = LogLevel.ALL
-        }*/
+        }
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
