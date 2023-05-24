@@ -4,7 +4,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
-import starwars.data.StarWarsRepo
+import starwars.data.repo.StarWarsRepo
 import starwars.data.api.StarWarsApi
 import starwars.data.viewmodel.StarWarsViewModel
 

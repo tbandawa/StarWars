@@ -6,11 +6,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import starwars.data.StarWarsRepo
+import starwars.data.repo.StarWarsRepo
 import starwars.data.models.RootResource
-import starwars.data.models.BaseResource
-import starwars.data.models.ErrorResponse
-import starwars.data.models.Film
 import starwars.data.state.ResourceResult
 
 class StarWarsViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {

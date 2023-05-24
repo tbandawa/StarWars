@@ -1,4 +1,4 @@
-package starwars.data
+package starwars.data.repo
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
