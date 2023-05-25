@@ -1,38 +1,42 @@
 //
-//  ResourcesState.swift
+//  ResourceState.swift
 //  StarWars
 //
-//  Created by Tendai Bandawa on 2023/05/25.
-//  Copyright © 2023 orgName. All rights reserved.
+//  Created by Tendai Bandawa on 2022/12/20.
+//  Copyright © 2022 orgName. All rights reserved.
 //
-
-import Foundation
 
 import Foundation
 import UIKit
 import data
 
-class ResourcesState: ObservableObject {
+class RootResourcesState: ObservableObject {
     
     @Published var loading = false
-    @Published var resources: Any?
+    @Published var resources: [String:String]?
     @Published var error: String?
-    
+     
     private var viewModel: StarWarsViewModel
     
     init() {
         viewModel = KotlinDependencies.shared.getStarWarsViewModel()
-        viewModel.observeResourceItems { result in
+        viewModel.observeRootResources { result in
             switch result {
                 case _ as ResourceResultLoading:
                     self.resources = nil
                     self.loading = true
                     self.error = nil
                 
-                case let success as Any:
-                    print(success)
+                case let success as ResourceResultSuccess<RootResource>:
+                    self.resources = [:]
+                    success.data!.iterator().forEach {
+                        let resourceKey: String = $0.first! as String
+                        let resourceUrl: String = $0.second! as String
+                        self.resources![resourceKey] = resourceUrl
+                    }
                     self.loading = false
                     self.error = nil
+                    
                 
                 case let error as ResourceResultError<ErrorResponse>:
                     self.resources = nil
@@ -45,8 +49,8 @@ class ResourcesState: ObservableObject {
         }
     }
     
-    func getResources(resourceType: String, page: Int32) {
-        viewModel.getResources(resourceType: resourceType, page: page)
+    func getRootResources() {
+        viewModel.getRootResources()
     }
     
     deinit {

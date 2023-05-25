@@ -13,12 +13,32 @@ struct ResourcesView: View {
     var title: String
     var resourceUrl: String
     
+    @ObservedObject private var resourcesState: ResourcesState = ResourcesState()
+    
     var body: some View {
-        NavigationLink(destination: ResourceView()){
-            Text(title.lowercased())
-            Text(resourceUrl)
+        NavigationView {
+            VStack {
+                if resourcesState.loading {
+                    LoadingContent()
+                }
+                if let resources = resourcesState.resources {
+                    
+                }
+                if let errorMessage = resourcesState.error {
+                    RetryContent(
+                        error: errorMessage,
+                        retry: { resourcesState.getResources(resourceType: title.lowercased(), page: 1) }
+                    )
+                }
+            }
+            
         }
-        .navigationBarTitle(title)
+        .navigationTitle(title)
+        .padding(.leading, 15)
+        .padding(.trailing, 15)
+        .onAppear {
+            resourcesState.getResources(resourceType: title.lowercased(), page: 1)
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ResourcesState.swift
+//  ResourceState.swift
 //  StarWars
 //
 //  Created by Tendai Bandawa on 2023/05/25.
@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 import data
 
-class ResourcesState: ObservableObject {
+class ResourceState: ObservableObject {
     
     @Published var loading = false
     @Published var resources: Any?
@@ -22,7 +22,7 @@ class ResourcesState: ObservableObject {
     
     init() {
         viewModel = KotlinDependencies.shared.getStarWarsViewModel()
-        viewModel.observeResourceItems { result in
+        viewModel.observeResourceItem { result in
             switch result {
                 case _ as ResourceResultLoading:
                     self.resources = nil
@@ -45,8 +45,8 @@ class ResourcesState: ObservableObject {
         }
     }
     
-    func getResources(resourceType: String, page: Int32) {
-        viewModel.getResources(resourceType: resourceType, page: page)
+    func getResource(resourceType: String, resourceId: Int32) {
+        viewModel.getResource(resourceType: resourceType, resourceId: resourceId)
     }
     
     deinit {

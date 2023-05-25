@@ -10,24 +10,24 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject private var resourcesState: ResourcesState = ResourcesState()
+    @ObservedObject private var rootResourcesState: RootResourcesState = RootResourcesState()
     
     var body: some View {
         TabView {
 
             HomeView(
-                loading: resourcesState.loading,
-                resources: resourcesState.resources,
-                error: resourcesState.error,
-                loadResources: { resourcesState.getResources() },
-                retry: { resourcesState.getResources() }
+                loading: rootResourcesState.loading,
+                resources: rootResourcesState.resources,
+                error: rootResourcesState.error,
+                loadResources: { rootResourcesState.getRootResources() },
+                retry: { rootResourcesState.getRootResources() }
             ).tabItem {
                 Image(systemName: "star")
                 Text("StarWars")
             }
             
             SearchView(
-                resources: resourcesState.resources
+                resources: rootResourcesState.resources
             ).tabItem {
                 Image(systemName: "magnifyingglass")
                 Text("Search")
