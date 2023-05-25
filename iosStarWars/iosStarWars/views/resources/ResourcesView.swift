@@ -17,24 +17,39 @@ struct ResourcesView: View {
     
     var body: some View {
         VStack {
-            if resourcesState.loading {
-                LoadingContent()
-            }
-            if let resources = resourcesState.resources {
-                List(resources.items) { item in
+            if let items = resourcesState.items {
+                List(items) { item in
                     ItemContent(name: item.name, date: item.date)
+                        .onAppear {
+                            if (items.last == item) {
+                                resourcesState.getMoreResources(resourceType: title.lowercased())
+                            }
+                        }
                 }
             }
             if let errorMessage = resourcesState.error {
                 RetryContent(
                     error: errorMessage,
-                    retry: { resourcesState.getResources(resourceType: title.lowercased(), page: 1) }
+                    retry: {
+                        resourcesState.getResources(
+                            resourceType: title.lowercased(),
+                            page: 1
+                        )
+                    }
                 )
+            }
+        }
+        .overlay {
+            if resourcesState.loading {
+                LoadingContent()
             }
         }
         .navigationTitle(title)
         .onAppear {
-            resourcesState.getResources(resourceType: title.lowercased(), page: 1)
+            resourcesState.getResources(
+                resourceType: title.lowercased(),
+                page: 1
+            )
         }
     }
 }

@@ -7,16 +7,15 @@
 //
 
 import Foundation
-
-import Foundation
 import UIKit
 import data
 
 class ResourcesState: ObservableObject {
     
     @Published var loading = false
-    @Published var resources: PagedItems?
     @Published var error: String?
+    @Published var items: [Item]? = []
+    var resources: PagedItems?
     
     private var viewModel: StarWarsViewModel
     
@@ -34,51 +33,51 @@ class ResourcesState: ObservableObject {
                     self.error = nil
                     switch success {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: people.data!.results))
                             self.resources = PagedItems(
                                 count: people.data!.count,
                                 next: people.data?.next,
-                                previous: people.data?.previous,
-                                items: self.mapToItems(resources: people.data!.results)
+                                previous: people.data?.previous
                             )
                     
                         case let planets as ResourceResultSuccess<BaseResource<Planet>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: planets.data!.results))
                             self.resources = PagedItems(
                                 count: planets.data!.count,
                                 next: planets.data?.next,
-                                previous: planets.data?.previous,
-                                items: self.mapToItems(resources: planets.data!.results)
+                                previous: planets.data?.previous
                             )
                     
                         case let films as ResourceResultSuccess<BaseResource<Film>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: films.data!.results))
                             self.resources = PagedItems(
                                 count: films.data!.count,
                                 next: films.data?.next,
-                                previous: films.data?.previous,
-                                items: self.mapToItems(resources: films.data!.results)
+                                previous: films.data?.previous
                             )
                     
                         case let starships as ResourceResultSuccess<BaseResource<Starship>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: starships.data!.results))
                             self.resources = PagedItems(
                                 count: starships.data!.count,
                                 next: starships.data?.next,
-                                previous: starships.data?.previous,
-                                items: self.mapToItems(resources: starships.data!.results)
+                                previous: starships.data?.previous
                             )
                 
                         case let vehicles as ResourceResultSuccess<BaseResource<Vehicle>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: vehicles.data!.results))
                             self.resources = PagedItems(
                                 count: vehicles.data!.count,
                                 next: vehicles.data?.next,
-                                previous: vehicles.data?.previous,
-                                items: self.mapToItems(resources: vehicles.data!.results)
+                                previous: vehicles.data?.previous
                             )
                 
                         case let species as ResourceResultSuccess<BaseResource<Species>>:
+                            self.items?.append(contentsOf: self.mapToItems(resources: species.data!.results))
                             self.resources = PagedItems(
                                 count: species.data!.count,
                                 next: species.data?.next,
-                                previous: species.data?.previous,
-                                items: self.mapToItems(resources: species.data!.results)
+                                previous: species.data?.previous
                             )
                     
                         default:
@@ -96,7 +95,17 @@ class ResourcesState: ObservableObject {
         }
     }
     
+    func getMoreResources(resourceType: String) {
+        if let nextUrl = self.resources?.next {
+            let page = Int32(nextUrl.components(separatedBy: "page=")[1])
+            getResources(resourceType: resourceType, page: page!)
+        }
+    }
+    
     func getResources(resourceType: String, page: Int32) {
+        if (page == 1) {
+            self.items = []
+        }
         viewModel.getResources(resourceType: resourceType, page: page)
     }
     
@@ -152,10 +161,10 @@ struct PagedItems {
     var count: Int64
     var next: String?
     var previous: String?
-    var items: [Item]
+    //var items: [Item]? = []
 }
 
-struct Item: Identifiable {
+struct Item: Identifiable, Equatable {
     var id = UUID()
     var name: String
     var date: String
