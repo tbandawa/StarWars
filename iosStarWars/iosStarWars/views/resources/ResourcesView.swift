@@ -25,7 +25,7 @@ struct ResourcesView: View {
                 if let resources = resourcesState.resources {
                     switch resources {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
-                            let _ = print(people.data!)
+                        let _ = print(people.data!)
                         
                         case let planets as ResourceResultSuccess<BaseResource<Planet>>:
                             let _ = print(planets.data!)
