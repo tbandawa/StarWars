@@ -23,28 +23,7 @@ struct ResourcesView: View {
                     LoadingContent()
                 }
                 if let resources = resourcesState.resources {
-                    switch resources {
-                        case let people as ResourceResultSuccess<BaseResource<Person>>:
-                        let _ = print(people.data!)
-                        
-                        case let planets as ResourceResultSuccess<BaseResource<Planet>>:
-                            let _ = print(planets.data!)
-                        
-                        case let films as ResourceResultSuccess<BaseResource<Film>>:
-                            let _ = print(films.data!)
-                        
-                        case let starships as ResourceResultSuccess<BaseResource<Starship>>:
-                            let _ = print(starships.data!)
-                    
-                        case let vehicles as ResourceResultSuccess<BaseResource<Vehicle>>:
-                            let _ = print(vehicles.data!)
-                    
-                        case let species as ResourceResultSuccess<BaseResource<Species>>:
-                            let _ = print(species.data!)
-                        
-                        default:
-                            let _ = print(resources)
-                    }
+                    let _ = print(resources)
                 }
                 if let errorMessage = resourcesState.error {
                     RetryContent(

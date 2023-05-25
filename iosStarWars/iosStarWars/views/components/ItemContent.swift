@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ResourceItem: View {
+struct ItemContent: View {
     var name: String
     var date: String
     var body: some View {
@@ -39,8 +39,8 @@ struct ResourceItem: View {
     }
 }
 
-struct ResourceItem_Previews: PreviewProvider {
+struct ItemContent_Previews: PreviewProvider {
     static var previews: some View {
-        ResourceItem(name: "Luke Skywalker", date: "02-11-1991")
+        ItemContent(name: "Luke Skywalker", date: "02-11-1991")
     }
 }
