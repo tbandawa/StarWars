@@ -12,16 +12,21 @@ import data
 
 class ResourcesState: ObservableObject {
     
+    // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
     @Published var items: [Item]? = []
+    
+    // Track resource pages
     var resources: PagedItems?
     
     private var viewModel: StarWarsViewModel
     
+    // Start registering observables
     init() {
         viewModel = KotlinDependencies.shared.getStarWarsViewModel()
         viewModel.observeResourceItems { result in
+            // Switch resource availability states
             switch result {
                 case _ as ResourceResultLoading:
                     self.resources = nil
@@ -31,6 +36,8 @@ class ResourcesState: ObservableObject {
                 case let success as AnyObject:
                     self.loading = false
                     self.error = nil
+                    // Switch through result, cast to appropiate object,
+                    // append to items array and keep base result info
                     switch success {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
                             self.items?.append(contentsOf: self.mapToItems(resources: people.data!.results))
@@ -95,6 +102,9 @@ class ResourcesState: ObservableObject {
         }
     }
     
+    /// Retrieves more resources if next is not null
+    ///
+    /// - parameter resourceType: type of requested resources
     func getMoreResources(resourceType: String) {
         if let nextUrl = self.resources?.next {
             let page = Int32(nextUrl.components(separatedBy: "page=")[1])
@@ -102,6 +112,11 @@ class ResourcesState: ObservableObject {
         }
     }
     
+    /// Retrieves  resources if next is not null
+    ///
+    /// - Parameters
+    ///     - resourceType: type of requested resources
+    ///     - page: request page number
     func getResources(resourceType: String, page: Int32) {
         if (page == 1) {
             self.items = []
@@ -109,6 +124,12 @@ class ResourcesState: ObservableObject {
         viewModel.getResources(resourceType: resourceType, page: page)
     }
     
+    /// Converts array of resources to array of Item
+    ///
+    ///  - Parameters
+    ///     - resources: array of any response resources
+    ///  - Returns
+    ///     - [Item]: array of Items
     func mapToItems(resources: [Any])-> [Item] {
         switch resources {
             case let people as [Person]:
@@ -161,7 +182,6 @@ struct PagedItems {
     var count: Int64
     var next: String?
     var previous: String?
-    //var items: [Item]? = []
 }
 
 struct Item: Identifiable, Equatable {
