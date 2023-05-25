@@ -6,9 +6,16 @@ struct iOSApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject var rootResourceState = RootResourcesState()
+    @StateObject var resourcesState = ResourcesState()
+    @StateObject var resourceState = ResourceState()
+    
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
+                .environmentObject(rootResourceState)
+                .environmentObject(resourcesState)
+                .environmentObject(resourceState)
 		}
 	}
 }

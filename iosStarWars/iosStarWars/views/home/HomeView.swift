@@ -4,11 +4,7 @@ import data
 
 struct HomeView: View {
     
-    var loading: Bool
-    var resources: [String:String]?
-    var error: String?
-    var loadResources: () -> Void
-    var retry: () -> Void
+    @EnvironmentObject var rootResourcesState: RootResourcesState
     
     var colors: [Color] = [.black, .black, .black]
     
@@ -21,10 +17,10 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if loading {
+                if rootResourcesState.loading {
                     LoadingContent()
                 }
-                if let resourcesDictionary = resources {
+                if let resourcesDictionary = rootResourcesState.resources {
                     LazyVGrid(columns: gridItems, spacing: 10) {
                         ForEach(Array(resourcesDictionary), id:\.key) { key, value in
                             NavigationLink(destination: ResourcesView(title: key.capitalized, resourceUrl: value)){
@@ -34,10 +30,10 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
-                if let errorMessage = error {
+                if let errorMessage = rootResourcesState.error {
                     RetryContent(
                         error: errorMessage,
-                        retry: retry
+                        retry: { rootResourcesState.getRootResources() }
                     )
                 }
             }
@@ -45,7 +41,7 @@ struct HomeView: View {
             .padding(.leading, 15)
             .padding(.trailing, 15)
         }.onAppear {
-            loadResources()
+            rootResourcesState.getRootResources()
         }
 	}
 }

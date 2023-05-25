@@ -15,7 +15,8 @@ struct Friend: Identifiable, Hashable {
 
 struct SearchView: View {
     
-    var resources: [String:String]?
+    @EnvironmentObject var rootResourcesState: RootResourcesState
+    //var resources: [String:String]?
     
     @State private var query = ""
     
@@ -24,7 +25,7 @@ struct SearchView: View {
             VStack(alignment: .leading) {
                 List {
                     Section {
-                        if let resourcesDictionary = resources {
+                        if let resourcesDictionary = rootResourcesState.resources {
                             ForEach(Array(resourcesDictionary), id:\.key) { key, value in
                                 Text(key.capitalized)
                             }

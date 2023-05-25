@@ -16,7 +16,6 @@ abstract class BaseApiCall {
             val response = apiCall()
             ResourceResult.Success(response)
         } catch (exception: ResponseException) {
-            println(exception.message)
             when(exception) {
                 is ClientRequestException -> {
                     ResourceResult.Error(exception.response.body<ErrorResponse>())
@@ -27,7 +26,6 @@ abstract class BaseApiCall {
         } catch (e: IOException) {
             ResourceResult.Error(ErrorResponse("Unable to connect to host"))
         } catch (e: Exception) {
-            println(e.message)
             ResourceResult.Error(ErrorResponse("Unknown Error"))
         }
     }

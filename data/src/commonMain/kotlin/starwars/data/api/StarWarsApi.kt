@@ -5,6 +5,7 @@ import io.ktor.client.call.body
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.EMPTY
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
@@ -30,8 +31,8 @@ class StarWarsApi {
             connectTimeoutMillis = 15000L
         }
         install(Logging) {
-            logger = Logger.DEFAULT
-            level = LogLevel.ALL
+            logger = Logger.EMPTY
+            level = LogLevel.NONE
         }
         install(ContentNegotiation) {
             json(Json {
