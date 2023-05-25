@@ -12,29 +12,25 @@ import data
 struct ResourcesView: View {
     
     var title: String
-    var resourceUrl: String
     
     @EnvironmentObject var resourcesState: ResourcesState
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if resourcesState.loading {
-                    LoadingContent()
-                }
-                if let resources = resourcesState.resources {
-                    List(resources.items) { item in
-                        ItemContent(name: item.name, date: item.date)
-                    }
-                }
-                if let errorMessage = resourcesState.error {
-                    RetryContent(
-                        error: errorMessage,
-                        retry: { resourcesState.getResources(resourceType: title.lowercased(), page: 1) }
-                    )
+        VStack {
+            if resourcesState.loading {
+                LoadingContent()
+            }
+            if let resources = resourcesState.resources {
+                List(resources.items) { item in
+                    ItemContent(name: item.name, date: item.date)
                 }
             }
-            
+            if let errorMessage = resourcesState.error {
+                RetryContent(
+                    error: errorMessage,
+                    retry: { resourcesState.getResources(resourceType: title.lowercased(), page: 1) }
+                )
+            }
         }
         .navigationTitle(title)
         .onAppear {
@@ -45,7 +41,7 @@ struct ResourcesView: View {
 
 struct ResourcesView_Previews: PreviewProvider {
     static var previews: some View {
-        ResourcesView(title: "Title", resourceUrl: "url")
+        ResourcesView(title: "Title")
             .environmentObject(ResourcesState())
     }
 }

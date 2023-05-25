@@ -23,7 +23,7 @@ struct HomeView: View {
                 if let resourcesDictionary = rootResourcesState.resources {
                     LazyVGrid(columns: gridItems, spacing: 10) {
                         ForEach(Array(resourcesDictionary), id:\.key) { key, value in
-                            NavigationLink(destination: ResourcesView(title: key.capitalized, resourceUrl: value)){
+                            NavigationLink(destination: ResourcesView(title: key.capitalized)){
                                 CellContent(title: key, url: value)
                             }
                         }
@@ -40,10 +40,10 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("StarWars")
+            
         }.onAppear {
             rootResourcesState.getRootResources()
         }
 	}
+    
 }
-
-
