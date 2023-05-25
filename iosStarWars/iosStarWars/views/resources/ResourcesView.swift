@@ -23,7 +23,9 @@ struct ResourcesView: View {
                     LoadingContent()
                 }
                 if let resources = resourcesState.resources {
-                    let _ = print(resources)
+                    List(resources.items) { item in
+                        ItemContent(name: item.name, date: item.date)
+                    }
                 }
                 if let errorMessage = resourcesState.error {
                     RetryContent(
@@ -35,8 +37,6 @@ struct ResourcesView: View {
             
         }
         .navigationTitle(title)
-        .padding(.leading, 15)
-        .padding(.trailing, 15)
         .onAppear {
             resourcesState.getResources(resourceType: title.lowercased(), page: 1)
         }

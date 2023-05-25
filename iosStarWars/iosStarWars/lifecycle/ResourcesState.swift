@@ -149,13 +149,14 @@ class ResourcesState: ObservableObject {
 }
 
 struct PagedItems {
-    let count: Int64
-    let next: String?
-    let previous: String?
-    let items: [Item]
+    var count: Int64
+    var next: String?
+    var previous: String?
+    var items: [Item]
 }
 
-struct Item {
-    let name: String
-    let date: String
+struct Item: Identifiable {
+    var id = UUID()
+    var name: String
+    var date: String
 }

@@ -28,6 +28,8 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .padding(.leading, 15)
+                    .padding(.trailing, 15)
                     Spacer()
                 }
                 if let errorMessage = rootResourcesState.error {
@@ -38,8 +40,6 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("StarWars")
-            .padding(.leading, 15)
-            .padding(.trailing, 15)
         }.onAppear {
             rootResourcesState.getRootResources()
         }

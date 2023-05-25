@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct ItemContent: View {
+    
     var name: String
     var date: String
+    
     var body: some View {
         HStack {
             
@@ -34,7 +36,6 @@ struct ItemContent: View {
             .background(Color.black)
             .cornerRadius(8)
         }
-        .padding()
         .frame(maxWidth: .infinity)
     }
 }
