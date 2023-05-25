@@ -10,8 +10,10 @@ import SwiftUI
 
 struct LoadingContent: View {
     var body: some View {
-        ProgressView()
-        Text("Loading...")
+        VStack {
+            ProgressView()
+            Text("Loading...")
+        }
     }
 }
 
