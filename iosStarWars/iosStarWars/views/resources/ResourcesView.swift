@@ -20,6 +20,7 @@ struct ResourcesView: View {
             if let items = resourcesState.items {
                 List(items) { item in
                     ItemContent(name: item.name, date: item.date)
+                        .listRowSeparator(.hidden)
                         .onAppear {
                             if (items.last == item) {
                                 resourcesState.getMoreResources(resourceType: title.lowercased())
