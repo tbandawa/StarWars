@@ -22,11 +22,11 @@ class ResourcesState: ObservableObject {
     
     private var viewModel: StarWarsViewModel
     
-    // Start registering observables
+    // Start registering observables and
     init() {
         viewModel = KotlinDependencies.shared.getStarWarsViewModel()
         viewModel.observeResourceItems { result in
-            // Switch resource availability states
+            // Loop resource availability states
             switch result {
                 case _ as ResourceResultLoading:
                     self.resources = nil
@@ -36,7 +36,7 @@ class ResourcesState: ObservableObject {
                 case let success as AnyObject:
                     self.loading = false
                     self.error = nil
-                    // Switch through result, cast to appropiate object,
+                    // Loop through result, cast to appropiate object,
                     // append to items array and keep base result info
                     switch success {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
@@ -91,10 +91,10 @@ class ResourcesState: ObservableObject {
                             let _ = print(success)
                     }
                 
-                case let error as ResourceResultError<ErrorResponse>:
+                case let error as ResourceResultError<ErrorResponse>?:
                     self.resources = nil
                     self.loading = false
-                    self.error = error.data!.detail!
+                    self.error = error?.data!.detail!
                 
                 default:
                     break
