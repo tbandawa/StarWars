@@ -16,7 +16,7 @@ struct ResourcesView: View {
     @EnvironmentObject var resourcesState: ResourcesState
     
     var body: some View {
-        VStack {
+        ZStack {
             if let items = resourcesState.items {
                 List(items) { item in
                     ItemContent(name: item.name, date: item.date)
@@ -25,6 +25,11 @@ struct ResourcesView: View {
                                 resourcesState.getMoreResources(resourceType: title.lowercased())
                             }
                         }
+                }
+            }
+            if resourcesState.loading {
+                if (resourcesState.items?.count == 0) {
+                    LoadingContent()
                 }
             }
             if let errorMessage = resourcesState.error {
@@ -39,11 +44,6 @@ struct ResourcesView: View {
                 )
             }
         }
-        .overlay {
-            if resourcesState.loading {
-                LoadingContent()
-            }
-        }
         .navigationTitle(title)
         .onAppear {
             resourcesState.getResources(
@@ -51,6 +51,7 @@ struct ResourcesView: View {
                 page: 1
             )
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
