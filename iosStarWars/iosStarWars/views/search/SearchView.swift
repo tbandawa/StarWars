@@ -16,13 +16,25 @@ struct Friend: Identifiable, Hashable {
 struct SearchView: View {
     
     @EnvironmentObject var rootResourcesState: RootResourcesState
-    //var resources: [String:String]?
     
     @State private var query = ""
     
+    @State private var currentTokens = [ResourceToken]()
+    
+    var suggestedTokens: [ResourceToken] {
+        var tokens = [ResourceToken]()
+        if let resourcesDictionary = rootResourcesState.resources {
+            resourcesDictionary.forEach { value in
+                tokens.append(ResourceToken(name: value.key.capitalized))
+            }
+            return tokens
+        }
+        return []
+    }
+    
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
+            ZStack(alignment: .leading) {
                 List {
                     Section {
                         if let resourcesDictionary = rootResourcesState.resources {
@@ -37,14 +49,27 @@ struct SearchView: View {
                 .listStyle(.plain)
             }
             .navigationTitle("Search")
-            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(
+                text: $query,
+                tokens: $currentTokens,
+                suggestedTokens: .constant(suggestedTokens)
+            ) { token in
+                Text(token.name)
+            }
             .navigationBarTitleDisplayMode(.automatic)
         }
     }
+    
 }
 
-/*struct SearchView_Previews: PreviewProvider {
+struct ResourceToken: Identifiable {
+    var id: String { name }
+    var name: String
+}
+
+struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+            .environmentObject(RootResourcesState())
     }
-}*/
+}

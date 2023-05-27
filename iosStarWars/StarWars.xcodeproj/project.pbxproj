@@ -24,6 +24,7 @@
 		83D559D42A1F5AD000E95C68 /* ResourcesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D559D32A1F5AD000E95C68 /* ResourcesState.swift */; };
 		83D559D62A1F638800E95C68 /* ResourceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D559D52A1F638800E95C68 /* ResourceState.swift */; };
 		83D559D82A1FAE3E00E95C68 /* ItemContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D559D72A1FAE3E00E95C68 /* ItemContent.swift */; };
+		83D778B12A2254E9009E744C /* SearchContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D778B02A2254E9009E744C /* SearchContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		83D559D32A1F5AD000E95C68 /* ResourcesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesState.swift; sourceTree = "<group>"; };
 		83D559D52A1F638800E95C68 /* ResourceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceState.swift; sourceTree = "<group>"; };
 		83D559D72A1FAE3E00E95C68 /* ItemContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContent.swift; sourceTree = "<group>"; };
+		83D778B02A2254E9009E744C /* SearchContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				8315AB4C2A196E38009325D4 /* LoadingContent.swift */,
 				8315AB4E2A196E79009325D4 /* RetryContent.swift */,
 				838394C72A1F53FC00C14911 /* CellContent.swift */,
+				83D778B02A2254E9009E744C /* SearchContent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				832F1F472951344D00C22FD6 /* RootResourcesState.swift in Sources */,
 				83D559D62A1F638800E95C68 /* ResourceState.swift in Sources */,
+				83D778B12A2254E9009E744C /* SearchContent.swift in Sources */,
 				83D559D82A1FAE3E00E95C68 /* ItemContent.swift in Sources */,
 				83D559D42A1F5AD000E95C68 /* ResourcesState.swift in Sources */,
 			);
@@ -457,7 +461,7 @@
 				DEVELOPMENT_TEAM = Q4B4MYV5B5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosStarWars/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -479,7 +483,7 @@
 				DEVELOPMENT_TEAM = Q4B4MYV5B5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosStarWars/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

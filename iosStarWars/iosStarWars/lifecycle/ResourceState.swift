@@ -34,10 +34,10 @@ class ResourceState: ObservableObject {
                     self.loading = false
                     self.error = nil
                 
-                case let error as ResourceResultError<ErrorResponse>:
+                case let error as ResourceResultError<ErrorResponse>?:
                     self.resources = nil
                     self.loading = false
-                    self.error = error.data!.detail!
+                    self.error = error?.data!.detail!
                 
                 default:
                     break
