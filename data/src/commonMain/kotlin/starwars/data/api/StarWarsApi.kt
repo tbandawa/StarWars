@@ -20,6 +20,7 @@ class StarWarsApi {
 
     companion object {
         const val baseUrl = "https://swapi.dev/api/"
+        const val SEARCH = "search"
         const val PAGE = "page"
     }
 
@@ -48,6 +49,14 @@ class StarWarsApi {
     suspend inline fun <reified R> getResources(resourceType: String, page: Int): BaseResource<R> {
         return httpClient.get {
             url(baseUrl + resourceType)
+            parameter(PAGE, page)
+        }.body()
+    }
+
+    suspend inline fun <reified R> searchResources(resourceType: String, search: String, page: Int): BaseResource<R> {
+        return httpClient.get {
+            url(baseUrl + resourceType)
+            parameter(SEARCH, search)
             parameter(PAGE, page)
         }.body()
     }

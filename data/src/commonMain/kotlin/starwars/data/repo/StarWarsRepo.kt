@@ -52,6 +52,33 @@ class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
         })
     }.flowOn(Dispatchers.Default)
 
+    suspend fun searchResources(resourceType: String, search: String, page: Int = 1): Flow<ResourceResult<Any>> = flow {
+        emit(ResourceResult.Loading)
+        emit(handleApiCall {
+            when (resourceType) {
+                "people" -> {
+                    starWarsApi.searchResources<Person>(resourceType, search, page)
+                }
+                "planets" -> {
+                    starWarsApi.searchResources<Planet>(resourceType, search, page)
+                }
+                "films" -> {
+                    starWarsApi.searchResources<Film>(resourceType, search, page)
+                }
+                "species" -> {
+                    starWarsApi.searchResources<Species>(resourceType, search, page)
+                }
+                "vehicles" -> {
+                    starWarsApi.searchResources<Vehicle>(resourceType, search, page)
+                }
+                "starships" -> {
+                    starWarsApi.searchResources<Starship>(resourceType, search, page)
+                }
+                else -> { ErrorResponse("Invalid resource type") }
+            }
+        })
+    }.flowOn(Dispatchers.Default)
+
     suspend fun getResource(resourceType: String, resourceId: Int): Flow<ResourceResult<Any>> = flow {
         emit(ResourceResult.Loading)
         emit(handleApiCall {

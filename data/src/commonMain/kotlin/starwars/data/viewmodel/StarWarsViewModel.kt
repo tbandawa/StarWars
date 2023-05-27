@@ -43,6 +43,14 @@ class StarWarsViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel()
         }
     }
 
+    fun searchResources(resourceType: String, search: String, page: Int) {
+        coroutineScope.launch {
+            starWarsRepo.searchResources(resourceType, search, page).collect { results ->
+                _resourceItems.value = results
+            }
+        }
+    }
+
     fun getResource(resourceType: String, resourceId: Int) {
         coroutineScope.launch {
             starWarsRepo.getResource(resourceType, resourceId).collect { results ->
