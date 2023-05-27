@@ -19,7 +19,7 @@ struct SearchView: View {
     
     @State private var query = ""
     
-    @State private var currentTokens = [ResourceToken]()
+    @State private var currentTokens = [ResourceToken]([])
     
     var suggestedTokens: [ResourceToken] {
         var tokens = [ResourceToken]()
@@ -27,34 +27,50 @@ struct SearchView: View {
             resourcesDictionary.forEach { value in
                 tokens.append(ResourceToken(name: value.key.capitalized))
             }
-            return tokens
         }
-        return []
+        return tokens
     }
     
     var body: some View {
         NavigationView {
-            ZStack(alignment: .leading) {
+            ZStack {
+                
                 List {
                     Section {
                         if let resourcesDictionary = rootResourcesState.resources {
                             ForEach(Array(resourcesDictionary), id:\.key) { key, value in
-                                Text(key.capitalized)
+                                HStack {
+                                    Text(key.capitalized)
+                                    Spacer()
+                                    Image(systemName: "arrow.up.left.circle")
+                                }
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    if (!currentTokens.isEmpty) {
+                                        currentTokens.removeAll()
+                                    }
+                                    currentTokens.append(ResourceToken(name: key.capitalized))
+                                }
                             }
-                        }
-                    } header: {
-                        Text("Search Filter")
+                         }
+                     }
+                    header: {
+                         Text("Search Filter")
                     }
                 }
                 .listStyle(.plain)
+                
             }
             .navigationTitle("Search")
             .searchable(
                 text: $query,
-                tokens: $currentTokens,
-                suggestedTokens: .constant(suggestedTokens)
+                tokens: $currentTokens
             ) { token in
                 Text(token.name)
+            }
+            .onSubmit(of: .search) {
+                print(query)
+                print(currentTokens)
             }
             .navigationBarTitleDisplayMode(.automatic)
         }
