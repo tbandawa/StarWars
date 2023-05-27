@@ -16,6 +16,7 @@ struct Friend: Identifiable, Hashable {
 struct SearchView: View {
     
     @EnvironmentObject var rootResourcesState: RootResourcesState
+    @EnvironmentObject var resourcesState: ResourcesState
     
     @State private var query = ""
     
@@ -71,6 +72,7 @@ struct SearchView: View {
             .onSubmit(of: .search) {
                 print(query)
                 print(currentTokens)
+                resourcesState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
             }
             .navigationBarTitleDisplayMode(.automatic)
         }

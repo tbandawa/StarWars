@@ -124,6 +124,13 @@ class ResourcesState: ObservableObject {
         viewModel.getResources(resourceType: resourceType, page: page)
     }
     
+    func searchResources(resourceType: String, search: String, page: Int32) {
+        if (page == 1) {
+            self.items = []
+        }
+        viewModel.searchResources(resourceType: resourceType, search: search, page: page)
+    }
+    
     /// Converts array of resources to array of Item
     ///
     ///  - Parameters
