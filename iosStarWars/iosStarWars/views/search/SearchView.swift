@@ -22,45 +22,17 @@ struct SearchView: View {
     
     @State private var currentTokens = [ResourceToken]([])
     
-    var suggestedTokens: [ResourceToken] {
-        var tokens = [ResourceToken]()
-        if let resourcesDictionary = rootResourcesState.resources {
-            resourcesDictionary.forEach { value in
-                tokens.append(ResourceToken(name: value.key.capitalized))
-            }
-        }
-        return tokens
-    }
-    
     var body: some View {
         NavigationView {
-            ZStack {
+            
+            ScrollView {
                 
-                List {
-                    Section {
-                        if let resourcesDictionary = rootResourcesState.resources {
-                            ForEach(Array(resourcesDictionary), id:\.key) { key, value in
-                                HStack {
-                                    Text(key.capitalized)
-                                    Spacer()
-                                    Image(systemName: "arrow.up.left.circle")
-                                }
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    if (!currentTokens.isEmpty) {
-                                        currentTokens.removeAll()
-                                    }
-                                    currentTokens.append(ResourceToken(name: key.capitalized))
-                                }
-                            }
-                         }
-                     }
-                    header: {
-                         Text("Search Filter")
-                    }
-                }
-                .listStyle(.plain)
                 
+                
+                
+                
+                
+            
             }
             .navigationTitle("Search")
             .searchable(
@@ -74,16 +46,12 @@ struct SearchView: View {
                 print(currentTokens)
                 resourcesState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
             }
-            .navigationBarTitleDisplayMode(.automatic)
         }
     }
     
 }
 
-struct ResourceToken: Identifiable {
-    var id: String { name }
-    var name: String
-}
+
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {

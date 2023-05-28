@@ -184,15 +184,3 @@ class ResourcesState: ObservableObject {
         viewModel.dispose()
     }
 }
-
-struct PagedItems {
-    var count: Int64
-    var next: String?
-    var previous: String?
-}
-
-struct Item: Identifiable, Equatable {
-    var id = UUID()
-    var name: String
-    var date: String
-}
