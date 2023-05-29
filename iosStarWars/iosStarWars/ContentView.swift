@@ -24,6 +24,7 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+                
             
             SettingsView()
                 .tabItem {

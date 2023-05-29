@@ -112,7 +112,7 @@ class ResourcesState: ObservableObject {
         }
     }
     
-    /// Retrieves  resources if next is not null
+    /// Retrieves  resources and clears previous results if page == 1
     ///
     /// - Parameters
     ///     - resourceType: type of requested resources
@@ -124,11 +124,31 @@ class ResourcesState: ObservableObject {
         viewModel.getResources(resourceType: resourceType, page: page)
     }
     
-    func searchResources(resourceType: String, search: String, page: Int32) {
-        if (page == 1) {
-            self.items = []
+    /// Retrieves more resources if next is not null
+    ///
+    /// - parameter resourceType: type of requested resources
+    func searchMoreResources(resourceType: String) {
+        if let nextUrl = self.resources?.next {
+            //let page = Int32(nextUrl.components(separatedBy: "page=")[1])
+            //getResources(resourceType: resourceType, page: page!)
+            if let urlComponents = URLComponents(string: "http://mydummysite.com?encodedMessage=PD94bWwgdmVyNlPg%3D%3D&signature=kcig33sdAOAr%2FYYGf5r4HGN"),let queryItems = urlComponents.queryItems {
+
+                // for example, we will get the first item name and value:
+                let name = queryItems[0].name // encodedMessage
+                print(name)
+                let value = queryItems[0].value // PD94bWwgdmVyNlPg==
+                print(value)
+            }
         }
-        viewModel.searchResources(resourceType: resourceType, search: search, page: page)
+    }
+    
+    /// Searches  resources
+    ///
+    /// - Parameters
+    ///     - resourceType: type of requested resources
+    ///     - page: request page number
+    func searchResources(resourceType: String, search: String) {
+        viewModel.searchResources(resourceType: resourceType, search: search, page: 1)
     }
     
     /// Converts array of resources to array of Item

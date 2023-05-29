@@ -44,6 +44,7 @@ struct HomeView: View {
         }.onAppear {
             rootResourcesState.getRootResources()
         }
+        .navigationViewStyle(.stack)
 	}
     
 }
