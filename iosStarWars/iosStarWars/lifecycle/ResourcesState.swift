@@ -130,10 +130,12 @@ class ResourcesState: ObservableObject {
     func searchMoreResources(resourceType: String) {
         if let nextUrl = self.resources?.next {
             if let urlComponents = URLComponents(string: nextUrl), let queryItems = urlComponents.queryItems {
+                let page = Int32(queryItems[1].value!)!
+                let search = queryItems[0].value!
                 searchResources(
                     resourceType: resourceType,
-                    search: queryItems[0].value!,
-                    page: Int32(queryItems[1].value!)!
+                    search: search,
+                    page: page
                 )
             }
         }
@@ -145,7 +147,7 @@ class ResourcesState: ObservableObject {
     ///     - resourceType: type of requested resources
     ///     - page: request page number
     func searchResources(resourceType: String, search: String, page: Int32) {
-        viewModel.searchResources(resourceType: resourceType, search: search, page: 1)
+        viewModel.searchResources(resourceType: resourceType, search: search, page: page)
     }
     
     /// Converts array of resources to array of Item
