@@ -129,15 +129,12 @@ class ResourcesState: ObservableObject {
     /// - parameter resourceType: type of requested resources
     func searchMoreResources(resourceType: String) {
         if let nextUrl = self.resources?.next {
-            //let page = Int32(nextUrl.components(separatedBy: "page=")[1])
-            //getResources(resourceType: resourceType, page: page!)
-            if let urlComponents = URLComponents(string: "http://mydummysite.com?encodedMessage=PD94bWwgdmVyNlPg%3D%3D&signature=kcig33sdAOAr%2FYYGf5r4HGN"),let queryItems = urlComponents.queryItems {
-
-                // for example, we will get the first item name and value:
-                let name = queryItems[0].name // encodedMessage
-                print(name)
-                let value = queryItems[0].value // PD94bWwgdmVyNlPg==
-                print(value)
+            if let urlComponents = URLComponents(string: nextUrl), let queryItems = urlComponents.queryItems {
+                searchResources(
+                    resourceType: resourceType,
+                    search: queryItems[0].value!,
+                    page: Int32(queryItems[1].value!)!
+                )
             }
         }
     }
@@ -147,7 +144,7 @@ class ResourcesState: ObservableObject {
     /// - Parameters
     ///     - resourceType: type of requested resources
     ///     - page: request page number
-    func searchResources(resourceType: String, search: String) {
+    func searchResources(resourceType: String, search: String, page: Int32) {
         viewModel.searchResources(resourceType: resourceType, search: search, page: 1)
     }
     

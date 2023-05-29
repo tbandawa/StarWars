@@ -88,7 +88,7 @@ struct SearchView: View {
             .onSubmit(of: .search) {
                 print(query)
                 print(currentTokens)
-                resourcesState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query)
+                resourcesState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
             }
         }
     }
