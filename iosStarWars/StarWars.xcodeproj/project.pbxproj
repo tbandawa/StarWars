@@ -27,6 +27,7 @@
 		83D778B62A23799C009E744C /* ResourceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D778B52A23799C009E744C /* ResourceToken.swift */; };
 		83D778B82A2379D9009E744C /* PagedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D778B72A2379D9009E744C /* PagedItems.swift */; };
 		83D778BA2A237ABE009E744C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D778B92A237ABE009E744C /* Item.swift */; };
+		83D778BC2A2567BD009E744C /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D778BB2A2567BD009E744C /* SearchState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		83D778B52A23799C009E744C /* ResourceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceToken.swift; sourceTree = "<group>"; };
 		83D778B72A2379D9009E744C /* PagedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedItems.swift; sourceTree = "<group>"; };
 		83D778B92A237ABE009E744C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		83D778BB2A2567BD009E744C /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				832F1F462951344D00C22FD6 /* RootResourcesState.swift */,
 				83D559D32A1F5AD000E95C68 /* ResourcesState.swift */,
 				83D559D52A1F638800E95C68 /* ResourceState.swift */,
+				83D778BB2A2567BD009E744C /* SearchState.swift */,
 			);
 			path = lifecycle;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				839152B32939158600D375DC /* SettingsView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				83D778BA2A237ABE009E744C /* Item.swift in Sources */,
+				83D778BC2A2567BD009E744C /* SearchState.swift in Sources */,
 				8315AB4F2A196E79009325D4 /* RetryContent.swift in Sources */,
 				838394C82A1F53FC00C14911 /* CellContent.swift in Sources */,
 				839152B5293BEED100D375DC /* ResourceView.swift in Sources */,

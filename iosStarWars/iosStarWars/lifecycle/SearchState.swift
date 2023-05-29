@@ -1,8 +1,8 @@
 //
-//  ResourcesState.swift
+//  SearchState.swift
 //  StarWars
 //
-//  Created by Tendai Bandawa on 2023/05/25.
+//  Created by Tendai Bandawa on 2023/05/30.
 //  Copyright © 2023 orgName. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import data
 
-class ResourcesState: ObservableObject {
+class SearchState: ObservableObject {
     
     // MARK: View Change Properties
     @Published var loading = false
@@ -105,23 +105,27 @@ class ResourcesState: ObservableObject {
     /// Retrieves more resources if next is not null
     ///
     /// - parameter resourceType: type of requested resources
-    func getMoreResources(resourceType: String) {
+    func searchMoreResources(resourceType: String) {
         if let nextUrl = self.resources?.next {
-            let page = Int32(nextUrl.components(separatedBy: "page=")[1])
-            getResources(resourceType: resourceType, page: page!)
+            if let urlComponents = URLComponents(string: nextUrl), let queryItems = urlComponents.queryItems {
+                let page = Int32(queryItems[1].value!)!
+                let search = queryItems[0].value!
+                searchResources(
+                    resourceType: resourceType,
+                    search: search,
+                    page: page
+                )
+            }
         }
     }
     
-    /// Retrieves  resources and clears previous results if page == 1
+    /// Searches  resources
     ///
     /// - Parameters
     ///     - resourceType: type of requested resources
     ///     - page: request page number
-    func getResources(resourceType: String, page: Int32) {
-        if (page == 1) {
-            self.items = []
-        }
-        viewModel.getResources(resourceType: resourceType, page: page)
+    func searchResources(resourceType: String, search: String, page: Int32) {
+        viewModel.searchResources(resourceType: resourceType, search: search, page: page)
     }
     
     /// Converts array of resources to array of Item

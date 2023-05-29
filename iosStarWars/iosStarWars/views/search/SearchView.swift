@@ -11,7 +11,7 @@ import SwiftUI
 struct SearchView: View {
     
     @EnvironmentObject var rootResourcesState: RootResourcesState
-    @EnvironmentObject var resourcesState: ResourcesState
+    @EnvironmentObject var searchState: SearchState
     
     @State private var query = ""
     
@@ -22,25 +22,25 @@ struct SearchView: View {
             
             ZStack {
                 
-                if let items = resourcesState.items {
+                if let items = searchState.items {
                     List(items) { item in
                         ItemContent(name: item.name, date: item.date)
                             .listRowSeparator(.hidden)
                             .onAppear {
                                 if (items.last == item) {
-                                    resourcesState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                                    searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
                                 }
                             }
                     }
                 }
                 
-                if resourcesState.loading {
-                    if (resourcesState.items?.count == 0) {
+                if searchState.loading {
+                    if (searchState.items?.count == 0) {
                         LoadingContent()
                     }
                 }
                 
-                if let errorMessage = resourcesState.error {
+                if let errorMessage = searchState.error {
                     RetryContent(
                         error: errorMessage,
                         retry: {
@@ -88,7 +88,7 @@ struct SearchView: View {
             .onSubmit(of: .search) {
                 print(query)
                 print(currentTokens)
-                resourcesState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
+                searchState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
             }
         }
     }
@@ -130,6 +130,6 @@ struct SearchingView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
-            .environmentObject(RootResourcesState())
+            .environmentObject(SearchState())
     }
 }

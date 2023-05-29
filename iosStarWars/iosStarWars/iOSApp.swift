@@ -9,6 +9,7 @@ struct iOSApp: App {
     @StateObject var rootResourceState = RootResourcesState()
     @StateObject var resourcesState = ResourcesState()
     @StateObject var resourceState = ResourceState()
+    @StateObject var searchState = SearchState()
     
 	var body: some Scene {
 		WindowGroup {
@@ -16,6 +17,7 @@ struct iOSApp: App {
                 .environmentObject(rootResourceState)
                 .environmentObject(resourcesState)
                 .environmentObject(resourceState)
+                .environmentObject(searchState)
 		}
 	}
 }
