@@ -42,7 +42,7 @@ struct SearchView: View {
                 
                 if let errorMessage = searchState.error {
                     RetryContent(
-                        error: "errorMessage",
+                        error: errorMessage,
                         retry: {
                             
                         }
@@ -55,7 +55,7 @@ struct SearchView: View {
                 text: $query,
                 tokens: $currentTokens
             ) { token in
-                Label(token.name, systemImage: "line.3.horizontal.decrease.circle")
+                Label(token.name, systemImage: "line.3.horizontal.decrease")
             }
             .searchSuggestions({
                 if (currentTokens.isEmpty) {
