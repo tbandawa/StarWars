@@ -121,10 +121,10 @@
 		7555FF7D242A565900829871 /* iosStarWars */ = {
 			isa = PBXGroup;
 			children = (
-				83D778B42A237987009E744C /* models */,
-				8315AB4A2A196C29009325D4 /* utils */,
-				8315AB492A196BC3009325D4 /* lifecycle */,
-				839152AD2938175500D375DC /* views */,
+				83D778B42A237987009E744C /* Models */,
+				8315AB4A2A196C29009325D4 /* Utils */,
+				8315AB492A196BC3009325D4 /* Lifecycle */,
+				839152AD2938175500D375DC /* Views */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				839152B0293913D200D375DC /* ContentView.swift */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -134,47 +134,47 @@
 			path = iosStarWars;
 			sourceTree = "<group>";
 		};
-		8315AB442A196A2E009325D4 /* home */ = {
+		8315AB442A196A2E009325D4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				7555FF82242A565900829871 /* HomeView.swift */,
 			);
-			path = home;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		8315AB452A196A36009325D4 /* resources */ = {
+		8315AB452A196A36009325D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				838369682940345C00D0131F /* ResourcesView.swift */,
 			);
-			path = resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		8315AB462A196A40009325D4 /* resource */ = {
+		8315AB462A196A40009325D4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				839152B4293BEED100D375DC /* ResourceView.swift */,
 			);
-			path = resource;
+			path = Resource;
 			sourceTree = "<group>";
 		};
-		8315AB472A196A64009325D4 /* search */ = {
+		8315AB472A196A64009325D4 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				839152AE2938187900D375DC /* SearchView.swift */,
 			);
-			path = search;
+			path = Search;
 			sourceTree = "<group>";
 		};
-		8315AB482A196A71009325D4 /* settings */ = {
+		8315AB482A196A71009325D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				839152B22939158600D375DC /* SettingsView.swift */,
 			);
-			path = settings;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		8315AB492A196BC3009325D4 /* lifecycle */ = {
+		8315AB492A196BC3009325D4 /* Lifecycle */ = {
 			isa = PBXGroup;
 			children = (
 				832F1F462951344D00C22FD6 /* RootResourcesState.swift */,
@@ -182,17 +182,17 @@
 				83D559D52A1F638800E95C68 /* ResourceState.swift */,
 				83D778BB2A2567BD009E744C /* SearchState.swift */,
 			);
-			path = lifecycle;
+			path = Lifecycle;
 			sourceTree = "<group>";
 		};
-		8315AB4A2A196C29009325D4 /* utils */ = {
+		8315AB4A2A196C29009325D4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		8315AB4B2A196E00009325D4 /* components */ = {
+		8315AB4B2A196E00009325D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				83D559D72A1FAE3E00E95C68 /* ItemContent.swift */,
@@ -200,30 +200,30 @@
 				8315AB4E2A196E79009325D4 /* RetryContent.swift */,
 				838394C72A1F53FC00C14911 /* CellContent.swift */,
 			);
-			path = components;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		839152AD2938175500D375DC /* views */ = {
+		839152AD2938175500D375DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8315AB4B2A196E00009325D4 /* components */,
-				8315AB482A196A71009325D4 /* settings */,
-				8315AB472A196A64009325D4 /* search */,
-				8315AB462A196A40009325D4 /* resource */,
-				8315AB452A196A36009325D4 /* resources */,
-				8315AB442A196A2E009325D4 /* home */,
+				8315AB4B2A196E00009325D4 /* Components */,
+				8315AB482A196A71009325D4 /* Settings */,
+				8315AB472A196A64009325D4 /* Search */,
+				8315AB462A196A40009325D4 /* Resource */,
+				8315AB452A196A36009325D4 /* Resources */,
+				8315AB442A196A2E009325D4 /* Home */,
 			);
-			path = views;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		83D778B42A237987009E744C /* models */ = {
+		83D778B42A237987009E744C /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				83D778B52A23799C009E744C /* ResourceToken.swift */,
 				83D778B72A2379D9009E744C /* PagedItems.swift */,
 				83D778B92A237ABE009E744C /* Item.swift */,
 			);
-			path = models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BA2A4BFF52982BF3093728EF /* Frameworks */ = {

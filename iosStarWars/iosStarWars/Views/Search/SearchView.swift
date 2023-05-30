@@ -44,7 +44,11 @@ struct SearchView: View {
                     RetryContent(
                         error: errorMessage,
                         retry: {
-                            
+                            if (currentTokens.count == 1) {
+                                searchState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
+                            } else {
+                                showingSearchErrorAlert.toggle()
+                            }
                         }
                     )
                 }
