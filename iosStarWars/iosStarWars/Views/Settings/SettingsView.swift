@@ -12,6 +12,16 @@ struct SettingsView: View {
     
     @Environment(\.openURL) private var openURL
     
+    @State private var isLightTheme = true
+    
+    var themeName: String {
+        if (isLightTheme) {
+            return "Light"
+        } else {
+            return "Dark"
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -21,8 +31,12 @@ struct SettingsView: View {
                             Image(systemName: "paintpalette")
                             Text("Theme")
                             Spacer()
-                            Text("Light")
+                            Text(themeName)
                                 .fontWeight(.light)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            isLightTheme.toggle()
                         }
                     }
                     Section {
