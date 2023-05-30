@@ -13,9 +13,9 @@ struct SearchView: View {
     @EnvironmentObject var rootResourcesState: RootResourcesState
     @EnvironmentObject var searchState: SearchState
     
-    @State private var query = ""
-    
     @State private var currentTokens = [ResourceToken]([])
+    @State private var showingSearchErrorAlert = false
+    @State private var query = ""
     
     var body: some View {
         NavigationView {
@@ -42,7 +42,7 @@ struct SearchView: View {
                 
                 if let errorMessage = searchState.error {
                     RetryContent(
-                        error: errorMessage,
+                        error: "errorMessage",
                         retry: {
                             
                         }
@@ -60,7 +60,7 @@ struct SearchView: View {
             .searchSuggestions({
                 if (currentTokens.isEmpty) {
                     ScrollView(.vertical, showsIndicators: false) {
-                        LazyVStack {
+                        VStack {
                             if let resourcesDictionary = rootResourcesState.resources {
                                 ForEach(Array(resourcesDictionary), id:\.key) { key, value in
                                     HStack {
@@ -82,49 +82,22 @@ struct SearchView: View {
                             }
                         }
                     }
-                    .background(.white)
                 }
             })
             .onSubmit(of: .search) {
-                print(query)
-                print(currentTokens)
-                searchState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
+                if (currentTokens.count == 1) {
+                    searchState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
+                } else {
+                    showingSearchErrorAlert.toggle()
+                }
             }
         }
-    }
-    
-}
-
-struct Token: Identifiable {
-    let id = UUID()
-    let value: String
-}
-    
-struct SearchingView: View {
-    @State private var query = ""
-    @State private var tokens: [Token] = []
-    @State private var suggestedTokens: [Token] = [
-        .init(value: "Token1"),
-        .init(value: "Token2"),
-        .init(value: "Token3"),
-        .init(value: "Token4")
-    ]
-    
-    var body: some View {
-        NavigationStack {
-            List {
-                // ...
-            }
-            .searchable(
-                text: $query,
-                tokens: $tokens,
-                suggestedTokens: $suggestedTokens
-            ) { token in
-                Text(verbatim: token.value)
-            }
-            .navigationTitle("Search")
+        .alert("Select A Type Of Resource You Would Like To Search", isPresented: $showingSearchErrorAlert) {
+            Button("OK", role: .cancel) { }
         }
+        
     }
+    
 }
 
 struct SearchView_Previews: PreviewProvider {
