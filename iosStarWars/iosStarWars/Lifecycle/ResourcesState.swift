@@ -166,7 +166,7 @@ class ResourcesState: ObservableObject {
                 return species.map(
                     {
                         (species) -> Item in
-                        Item(name: species.name, date: species.created)
+                        Item(name: species.name, date: species.created, url: species.url)
                     })
             default:
                 return [Item(name: "Name", date: "Date", url: "Url")]
