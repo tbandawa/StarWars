@@ -12,4 +12,5 @@ struct Item: Identifiable, Equatable {
     var id = UUID()
     var name: String
     var date: String
+    var string: Url
 }

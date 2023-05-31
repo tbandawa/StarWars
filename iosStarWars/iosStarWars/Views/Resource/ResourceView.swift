@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ResourceView: View {
     
+    
+    
     var body: some View {
         Text("Resource infomation")
             .navigationBarTitle("Resource")
