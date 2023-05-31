@@ -140,40 +140,40 @@ class SearchState: ObservableObject {
                 return people.map(
                     {
                         (person) -> Item in
-                        Item(name: person.name, date: person.created)
+                        Item(name: person.name, date: person.created, url: person.url)
                     })
             case let planets as [Planet]:
                 return planets.map(
                     {
                         (planet) -> Item in
-                        Item(name: planet.name, date: planet.created)
+                        Item(name: planet.name, date: planet.created, url: planet.url)
                     })
             case let films as [Film]:
                 return films.map(
                     {
                         (film) -> Item in
-                        Item(name: film.title, date: film.created)
+                        Item(name: film.title, date: film.created, url: film.url)
                     })
             case let starships as [Starship]:
                 return starships.map(
                     {
                         (starship) -> Item in
-                        Item(name: starship.name, date: starship.created)
+                        Item(name: starship.name, date: starship.created, url: starship.url)
                     })
             case let vehicles as [Vehicle]:
                 return vehicles.map(
                     {
                         (vehicle) -> Item in
-                        Item(name: vehicle.name, date: vehicle.created)
+                        Item(name: vehicle.name, date: vehicle.created, url: vehicle.url)
                     })
             case let species as [Species]:
                 return species.map(
                     {
                         (species) -> Item in
-                        Item(name: species.name, date: species.created)
+                        Item(name: species.name, date: species.created, url: species.url)
                     })
             default:
-                return [Item(name: "Name", date: "Date")]
+                return [Item(name: "Name", date: "Date", url: "Url")]
         }
     }
     
