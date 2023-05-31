@@ -14,7 +14,7 @@ struct ResourceView: View {
     
     var body: some View {
         Text("Resource infomation => name: \(item.name), date: \(item.date), url: \(item.url)")
-            .navigationBarTitle("Resource")
+            .navigationBarTitle(item.name)
     }
 }
 
