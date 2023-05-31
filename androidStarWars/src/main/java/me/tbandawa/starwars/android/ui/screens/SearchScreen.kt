@@ -12,7 +12,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -22,14 +21,14 @@ import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.RootResource
 import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
-import starwars.data.viewmodel.StarWarsViewModel
+import starwars.data.viewmodel.RootViewModel
 import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
-    starWarsViewModel: StarWarsViewModel
+    rootViewModel: RootViewModel
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -37,7 +36,7 @@ fun SearchScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val viewModel = remember { starWarsViewModel }
+        val viewModel = remember { rootViewModel }
         val rootResources by viewModel.rootResources.collectAsState()
 
         Scaffold(

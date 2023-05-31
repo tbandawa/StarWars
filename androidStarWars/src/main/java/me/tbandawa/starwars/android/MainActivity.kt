@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.screens.MainScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
-import starwars.data.viewmodel.StarWarsViewModel
+import starwars.data.viewmodel.RootViewModel
 
 @Composable
 fun MyApplicationTheme(
@@ -59,13 +59,13 @@ fun MyApplicationTheme(
 
 class MainActivity : ComponentActivity(), KoinComponent {
 
-    private val viewModel: StarWarsViewModel by viewModel()
+    private val rootViewModel: RootViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                MainScreen(viewModel)
+                MainScreen(rootViewModel)
             }
         }
     }

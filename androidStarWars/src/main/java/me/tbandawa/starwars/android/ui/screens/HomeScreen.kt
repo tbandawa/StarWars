@@ -22,12 +22,12 @@ import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.RootResource
 import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
-import starwars.data.viewmodel.StarWarsViewModel
+import starwars.data.viewmodel.RootViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    starWarsViewModel: StarWarsViewModel
+    starWarsViewModel: RootViewModel
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),

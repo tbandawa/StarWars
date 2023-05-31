@@ -20,13 +20,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
-import starwars.data.viewmodel.StarWarsViewModel
+import starwars.data.viewmodel.RootViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
-    viewModel: StarWarsViewModel
+    viewModel: RootViewModel
 ) {
 
     val navController = rememberNavController()
@@ -46,7 +46,7 @@ fun MainScreen(
 
 @Composable
 fun MainNavigation(
-    viewModel: StarWarsViewModel,
+    viewModel: RootViewModel,
     navController: NavHostController
 ) {
     NavHost(
