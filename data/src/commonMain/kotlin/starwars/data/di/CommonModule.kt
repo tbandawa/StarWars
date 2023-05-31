@@ -6,7 +6,10 @@ import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 import starwars.data.repo.StarWarsRepo
 import starwars.data.api.StarWarsApi
-import starwars.data.viewmodel.StarWarsViewModel
+import starwars.data.viewmodel.ResourceViewModel
+import starwars.data.viewmodel.ResourcesViewModel
+import starwars.data.viewmodel.RootViewModel
+import starwars.data.viewmodel.SearchViewModel
 
 fun initKoin(appDeclaration: KoinAppDeclaration) = startKoin {
     appDeclaration()
@@ -26,12 +29,18 @@ private val repoModule = module {
 }
 
 private val viewModule = module {
-    single { StarWarsViewModel(get()) }
+    single { RootViewModel(get()) }
+    single { ResourcesViewModel(get()) }
+    single { SearchViewModel(get()) }
+    single { ResourceViewModel(get()) }
 }
 
 @Suppress("unused")
 object KotlinDependencies : KoinComponent {
-    fun getStarWarsViewModel() = getKoin().get<StarWarsViewModel>()
+    fun getRootViewModel() = getKoin().get<RootViewModel>()
+    fun getResourcesViewModel() = getKoin().get<ResourcesViewModel>()
+    fun getSearchViewModel() = getKoin().get<SearchViewModel>()
+    fun getResourceViewModel() = getKoin().get<ResourceViewModel>()
 }
 
 fun initKoin() = initKoin {}
