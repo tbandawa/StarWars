@@ -10,16 +10,16 @@ import SwiftUI
 
 struct ResourceView: View {
     
-    
+    var item: Item
     
     var body: some View {
-        Text("Resource infomation")
+        Text("Resource infomation => name: \(item.name), date: \(item.date), url: \(item.url)")
             .navigationBarTitle("Resource")
     }
 }
 
 struct ResourceView_Previews: PreviewProvider {
     static var previews: some View {
-        ResourceView()
+        ResourceView(item: Item(name: "name", date: "date", url: "url"))
     }
 }

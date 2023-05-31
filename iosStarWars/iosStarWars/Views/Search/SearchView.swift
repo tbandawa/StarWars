@@ -24,7 +24,7 @@ struct SearchView: View {
                 
                 if let items = searchState.items {
                     List(items) { item in
-                        NavigationLink(destination: ResourceView(title: key.capitalized)){
+                        NavigationLink(destination: ResourceView(item: item)){
                             ItemContent(name: item.name, date: item.date)
                                 .listRowSeparator(.hidden)
                                 .onAppear {
