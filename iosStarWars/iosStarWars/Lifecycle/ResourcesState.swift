@@ -20,11 +20,11 @@ class ResourcesState: ObservableObject {
     // Track resource pages
     var resources: PagedItems?
     
-    private var viewModel: StarWarsViewModel
+    private var viewModel: ResourcesViewModel
     
     // Start registering observables and
     init() {
-        viewModel = KotlinDependencies.shared.getStarWarsViewModel()
+        viewModel = KotlinDependencies.shared.getResourcesViewModel()
         viewModel.observeResourceItems { result in
             // Loop resource availability states
             switch result {

@@ -18,10 +18,10 @@ class ResourceState: ObservableObject {
     @Published var resources: Any?
     @Published var error: String?
     
-    private var viewModel: StarWarsViewModel
+    private var viewModel: ResourceViewModel
     
     init() {
-        viewModel = KotlinDependencies.shared.getStarWarsViewModel()
+        viewModel = KotlinDependencies.shared.getResourceViewModel()
         viewModel.observeResourceItem { result in
             switch result {
                 case _ as ResourceResultLoading:

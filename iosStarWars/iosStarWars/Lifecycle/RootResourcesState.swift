@@ -16,10 +16,10 @@ class RootResourcesState: ObservableObject {
     @Published var resources: [String:String]?
     @Published var error: String?
      
-    private var viewModel: StarWarsViewModel
+    private var viewModel: RootViewModel
     
     init() {
-        viewModel = KotlinDependencies.shared.getStarWarsViewModel()
+        viewModel = KotlinDependencies.shared.getRootViewModel()
         viewModel.observeRootResources { result in
             switch result {
                 case _ as ResourceResultLoading:
