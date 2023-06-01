@@ -45,8 +45,10 @@ class ResourceState: ObservableObject {
         }
     }
     
-    func getResource(resourceType: String, resourceId: Int32) {
-        viewModel.getResource(resourceType: resourceType, resourceId: resourceId)
+    func getResource(resourceUrl: String) {
+        let url = URL(string: resourceUrl)!
+        let paths = url.path.components(separatedBy: "/")
+        viewModel.getResource(resourceType: paths[2], resourceId: Int32(paths[3])!)
     }
     
     deinit {

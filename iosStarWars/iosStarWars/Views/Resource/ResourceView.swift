@@ -12,8 +12,13 @@ struct ResourceView: View {
     
     var item: Item
     
+    @EnvironmentObject var resourceState: ResourceState
+    
     var body: some View {
         Text("Resource infomation => name: \(item.name), date: \(item.date), url: \(item.url)")
+            .onAppear {
+                resourceState.getResource(resourceUrl: item.url)
+            }
             .navigationBarTitle(item.name)
     }
 }
