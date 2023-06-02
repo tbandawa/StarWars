@@ -24,15 +24,14 @@ struct SearchView: View {
                 
                 if let items = searchState.items {
                     List(items) { item in
-                        NavigationLink(destination: ResourceView(item: item)){
-                            ItemContent(name: item.name, date: item.date)
-                                .listRowSeparator(.hidden)
-                                .onAppear {
-                                    if (items.last == item) {
-                                        searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
-                                    }
+                        ItemContent(name: item.name, date: item.date)
+                            .listRowSeparator(.hidden)
+                            .onAppear {
+                                if (items.last == item) {
+                                    searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
                                 }
-                        }
+                            }
+                            .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
                     }
                 }
                 

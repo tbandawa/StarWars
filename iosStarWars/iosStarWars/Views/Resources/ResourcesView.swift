@@ -19,15 +19,14 @@ struct ResourcesView: View {
         ZStack {
             if let items = resourcesState.items {
                 List(items) { item in
-                    NavigationLink(destination: ResourceView(item: item)){
-                        ItemContent(name: item.name, date: item.date)
-                            .listRowSeparator(.hidden)
-                            .onAppear {
-                                if (items.last == item) {
-                                    resourcesState.getMoreResources(resourceType: title.lowercased())
-                                }
+                    ItemContent(name: item.name, date: item.date)
+                        .listRowSeparator(.hidden)
+                        .onAppear {
+                            if (items.last == item) {
+                                resourcesState.getMoreResources(resourceType: title.lowercased())
                             }
-                    }
+                        }
+                        .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
                 }
             }
             if resourcesState.loading {
@@ -49,10 +48,14 @@ struct ResourcesView: View {
         }
         .navigationTitle(title)
         .onAppear {
-            resourcesState.getResources(
-                resourceType: title.lowercased(),
-                page: 1
-            )
+            if let items = resourcesState.items {
+                if (items.count == 0 || title != resourcesState.resources?.type) {
+                    resourcesState.getResources(
+                        resourceType: title.lowercased(),
+                        page: 1
+                    )
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

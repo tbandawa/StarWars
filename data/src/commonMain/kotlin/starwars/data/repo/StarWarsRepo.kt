@@ -17,7 +17,6 @@ import starwars.data.models.Vehicle
 import starwars.data.state.ResourceResult
 
 class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
-
     suspend fun getRootResources(): Flow<ResourceResult<RootResource>> = flow {
         emit(ResourceResult.Loading)
         emit(handleApiCall {

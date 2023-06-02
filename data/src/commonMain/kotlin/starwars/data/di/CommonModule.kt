@@ -2,6 +2,7 @@ package starwars.data.di
 
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 import starwars.data.repo.StarWarsRepo
@@ -21,18 +22,18 @@ fun initKoin(appDeclaration: KoinAppDeclaration) = startKoin {
 }
 
 private val apiModule = module {
-    single { StarWarsApi() }
+    singleOf(::StarWarsApi)
 }
 
 private val repoModule = module {
-    factory { StarWarsRepo(get()) }
+    singleOf(::StarWarsRepo)
 }
 
 private val viewModule = module {
-    single { RootViewModel(get()) }
-    single { ResourcesViewModel(get()) }
-    single { SearchViewModel(get()) }
-    single { ResourceViewModel(get()) }
+    singleOf(::RootViewModel)
+    singleOf(::ResourcesViewModel)
+    singleOf(::SearchViewModel)
+    singleOf(::ResourceViewModel)
 }
 
 @Suppress("unused")

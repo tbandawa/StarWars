@@ -9,6 +9,7 @@
 import Foundation
 
 struct PagedItems {
+    var type: String
     var count: Int64
     var next: String?
     var previous: String?
