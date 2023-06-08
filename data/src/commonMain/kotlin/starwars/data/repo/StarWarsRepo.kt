@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import starwars.data.api.BaseApiCall
 import starwars.data.api.StarWarsApi
+import starwars.data.models.BaseResource
 import starwars.data.models.RootResource
 import starwars.data.models.ErrorResponse
 import starwars.data.models.Film
@@ -17,6 +18,7 @@ import starwars.data.models.Vehicle
 import starwars.data.state.ResourceResult
 
 class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
+
     suspend fun getRootResources(): Flow<ResourceResult<RootResource>> = flow {
         emit(ResourceResult.Loading)
         emit(handleApiCall {

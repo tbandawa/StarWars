@@ -49,7 +49,7 @@ struct ResourcesView: View {
         .navigationTitle(title)
         .onAppear {
             if let items = resourcesState.items {
-                if (items.count == 0 || title != resourcesState.resources?.type) {
+                if (items.count == 0 && title != resourcesState.resources?.type) {
                     resourcesState.getResources(
                         resourceType: title.lowercased(),
                         page: 1

@@ -25,7 +25,10 @@ class ResourcesState: ObservableObject {
     // Start registering observables and
     init() {
         viewModel = KotlinDependencies.shared.getResourcesViewModel()
-        viewModel.observeResourceItems { result in
+        viewModel.observeResourceItems{ itemsList in
+            self.items = self.mapToItems(resources: itemsList)
+        }
+        viewModel.observeResourceResults { result in
             // Loop resource availability states
             switch result {
                 case _ as ResourceResultLoading:
@@ -40,7 +43,6 @@ class ResourcesState: ObservableObject {
                     // append to items array and keep base result info
                     switch success {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: people.data!.results))
                             self.resources = PagedItems(
                                 type: "people",
                                 count: people.data!.count,
@@ -49,7 +51,6 @@ class ResourcesState: ObservableObject {
                             )
                     
                         case let planets as ResourceResultSuccess<BaseResource<Planet>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: planets.data!.results))
                             self.resources = PagedItems(
                                 type: "planets",
                                 count: planets.data!.count,
@@ -58,7 +59,6 @@ class ResourcesState: ObservableObject {
                             )
                     
                         case let films as ResourceResultSuccess<BaseResource<Film>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: films.data!.results))
                             self.resources = PagedItems(
                                 type: "films",
                                 count: films.data!.count,
@@ -67,7 +67,6 @@ class ResourcesState: ObservableObject {
                             )
                     
                         case let starships as ResourceResultSuccess<BaseResource<Starship>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: starships.data!.results))
                             self.resources = PagedItems(
                                 type: "starships",
                                 count: starships.data!.count,
@@ -76,7 +75,6 @@ class ResourcesState: ObservableObject {
                             )
                 
                         case let vehicles as ResourceResultSuccess<BaseResource<Vehicle>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: vehicles.data!.results))
                             self.resources = PagedItems(
                                 type: "vehicles",
                                 count: vehicles.data!.count,
@@ -85,7 +83,6 @@ class ResourcesState: ObservableObject {
                             )
                 
                         case let species as ResourceResultSuccess<BaseResource<Species>>:
-                            self.items?.append(contentsOf: self.mapToItems(resources: species.data!.results))
                             self.resources = PagedItems(
                                 type: "species",
                                 count: species.data!.count,
