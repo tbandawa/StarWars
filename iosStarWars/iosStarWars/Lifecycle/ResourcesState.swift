@@ -15,11 +15,11 @@ class ResourcesState: ObservableObject {
     // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
-    @Published var items: [Item] = []
-    @Published var resourceType = String()
+    @Published var items: [Item]?
     
     // Track resource pages
-    @Published var resources: PagedItems?
+    var resources: PagedItems?
+    var resourceType = String()
     
     private var viewModel: ResourcesViewModel
     
@@ -86,7 +86,7 @@ class ResourcesState: ObservableObject {
                             )
                     
                         default:
-                            let _ = print(success)
+                            let _ = print()
                     }
                 
                 case let error as ResourceResultError<ErrorResponse>?:
@@ -131,36 +131,42 @@ class ResourcesState: ObservableObject {
     func mapToItems(resources: [Any])-> [Item] {
         switch resources {
             case let people as [Person]:
+                self.resourceType = "people"
                 return people.map(
                     {
                         (person) -> Item in
                         Item(name: person.name, date: person.created, url: person.url)
                     })
             case let planets as [Planet]:
+                self.resourceType = "planets"
                 return planets.map(
                     {
                         (planet) -> Item in
                         Item(name: planet.name, date: planet.created, url: planet.url)
                     })
             case let films as [Film]:
+                self.resourceType = "films"
                 return films.map(
                     {
                         (film) -> Item in
                         Item(name: film.title, date: film.created, url: film.url)
                     })
             case let starships as [Starship]:
+                self.resourceType = "starships"
                 return starships.map(
                     {
                         (starship) -> Item in
                         Item(name: starship.name, date: starship.created, url: starship.url)
                     })
             case let vehicles as [Vehicle]:
+                self.resourceType = "vehicles"
                 return vehicles.map(
                     {
                         (vehicle) -> Item in
                         Item(name: vehicle.name, date: vehicle.created, url: vehicle.url)
                     })
             case let species as [Species]:
+                self.resourceType = "species"
                 return species.map(
                     {
                         (species) -> Item in
