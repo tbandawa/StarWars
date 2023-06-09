@@ -15,7 +15,8 @@ class SearchState: ObservableObject {
     // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
-    @Published var items: [Item]? = []
+    @Published var items: [Item] = []
+    @Published var resourceType = String()
     
     // Track resource pages
     var resources: PagedItems?
@@ -25,7 +26,10 @@ class SearchState: ObservableObject {
     // Start registering observables and
     init() {
         viewModel = KotlinDependencies.shared.getSearchViewModel()
-        viewModel.observeResourceItems { result in
+        viewModel.observeResourceItems{ itemsList in
+            self.items = self.mapToItems(resources: itemsList)
+        }
+        viewModel.observeResourceResults { result in
             // Loop resource availability states
             switch result {
                 case _ as ResourceResultLoading:
@@ -40,54 +44,42 @@ class SearchState: ObservableObject {
                     // append to items array and keep base result info
                     switch success {
                     case let people as ResourceResultSuccess<BaseResource<Person>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: people.data!.results))
                         self.resources = PagedItems(
-                            type: "people",
                             count: people.data!.count,
                             next: people.data?.next,
                             previous: people.data?.previous
                         )
                 
                     case let planets as ResourceResultSuccess<BaseResource<Planet>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: planets.data!.results))
                         self.resources = PagedItems(
-                            type: "planets",
                             count: planets.data!.count,
                             next: planets.data?.next,
                             previous: planets.data?.previous
                         )
                 
                     case let films as ResourceResultSuccess<BaseResource<Film>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: films.data!.results))
                         self.resources = PagedItems(
-                            type: "films",
                             count: films.data!.count,
                             next: films.data?.next,
                             previous: films.data?.previous
                         )
                 
                     case let starships as ResourceResultSuccess<BaseResource<Starship>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: starships.data!.results))
                         self.resources = PagedItems(
-                            type: "starships",
                             count: starships.data!.count,
                             next: starships.data?.next,
                             previous: starships.data?.previous
                         )
             
                     case let vehicles as ResourceResultSuccess<BaseResource<Vehicle>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: vehicles.data!.results))
                         self.resources = PagedItems(
-                            type: "vehicles",
                             count: vehicles.data!.count,
                             next: vehicles.data?.next,
                             previous: vehicles.data?.previous
                         )
             
                     case let species as ResourceResultSuccess<BaseResource<Species>>:
-                        self.items?.append(contentsOf: self.mapToItems(resources: species.data!.results))
                         self.resources = PagedItems(
-                            type: "species",
                             count: species.data!.count,
                             next: species.data?.next,
                             previous: species.data?.previous

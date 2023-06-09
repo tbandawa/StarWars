@@ -15,10 +15,11 @@ class ResourcesState: ObservableObject {
     // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
-    @Published var items: [Item]? = []
+    @Published var items: [Item] = []
+    @Published var resourceType = String()
     
     // Track resource pages
-    var resources: PagedItems?
+    @Published var resources: PagedItems?
     
     private var viewModel: ResourcesViewModel
     
@@ -44,7 +45,6 @@ class ResourcesState: ObservableObject {
                     switch success {
                         case let people as ResourceResultSuccess<BaseResource<Person>>:
                             self.resources = PagedItems(
-                                type: "people",
                                 count: people.data!.count,
                                 next: people.data?.next,
                                 previous: people.data?.previous
@@ -52,7 +52,6 @@ class ResourcesState: ObservableObject {
                     
                         case let planets as ResourceResultSuccess<BaseResource<Planet>>:
                             self.resources = PagedItems(
-                                type: "planets",
                                 count: planets.data!.count,
                                 next: planets.data?.next,
                                 previous: planets.data?.previous
@@ -60,7 +59,6 @@ class ResourcesState: ObservableObject {
                     
                         case let films as ResourceResultSuccess<BaseResource<Film>>:
                             self.resources = PagedItems(
-                                type: "films",
                                 count: films.data!.count,
                                 next: films.data?.next,
                                 previous: films.data?.previous
@@ -68,7 +66,6 @@ class ResourcesState: ObservableObject {
                     
                         case let starships as ResourceResultSuccess<BaseResource<Starship>>:
                             self.resources = PagedItems(
-                                type: "starships",
                                 count: starships.data!.count,
                                 next: starships.data?.next,
                                 previous: starships.data?.previous
@@ -76,7 +73,6 @@ class ResourcesState: ObservableObject {
                 
                         case let vehicles as ResourceResultSuccess<BaseResource<Vehicle>>:
                             self.resources = PagedItems(
-                                type: "vehicles",
                                 count: vehicles.data!.count,
                                 next: vehicles.data?.next,
                                 previous: vehicles.data?.previous
@@ -84,7 +80,6 @@ class ResourcesState: ObservableObject {
                 
                         case let species as ResourceResultSuccess<BaseResource<Species>>:
                             self.resources = PagedItems(
-                                type: "species",
                                 count: species.data!.count,
                                 next: species.data?.next,
                                 previous: species.data?.previous

@@ -28,6 +28,9 @@ struct ResourcesView: View {
                         }
                         .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
                 }
+                .onAppear {
+                    print("onAppear() List \(title.lowercased()) vs \(resourcesState.resources!.type)")
+                }
             }
             if resourcesState.loading {
                 if (resourcesState.items?.count == 0) {
@@ -48,16 +51,26 @@ struct ResourcesView: View {
         }
         .navigationTitle(title)
         .onAppear {
+            print("\n")
+            print("onAppear() \(title.lowercased()) vs \(resourcesState.resources?.type)")
+            print("\n")
             if let items = resourcesState.items {
-                if (items.count == 0 && title != resourcesState.resources?.type) {
+                if (items.count == 0 && title.lowercased() != resourcesState.resources?.type) {
                     resourcesState.getResources(
                         resourceType: title.lowercased(),
                         page: 1
                     )
+                } else {
+                    //print("\n")
+                    //print("-----------------------------------------------------------not (items.count == 0 && title != resourcesState.resources?.type)")
+                    //print("\n")
                 }
+            } else {
+                //print("\n")
+                //print("-----------------------------------------------------------items are null")
+                //print("\n")
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

@@ -15,7 +15,7 @@ import data
 class ResourceState: ObservableObject {
     
     @Published var loading = false
-    @Published var resources: Any?
+    @Published var resource: Any?
     @Published var error: String?
     
     private var viewModel: ResourceViewModel
@@ -25,17 +25,17 @@ class ResourceState: ObservableObject {
         viewModel.observeResourceItem { result in
             switch result {
                 case _ as ResourceResultLoading:
-                    self.resources = nil
+                    self.resource = nil
                     self.loading = true
                     self.error = nil
                 
                 case let success as Any:
-                    print(success)
+                    self.resource = success
                     self.loading = false
                     self.error = nil
                 
                 case let error as ResourceResultError<ErrorResponse>?:
-                    self.resources = nil
+                    self.resource = nil
                     self.loading = false
                     self.error = error?.data!.detail!
                 
