@@ -18,7 +18,7 @@ class ResourcesState: ObservableObject {
     @Published var items: [Item]?
     
     // Track resource pages
-    var resources: PagedItems?
+    private var resources: PagedItems?
     var resourceType = String()
     
     private var viewModel: ResourcesViewModel

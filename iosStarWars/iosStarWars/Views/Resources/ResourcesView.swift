@@ -17,6 +17,7 @@ struct ResourcesView: View {
     
     var body: some View {
         ZStack {
+            
             if let items = resourcesState.items {
                 List(items) { item in
                     ItemContent(name: item.name, date: item.date)
@@ -29,11 +30,13 @@ struct ResourcesView: View {
                         .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
                 }
             }
+            
             if resourcesState.loading {
                 if (resourcesState.items?.count == 0) {
                     LoadingContent()
                 }
             }
+            
             if let errorMessage = resourcesState.error {
                 RetryContent(
                     error: errorMessage,
@@ -45,6 +48,7 @@ struct ResourcesView: View {
                     }
                 )
             }
+            
         }
         .navigationTitle(title)
         .onAppear {
