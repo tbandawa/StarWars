@@ -48,20 +48,14 @@ struct ResourcesView: View {
         }
         .navigationTitle(title)
         .onAppear {
-            print("onAppear(): \(title.lowercased()) vs \(String(describing: resourcesState.resourceType))")
-            if let items = resourcesState.items {
+            if resourcesState.items != nil {
                 if (title.lowercased() != resourcesState.resourceType) {
                     resourcesState.getResources(
                         resourceType: title.lowercased(),
                         page: 1
                     )
-                } else {
-                    print("-----------------------------------------------------------not (items.count == 0 && title != resourcesState.resources?.type)")
                 }
-            } else {
-                print("-----------------------------------------------------------items are null")
             }
-            print("\n")
         }
     }
 }
