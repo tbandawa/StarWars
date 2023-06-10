@@ -7,19 +7,60 @@
 //
 
 import SwiftUI
+import data
 
 struct ResourceView: View {
     
-    var item: Item
-    
     @EnvironmentObject var resourceState: ResourceState
     
+    var item: Item
+    
     var body: some View {
-        Text("Resource infomation => name: \(item.name), date: \(item.date), url: \(item.url)")
-            .onAppear {
-                resourceState.getResource(resourceUrl: item.url)
+        ZStack {
+            
+            if let resource = resourceState.resource {
+                switch resource {
+                    case let person as ResourceResultSuccess<Person>:
+                        Text("\(person)")
+            
+                    case let planet as ResourceResultSuccess<Planet>:
+                        Text("\(planet)")
+            
+                    case let film as ResourceResultSuccess<Film>:
+                        Text("\(film)")
+            
+                    case let starship as ResourceResultSuccess<Starship>:
+                        Text("\(starship)")
+        
+                    case let vehicle as ResourceResultSuccess<Vehicle>:
+                        Text("\(vehicle)")
+        
+                    case let species as ResourceResultSuccess<Species>:
+                        Text("\(species)")
+            
+                    default:
+                        let _ = print()
+                }
             }
-            .navigationBarTitle(item.name)
+            
+            if resourceState.loading {
+                LoadingContent()
+            }
+            
+            if let errorMessage = resourceState.error {
+                RetryContent(
+                    error: errorMessage,
+                    retry: {
+                        resourceState.getResource(resourceUrl: item.url)
+                    }
+                )
+            }
+            
+        }
+        .onAppear {
+            resourceState.getResource(resourceUrl: item.url)
+        }
+        .navigationBarTitle(item.name)
     }
 }
 
