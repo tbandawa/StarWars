@@ -43,7 +43,7 @@ struct ResourceView: View {
                 }
             }
             
-            if resourceState.loading {
+            if resourceState.loading ?? false {
                 LoadingContent()
             }
             
@@ -67,5 +67,6 @@ struct ResourceView: View {
 struct ResourceView_Previews: PreviewProvider {
     static var previews: some View {
         ResourceView(item: Item(name: "name", date: "date", url: "url"))
+            .environmentObject(ResourceState())
     }
 }
