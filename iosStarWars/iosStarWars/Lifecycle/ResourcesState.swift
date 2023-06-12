@@ -15,7 +15,7 @@ class ResourcesState: ObservableObject {
     // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
-    @Published var items: [Item]?
+    @Published var items: [Item]? = []
     
     // Track resource pages
     private var resources: PagedItems?
@@ -86,7 +86,7 @@ class ResourcesState: ObservableObject {
                             )
                     
                         default:
-                            let _ = print()
+                            break
                     }
                 
                 case let error as ResourceResultError<ErrorResponse>?:

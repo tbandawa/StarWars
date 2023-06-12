@@ -17,33 +17,33 @@ struct ResourceView: View {
     
     var body: some View {
         ZStack {
-            
+                        
             if let resource = resourceState.resource {
                 switch resource {
                     case let person as ResourceResultSuccess<Person>:
-                        Text("\(person)")
+                        PersonView(person: person.data!)
             
                     case let planet as ResourceResultSuccess<Planet>:
-                        Text("\(planet)")
+                        Text("\(planet.data!)")
             
                     case let film as ResourceResultSuccess<Film>:
-                        Text("\(film)")
+                        Text("\(film.data!)")
             
                     case let starship as ResourceResultSuccess<Starship>:
-                        Text("\(starship)")
+                        Text("\(starship.data!)")
         
                     case let vehicle as ResourceResultSuccess<Vehicle>:
-                        Text("\(vehicle)")
+                        Text("\(vehicle.data!)")
         
                     case let species as ResourceResultSuccess<Species>:
-                        Text("\(species)")
+                        Text("\(species.data!)")
             
                     default:
                         let _ = print()
                 }
             }
             
-            if resourceState.loading ?? false {
+            if resourceState.loading {
                 LoadingContent()
             }
             

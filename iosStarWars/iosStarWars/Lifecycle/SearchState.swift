@@ -15,7 +15,7 @@ class SearchState: ObservableObject {
     // MARK: View Change Properties
     @Published var loading = false
     @Published var error: String?
-    @Published var items: [Item]?
+    @Published var items: [Item]? = []
     
     // Track resource pages
     private var resources: PagedItems?

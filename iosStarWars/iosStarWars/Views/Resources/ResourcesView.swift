@@ -18,6 +18,8 @@ struct ResourcesView: View {
     var body: some View {
         ZStack {
             
+            
+            
             if let items = resourcesState.items {
                 List(items) { item in
                     ItemContent(name: item.name, date: item.date)
@@ -28,12 +30,6 @@ struct ResourcesView: View {
                             }
                         }
                         .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
-                }
-            }
-            
-            if resourcesState.loading {
-                if (resourcesState.items?.count == 0) {
-                    LoadingContent()
                 }
             }
             
@@ -49,16 +45,21 @@ struct ResourcesView: View {
                 )
             }
             
+            if resourcesState.loading {
+                if (resourcesState.items?.count == 0) {
+                    LoadingContent()
+                }
+            }
+            
         }
         .navigationTitle(title)
         .onAppear {
-            if resourcesState.items != nil {
-                if (title.lowercased() != resourcesState.resourceType) {
-                    resourcesState.getResources(
-                        resourceType: title.lowercased(),
-                        page: 1
-                    )
-                }
+            print("title is \(title.lowercased()), and resource type is \(resourcesState.resourceType)")
+            if (title.lowercased() != resourcesState.resourceType) {
+                resourcesState.getResources(
+                    resourceType: title.lowercased(),
+                    page: 1
+                )
             }
         }
     }
