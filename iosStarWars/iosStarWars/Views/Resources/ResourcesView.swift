@@ -18,8 +18,6 @@ struct ResourcesView: View {
     var body: some View {
         ZStack {
             
-            
-            
             if let items = resourcesState.items {
                 List(items) { item in
                     ItemContent(name: item.name, date: item.date)
@@ -55,7 +53,7 @@ struct ResourcesView: View {
         .navigationTitle(title)
         .onAppear {
             print("title is \(title.lowercased()), and resource type is \(resourcesState.resourceType)")
-            if (title.lowercased() != resourcesState.resourceType) {
+            if (title.lowercased() != resourcesState.resourceType || resourcesState.items?.count == 0) {
                 resourcesState.getResources(
                     resourceType: title.lowercased(),
                     page: 1
