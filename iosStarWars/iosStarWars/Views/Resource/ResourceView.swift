@@ -29,11 +29,11 @@ struct ResourceView: View {
                     //case let film as ResourceResultSuccess<Film>:
                         //FilmView(film: film.data!)
             
-                    case let starship as ResourceResultSuccess<Starship>:
-                    StarshipView(starship: starship.data!)
+                    //case let starship as ResourceResultSuccess<Starship>:
+                        //StarshipView(starship: starship.data!)
         
                     //case let vehicle as ResourceResultSuccess<Vehicle>:
-                        //Text("\(vehicle.data!)")
+                        //VehicleView(vehicle: vehicle.data!)
         
                     //case let species as ResourceResultSuccess<Species>:
                         //Text("\(species.data!)")
