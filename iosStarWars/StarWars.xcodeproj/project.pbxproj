@@ -31,7 +31,7 @@
 		83E15A2D2A361C600020805D /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A2C2A361C600020805D /* PersonView.swift */; };
 		83E15A2F2A361C760020805D /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A2E2A361C760020805D /* PlanetView.swift */; };
 		83E15A312A361C8C0020805D /* VehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A302A361C8C0020805D /* VehicleView.swift */; };
-		83E15A332A361D240020805D /* SpaceshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A322A361D240020805D /* SpaceshipView.swift */; };
+		83E15A332A361D240020805D /* StarshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A322A361D240020805D /* StarshipView.swift */; };
 		83E15A352A361D3B0020805D /* SpeciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A342A361D3B0020805D /* SpeciesView.swift */; };
 		83E15A372A361D550020805D /* FilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E15A362A361D550020805D /* FilmView.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +78,7 @@
 		83E15A2C2A361C600020805D /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		83E15A2E2A361C760020805D /* PlanetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		83E15A302A361C8C0020805D /* VehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleView.swift; sourceTree = "<group>"; };
-		83E15A322A361D240020805D /* SpaceshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipView.swift; sourceTree = "<group>"; };
+		83E15A322A361D240020805D /* StarshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipView.swift; sourceTree = "<group>"; };
 		83E15A342A361D3B0020805D /* SpeciesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesView.swift; sourceTree = "<group>"; };
 		83E15A362A361D550020805D /* FilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,7 +214,7 @@
 				83E15A2C2A361C600020805D /* PersonView.swift */,
 				83E15A2E2A361C760020805D /* PlanetView.swift */,
 				83E15A302A361C8C0020805D /* VehicleView.swift */,
-				83E15A322A361D240020805D /* SpaceshipView.swift */,
+				83E15A322A361D240020805D /* StarshipView.swift */,
 				83E15A342A361D3B0020805D /* SpeciesView.swift */,
 				83E15A362A361D550020805D /* FilmView.swift */,
 			);
@@ -366,7 +366,7 @@
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				83D778B62A23799C009E744C /* ResourceToken.swift in Sources */,
 				832F1F472951344D00C22FD6 /* RootResourcesState.swift in Sources */,
-				83E15A332A361D240020805D /* SpaceshipView.swift in Sources */,
+				83E15A332A361D240020805D /* StarshipView.swift in Sources */,
 				83E15A2F2A361C760020805D /* PlanetView.swift in Sources */,
 				83D559D62A1F638800E95C68 /* ResourceState.swift in Sources */,
 				83D559D82A1FAE3E00E95C68 /* ItemContent.swift in Sources */,
