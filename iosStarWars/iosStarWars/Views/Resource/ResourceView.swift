@@ -35,8 +35,8 @@ struct ResourceView: View {
                     //case let vehicle as ResourceResultSuccess<Vehicle>:
                         //VehicleView(vehicle: vehicle.data!)
         
-                    //case let species as ResourceResultSuccess<Species>:
-                        //Text("\(species.data!)")
+                    case let species as ResourceResultSuccess<Species>:
+                        SpeciesView(species: species.data!)
             
                     default:
                         let _ = print()
