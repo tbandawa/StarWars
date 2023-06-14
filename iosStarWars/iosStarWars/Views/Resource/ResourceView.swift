@@ -20,23 +20,23 @@ struct ResourceView: View {
                         
             if let resource = resourceState.resource {
                 switch resource {
-                    case let person as ResourceResultSuccess<Person>:
-                        PersonView(person: person.data!)
+                    //case let person as ResourceResultSuccess<Person>:
+                        //PersonView(person: person.data!)
             
-                    case let planet as ResourceResultSuccess<Planet>:
-                        Text("\(planet.data!)")
+                    //case let planet as ResourceResultSuccess<Planet>:
+                        //Text("\(planet.data!)")
             
                     case let film as ResourceResultSuccess<Film>:
-                        Text("\(film.data!)")
+                        FilmView(film: film.data!)
             
-                    case let starship as ResourceResultSuccess<Starship>:
-                        Text("\(starship.data!)")
+                    //case let starship as ResourceResultSuccess<Starship>:
+                        //Text("\(starship.data!)")
         
-                    case let vehicle as ResourceResultSuccess<Vehicle>:
-                        Text("\(vehicle.data!)")
+                    //case let vehicle as ResourceResultSuccess<Vehicle>:
+                        //Text("\(vehicle.data!)")
         
-                    case let species as ResourceResultSuccess<Species>:
-                        Text("\(species.data!)")
+                    //case let species as ResourceResultSuccess<Species>:
+                        //Text("\(species.data!)")
             
                     default:
                         let _ = print()
