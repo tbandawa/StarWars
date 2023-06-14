@@ -34,7 +34,7 @@ struct FilmView: View {
                     .cornerRadius(8)
                                     
                 }
-                .padding(.bottom, 15)
+                .padding(.bottom, 2)
                 
                 HStack {
                     
@@ -114,6 +114,25 @@ struct FilmView: View {
                     .background(Color.black)
                     .cornerRadius(8)
                                     
+                }
+                .padding(.bottom, 15)
+                
+                if film.characters.count > 0 {
+                    LazyVStack(alignment: .leading) {
+                        Text("Characters")
+                            .font(.system(size: 20, weight: .heavy, design: .default))
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                        ForEach(film.characters, id: \.self) { character in
+                            Text("\(character)")
+                                .padding(5)
+                                .font(.system(size: 14, weight: .regular, design: .rounded))
+                                .foregroundColor(.white)
+                                .background(.black)
+                                .cornerRadius(30)
+                        }
+                    }
+                    .padding(.bottom, 15)
                 }
                 
                 if film.planets.count > 0 {
