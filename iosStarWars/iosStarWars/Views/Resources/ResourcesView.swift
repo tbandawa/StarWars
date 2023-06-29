@@ -14,6 +14,7 @@ struct ResourcesView: View {
     var title: String
     
     @EnvironmentObject var resourcesState: ResourcesState
+    @State private var showingAlert = false
     
     var body: some View {
         ZStack {
@@ -52,13 +53,15 @@ struct ResourcesView: View {
         }
         .navigationTitle(title)
         .onAppear {
-            print("title is \(title.lowercased()), and resource type is \(resourcesState.resourceType)")
             if (title.lowercased() != resourcesState.resourceType || resourcesState.items?.count == 0) {
                 resourcesState.getResources(
                     resourceType: title.lowercased(),
                     page: 1
                 )
             }
+        }
+        .alert("Select A Type Of Resource You Would Like To Search", isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
         }
     }
 }

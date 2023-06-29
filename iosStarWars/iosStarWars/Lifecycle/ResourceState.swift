@@ -29,7 +29,7 @@ class ResourceState: ObservableObject {
                     self.loading = true
                     self.error = nil
                 
-                case let success as Any:
+                case let success as ResourceResultSuccess<AnyObject>:
                     self.resource = success
                     self.loading = false
                     self.error = nil

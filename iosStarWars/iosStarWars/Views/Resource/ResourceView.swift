@@ -13,34 +13,55 @@ struct ResourceView: View {
     
     @EnvironmentObject var resourceState: ResourceState
     
-    var item: Item
+    let item: Item
     
     var body: some View {
         ZStack {
-                        
+            
             if let resource = resourceState.resource {
-                switch resource {
-                    //case let person as ResourceResultSuccess<Person>:
-                        //PersonView(person: person.data!)
-            
-                    //case let planet as ResourceResultSuccess<Planet>:
-                        //PlanetView(planet: planet.data!)
-            
-                    //case let film as ResourceResultSuccess<Film>:
-                        //FilmView(film: film.data!)
-            
-                    //case let starship as ResourceResultSuccess<Starship>:
-                        //StarshipView(starship: starship.data!)
-        
-                    //case let vehicle as ResourceResultSuccess<Vehicle>:
-                        //VehicleView(vehicle: vehicle.data!)
-        
-                    case let species as ResourceResultSuccess<Species>:
-                        SpeciesView(species: species.data!)
-            
+                
+                switch item.type {
+                    
+                    case "people":
+                        let person = resource as! ResourceResultSuccess<Person>
+                        if "\(type(of: person.data!))" == "DataPerson" {
+                            PersonView(person: person.data!)
+                        }
+                    
+                    case "starships":
+                        let starship = resource as! ResourceResultSuccess<Starship>
+                        if "\(type(of: starship.data!))" == "DataStarship" {
+                            StarshipView(starship: starship.data!)
+                        }
+                    
+                    case "planets":
+                        let planet = resource as! ResourceResultSuccess<Planet>
+                        if "\(type(of: planet.data!))" == "DataPlanet" {
+                            PlanetView(planet: planet.data!)
+                        }
+                            
+                    case "species":
+                        let species = resource as! ResourceResultSuccess<Species>
+                        if "\(type(of: species.data!))" == "DataSpecies" {
+                            SpeciesView(species: species.data!)
+                        }
+                            
+                    case "films":
+                        let film = resource as! ResourceResultSuccess<Film>
+                        if "\(type(of: film.data!))" == "DataFilm" {
+                            FilmView(film: film.data!)
+                        }
+                            
+                    case "vehicles":
+                        let vehicle = resource as! ResourceResultSuccess<Vehicle>
+                        if "\(type(of: vehicle.data!))" == "DataVehicle" {
+                            VehicleView(vehicle: vehicle.data!)
+                        }
+                            
                     default:
-                        let _ = print()
+                        let _ = print("------------------ default")
                 }
+                
             }
             
             if resourceState.loading {
@@ -66,7 +87,7 @@ struct ResourceView: View {
 
 struct ResourceView_Previews: PreviewProvider {
     static var previews: some View {
-        ResourceView(item: Item(name: "name", date: "date", url: "url"))
+        ResourceView(item: Item(name: "name", type: "type", date: "date", url: "url"))
             .environmentObject(ResourceState())
     }
 }

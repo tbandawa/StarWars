@@ -11,6 +11,7 @@ import Foundation
 struct Item: Identifiable, Equatable {
     var id = UUID()
     var name: String
+    var type: String
     var date: String
     var url: String
 }
