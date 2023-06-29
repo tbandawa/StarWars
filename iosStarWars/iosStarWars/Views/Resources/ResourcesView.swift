@@ -60,6 +60,11 @@ struct ResourcesView: View {
                 )
             }
         }
+        .onDisappear {
+            if resourcesState.loading {
+                
+            }
+        }
         .alert("Select A Type Of Resource You Would Like To Search", isPresented: $showingAlert) {
             Button("OK", role: .cancel) { }
         }

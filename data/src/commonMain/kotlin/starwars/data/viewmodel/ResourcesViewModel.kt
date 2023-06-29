@@ -1,5 +1,6 @@
 package starwars.data.viewmodel
 
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -44,6 +45,10 @@ class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel(
                 _resourceResults.value = results
             }
         }
+    }
+
+    fun dismissJob() {
+        coroutineScope.cancel()
     }
 
     @Suppress("unused")

@@ -59,7 +59,7 @@ struct ResourceView: View {
                         }
                             
                     default:
-                        let _ = print("------------------ default")
+                        let _ = print("Unknow Resource Type")
                 }
                 
             }

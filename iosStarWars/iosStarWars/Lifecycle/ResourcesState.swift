@@ -134,7 +134,6 @@ class ResourcesState: ObservableObject {
         }
         switch resources {
             case let people as [Person]:
-                //print("-------------------- ResourcesState -> people")
                 self.resourceType = "people"
                 return people.map(
                     {
@@ -143,7 +142,6 @@ class ResourcesState: ObservableObject {
                     })
             
             case let planets as [Planet]:
-                //print("-------------------- ResourcesState -> planets")
                 self.resourceType = "planets"
                 return planets.map(
                     {
@@ -152,7 +150,6 @@ class ResourcesState: ObservableObject {
                     })
             
             case let films as [Film]:
-                //print("-------------------- ResourcesState -> films")
                 self.resourceType = "films"
                 return films.map(
                     {
@@ -161,7 +158,6 @@ class ResourcesState: ObservableObject {
                     })
             
             case let starships as [Starship]:
-                //print("-------------------- ResourcesState -> starships")
                 self.resourceType = "starships"
                 return starships.map(
                     {
@@ -170,7 +166,6 @@ class ResourcesState: ObservableObject {
                     })
             
             case let vehicles as [Vehicle]:
-                //print("-------------------- ResourcesState -> vehicles")
                 self.resourceType = "vehicles"
                 return vehicles.map(
                     {
@@ -179,7 +174,6 @@ class ResourcesState: ObservableObject {
                     })
             
             case let species as [Species]:
-                //print("-------------------- ResourcesState -> species")
                 self.resourceType = "species"
                 return species.map(
                     {
@@ -193,6 +187,7 @@ class ResourcesState: ObservableObject {
     }
     
     deinit {
+        print("ResourcesState -> deinit")
         viewModel.dispose()
     }
 }

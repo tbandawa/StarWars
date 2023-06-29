@@ -52,6 +52,7 @@ class ResourceState: ObservableObject {
     }
     
     deinit {
+        print("ResourceState -> deinit")
         viewModel.dispose()
     }
 }
