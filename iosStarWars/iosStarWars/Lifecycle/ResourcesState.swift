@@ -186,8 +186,11 @@ class ResourcesState: ObservableObject {
         }
     }
     
+    func cancelJob() {
+        viewModel.dismissJob()
+    }
+    
     deinit {
-        print("ResourcesState -> deinit")
         viewModel.dispose()
     }
 }

@@ -51,8 +51,11 @@ class ResourceState: ObservableObject {
         viewModel.getResource(resourceType: paths[2], resourceId: Int32(paths[3])!)
     }
     
+    func cancelJob() {
+        viewModel.dismissJob()
+    }
+    
     deinit {
-        print("ResourceState -> deinit")
         viewModel.dispose()
     }
 }

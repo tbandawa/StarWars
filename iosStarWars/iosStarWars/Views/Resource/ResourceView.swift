@@ -81,6 +81,11 @@ struct ResourceView: View {
         .onAppear {
             resourceState.getResource(resourceUrl: item.url)
         }
+        .onDisappear {
+            if resourceState.loading {
+                resourceState.cancelJob()
+            }
+        }
         .navigationBarTitle(item.name)
     }
 }

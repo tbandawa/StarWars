@@ -62,7 +62,7 @@ struct ResourcesView: View {
         }
         .onDisappear {
             if resourcesState.loading {
-                
+                resourcesState.cancelJob()
             }
         }
         .alert("Select A Type Of Resource You Would Like To Search", isPresented: $showingAlert) {

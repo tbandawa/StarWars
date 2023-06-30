@@ -1,6 +1,6 @@
 package starwars.data.viewmodel
 
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -12,6 +12,7 @@ import starwars.data.state.ResourceResult
 
 class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
 
+    private var job: Job? = null
     private var pageNumber = 0
     private var resourceName = String()
     private var resultsList = mutableListOf<Any>()
@@ -23,7 +24,7 @@ class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel(
     val resourceItems: StateFlow<List<Any>> = _resourceItems
 
     fun getResources(resourceType: String, page: Int) {
-        coroutineScope.launch {
+        job = coroutineScope.launch {
             starWarsRepo.getResources(resourceType, page).collect { results ->
                 if (results is ResourceResult.Success) {
 
@@ -48,7 +49,7 @@ class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel(
     }
 
     fun dismissJob() {
-        coroutineScope.cancel()
+        job?.cancel()
     }
 
     @Suppress("unused")
