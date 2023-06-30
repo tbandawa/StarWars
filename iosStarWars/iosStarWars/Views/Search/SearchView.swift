@@ -97,6 +97,9 @@ struct SearchView: View {
                 }
             }
         }
+        .onDisappear {
+            searchState.cancelJob()
+        }
         .alert("Select A Type Of Resource You Would Like To Search", isPresented: $showingSearchErrorAlert) {
             Button("OK", role: .cancel) { }
         }

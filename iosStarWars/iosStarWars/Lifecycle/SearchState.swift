@@ -181,6 +181,10 @@ class SearchState: ObservableObject {
         }
     }
     
+    func cancelJob() {
+        viewModel.dismissJob()
+    }
+    
     deinit {
         viewModel.dispose()
     }
