@@ -207,12 +207,20 @@ struct FilmView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(DateUtils.formatDate(resourceDate: film.edited))
-                    .font(.system(size: 12))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(5)
-                
+                VStack {
+                    
+                    Text("Last Edited")
+                        .font(.system(size: 12, weight: .heavy, design: .default))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(DateUtils.formatDate(resourceDate: film.edited))
+                        .font(.system(size: 12))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                }
+                .padding(5)
             }
             .padding(.leading, 16)
             .padding(.trailing, 16)
