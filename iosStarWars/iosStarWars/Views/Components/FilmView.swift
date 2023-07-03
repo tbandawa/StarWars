@@ -207,7 +207,7 @@ struct FilmView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(film.created)
+                Text(DateUtils.formatDate(resourceDate: film.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)

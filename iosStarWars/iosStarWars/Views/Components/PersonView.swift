@@ -6,6 +6,7 @@
 //  Copyright © 2023 orgName. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import data
 
@@ -223,7 +224,7 @@ struct PersonView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(person.created)
+                Text(DateUtils.formatDate(resourceDate: person.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)

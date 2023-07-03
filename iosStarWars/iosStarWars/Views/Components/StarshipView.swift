@@ -276,7 +276,7 @@ struct StarshipView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(starship.created)
+                Text(DateUtils.formatDate(resourceDate: starship.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)

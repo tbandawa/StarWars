@@ -204,7 +204,7 @@ struct PlanetView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(planet.created)
+                Text(DateUtils.formatDate(resourceDate: planet.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)

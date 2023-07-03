@@ -242,7 +242,7 @@ struct VehicleView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(vehicle.created)
+                Text(DateUtils.formatDate(resourceDate: vehicle.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)

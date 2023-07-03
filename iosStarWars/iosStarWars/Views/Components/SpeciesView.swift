@@ -204,7 +204,7 @@ struct SpeciesView: View {
                     .padding(.bottom, 15)
                 }
                 
-                Text(species.created)
+                Text(DateUtils.formatDate(resourceDate: species.edited))
                     .font(.system(size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
