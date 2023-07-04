@@ -35,7 +35,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -52,7 +52,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -69,7 +69,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -90,7 +90,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -107,7 +107,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -124,7 +124,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -145,7 +145,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -162,7 +162,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -179,7 +179,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -200,7 +200,7 @@ struct VehicleView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -210,14 +210,14 @@ struct VehicleView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Pilots")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(vehicle.pilots, id: \.self) { pilot in
                             Text("\(pilot)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -228,14 +228,14 @@ struct VehicleView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Films")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(vehicle.films, id: \.self) { film in
                             Text("\(film)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -246,12 +246,12 @@ struct VehicleView: View {
                     
                     Text("Last Edited")
                         .font(.system(size: 12, weight: .heavy, design: .default))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("infoFont"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text(DateUtils.formatDate(resourceDate: vehicle.edited))
                         .font(.system(size: 12))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("infoFont"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                 }

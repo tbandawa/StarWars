@@ -36,7 +36,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -53,7 +53,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -70,7 +70,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -91,7 +91,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -108,7 +108,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                     
                     VStack {
@@ -125,7 +125,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -146,7 +146,7 @@ struct PersonView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color.black)
+                    .background(Color("infoBackground"))
                     .cornerRadius(8)
                                     
                 }
@@ -156,14 +156,14 @@ struct PersonView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Films")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(person.films, id: \.self) { film in
                             Text("\(film)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -174,14 +174,14 @@ struct PersonView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Species")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(person.species, id: \.self) { species in
                             Text("\(species)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -192,14 +192,14 @@ struct PersonView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Vehicles")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(person.vehicles, id: \.self) { vehicle in
                             Text("\(vehicle)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -210,14 +210,14 @@ struct PersonView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Starships")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("infoFont"))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(person.starships, id: \.self) { starship in
                             Text("\(starship)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(.black)
+                                .background(Color("infoBackground"))
                                 .cornerRadius(30)
                         }
                     }
@@ -228,12 +228,12 @@ struct PersonView: View {
                     
                     Text("Last Edited")
                         .font(.system(size: 12, weight: .heavy, design: .default))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("infoFont"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text(DateUtils.formatDate(resourceDate: person.edited))
                         .font(.system(size: 12))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("infoFont"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                 }
