@@ -9,26 +9,30 @@
 import SwiftUI
 
 struct CellContent: View {
+    
     var title: String
     var url: String
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             Text(title.capitalized)
                 .font(.system(size: 20))
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .padding(10)
             Spacer()
             Image(systemName: "arrow.right")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                 .frame(width: 30, height: 30)
                 .padding(10)
                 .offset(x: 40)
         }
         .frame(minWidth: 40, maxWidth: .infinity, minHeight: 150)
-        .background(Color.black)
+        .background(colorScheme == .dark ? Color.white : Color.black)
         .cornerRadius(8)
     }
 }
