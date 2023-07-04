@@ -13,6 +13,8 @@ struct ItemContent: View {
     var name: String
     var date: String
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         HStack {
             
@@ -21,7 +23,7 @@ struct ItemContent: View {
                 HStack {
                     Text(name)
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(Color.white)
+                        .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -29,11 +31,12 @@ struct ItemContent: View {
                 
                 Text(date)
                     .font(.system(size: 12, design: .rounded))
+                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
                     .foregroundColor(Color.white)
                 
             }
             .padding(10)
-            .background(Color.black)
+            .background(colorScheme == .dark ? Color.white : Color.black)
             .cornerRadius(8)
         }
         .frame(maxWidth: .infinity)
