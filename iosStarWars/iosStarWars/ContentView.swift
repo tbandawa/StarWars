@@ -33,7 +33,7 @@ struct ContentView: View {
                 }
             
         }
-        .accentColor(.black)
+        .tint(Color("tabItems"))
     }
         
 }

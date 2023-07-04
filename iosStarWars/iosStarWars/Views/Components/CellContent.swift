@@ -19,20 +19,20 @@ struct CellContent: View {
         VStack {
             Text(title.capitalized)
                 .font(.system(size: 20))
-                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                .foregroundColor(Color("cellFont"))
                 .frame(maxWidth: .infinity, alignment: .topLeading)
                 .padding(10)
             Spacer()
             Image(systemName: "arrow.right")
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                .foregroundColor(Color("cellFont"))
                 .frame(width: 30, height: 30)
                 .padding(10)
                 .offset(x: 40)
         }
         .frame(minWidth: 40, maxWidth: .infinity, minHeight: 150)
-        .background(colorScheme == .dark ? Color.white : Color.black)
+        .background(Color("cellBackground"))
         .cornerRadius(8)
     }
 }

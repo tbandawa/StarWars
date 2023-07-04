@@ -23,7 +23,7 @@ struct ItemContent: View {
                 HStack {
                     Text(name)
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                        .foregroundColor(Color("itemFont"))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -31,12 +31,12 @@ struct ItemContent: View {
                 
                 Text(date)
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(Color("itemFont"))
                     .foregroundColor(Color.white)
                 
             }
             .padding(10)
-            .background(colorScheme == .dark ? Color.white : Color.black)
+            .background(Color("itemBackground"))
             .cornerRadius(8)
         }
         .frame(maxWidth: .infinity)
