@@ -28,10 +28,18 @@ struct SearchView: View {
                             .listRowSeparator(.hidden)
                             .onAppear {
                                 if (items.last == item) {
-                                    searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                                    if currentTokens.count > 0 {
+                                        searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                                    }
                                 }
                             }
                             .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                    }
+                }
+                
+                if let result = searchState.resources {
+                    if result.count == 0 {
+                        EmptyResultsView()
                     }
                 }
                 

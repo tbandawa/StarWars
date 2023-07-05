@@ -13,7 +13,7 @@ struct EmptyResultsView: View {
         VStack {
             Image(systemName: "doc.text.magnifyingglass")
                 .resizable()
-                .frame(width: 45, height: 45)
+                .frame(width: 25, height: 30)
             Text("No Results Found")
         }
     }

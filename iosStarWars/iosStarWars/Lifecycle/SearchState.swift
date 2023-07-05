@@ -16,9 +16,9 @@ class SearchState: ObservableObject {
     @Published var loading = false
     @Published var error: String?
     @Published var items: [Item]? = []
+    @Published var resources: PagedItems? = nil
     
     // Track resource pages
-    private var resources: PagedItems?
     var resourceType = String()
     
     private var viewModel: SearchViewModel
