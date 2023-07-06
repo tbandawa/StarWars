@@ -11,7 +11,7 @@ import Foundation
 struct DateUtils {
     
     private static let resourceDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    private static let viewDateFormat = "HH:mm MMMM d, yyyy"
+    private static let viewDateFormat = "MMMM d, yyyy"
     private static let dateFormatter = DateFormatter()
     
     static func formatDate(resourceDate: String) -> String {
