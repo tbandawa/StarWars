@@ -142,42 +142,42 @@ class SearchState: ObservableObject {
                 return people.map(
                     {
                         (person) -> Item in
-                        Item(name: person.name, type: "people", date: person.created, url: person.url)
+                        Item(name: person.name, type: "people", date: person.edited, url: person.url)
                     })
             case let planets as [Planet]:
                 self.resourceType = "planets"
                 return planets.map(
                     {
                         (planet) -> Item in
-                        Item(name: planet.name, type: "planets", date: planet.created, url: planet.url)
+                        Item(name: planet.name, type: "planets", date: planet.edited, url: planet.url)
                     })
             case let films as [Film]:
                 self.resourceType = "films"
                 return films.map(
                     {
                         (film) -> Item in
-                        Item(name: film.title, type: "films", date: film.created, url: film.url)
+                        Item(name: film.title, type: "films", date: film.edited, url: film.url)
                     })
             case let starships as [Starship]:
                 self.resourceType = "starships"
                 return starships.map(
                     {
                         (starship) -> Item in
-                        Item(name: starship.name, type: "starships", date: starship.created, url: starship.url)
+                        Item(name: starship.name, type: "starships", date: starship.edited, url: starship.url)
                     })
             case let vehicles as [Vehicle]:
                 self.resourceType = "vehicles"
                 return vehicles.map(
                     {
                         (vehicle) -> Item in
-                        Item(name: vehicle.name, type: "vehicles", date: vehicle.created, url: vehicle.url)
+                        Item(name: vehicle.name, type: "vehicles", date: vehicle.edited, url: vehicle.url)
                     })
             case let species as [Species]:
                 self.resourceType = "species"
                 return species.map(
                     {
                         (species) -> Item in
-                        Item(name: species.name, type: "species", date: species.created, url: species.url)
+                        Item(name: species.name, type: "species", date: species.edited, url: species.url)
                     })
             default:
             return [Item(name: "Name", type: "Type", date: "Date", url: "Url")]
