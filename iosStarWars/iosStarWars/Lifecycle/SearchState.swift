@@ -181,6 +181,14 @@ class SearchState: ObservableObject {
         }
     }
     
+    func clearResults() {
+        viewModel.clearResults()
+        self.resources = nil
+        self.loading = true
+        self.items = []
+        self.error = nil
+    }
+    
     func cancelJob() {
         viewModel.dismissJob()
     }

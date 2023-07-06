@@ -49,6 +49,11 @@ class SearchViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
         }
     }
 
+    fun clearResults() {
+        resultsList = mutableListOf()
+        _resourceItems.value = resultsList.toList()
+    }
+
     fun dismissJob() {
         job?.cancel()
     }

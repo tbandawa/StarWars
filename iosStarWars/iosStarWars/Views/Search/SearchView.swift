@@ -99,6 +99,7 @@ struct SearchView: View {
             })
             .onSubmit(of: .search) {
                 if (currentTokens.count == 1) {
+                    searchState.clearResults()
                     searchState.searchResources(resourceType: currentTokens[0].name.lowercased(), search: query, page: 1)
                 } else {
                     showingSearchErrorAlert.toggle()
