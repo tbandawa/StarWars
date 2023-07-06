@@ -34,6 +34,10 @@ struct ContentView: View {
             
         }
         .tint(Color("tabItems"))
+        .onAppear {
+            let savedTheme = ThemeUtils.instance.getThemeMode()
+            (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = savedTheme ? .light : .dark
+        }
     }
         
 }

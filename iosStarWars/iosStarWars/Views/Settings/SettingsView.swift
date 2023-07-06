@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     @Environment(\.openURL) private var openURL
     
-    @State private var isLightTheme = true
+    @State private var isLightTheme = ThemeUtils.instance.getThemeMode()
     
     var themeName: String {
         if (isLightTheme) {
@@ -37,6 +37,8 @@ struct SettingsView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             isLightTheme.toggle()
+                            (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = isLightTheme ? .light : .dark
+                            ThemeUtils.instance.setThemeMode(enable: isLightTheme)
                         }
                     }
                     Section {
