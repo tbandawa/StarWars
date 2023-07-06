@@ -29,7 +29,7 @@ struct ItemContent: View {
                 }
                 .padding(.bottom, 1)
                 
-                Text(date)
+                Text(DateUtils.formatDate(resourceDate: date))
                     .font(.system(size: 12, design: .rounded))
                     .foregroundColor(Color("itemFont"))
                     .foregroundColor(Color.white)
