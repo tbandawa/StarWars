@@ -31,7 +31,7 @@ class SearchViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
 
                     // If page <= pageNumber and resource type is not
                     // equal to cached type, clear cached resultsList
-                    if ((page <= pageNumber) && (resourceType != resourceName)) {
+                    if (((page <= pageNumber) && (resourceType != resourceName)) || page == 1) {
                         resultsList = mutableListOf()
                     }
 
@@ -47,11 +47,6 @@ class SearchViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
                 _resourceResults.value = results
             }
         }
-    }
-
-    fun clearResults() {
-        resultsList = mutableListOf()
-        _resourceItems.value = resultsList.toList()
     }
 
     fun dismissJob() {

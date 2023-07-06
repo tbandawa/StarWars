@@ -123,6 +123,9 @@ class SearchState: ObservableObject {
     ///     - resourceType: type of requested resources
     ///     - page: request page number
     func searchResources(resourceType: String, search: String, page: Int32) {
+        if page == 1 {
+            self.items = []
+        }
         viewModel.searchResources(resourceType: resourceType, search: search, page: page)
     }
     
@@ -179,14 +182,6 @@ class SearchState: ObservableObject {
             default:
             return [Item(name: "Name", type: "Type", date: "Date", url: "Url")]
         }
-    }
-    
-    func clearResults() {
-        viewModel.clearResults()
-        self.resources = nil
-        self.loading = true
-        self.items = []
-        self.error = nil
     }
     
     func cancelJob() {
