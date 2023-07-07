@@ -22,7 +22,6 @@ import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
 import starwars.data.viewmodel.RootViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
@@ -60,6 +59,9 @@ fun MainNavigation(
             SearchScreen(viewModel)
         }
         composable(route = NavigationItem.Settings.route) {
+            SettingsScreen()
+        }
+        composable(route = NavigationItem.Resources.route) {
             SettingsScreen()
         }
     }
@@ -134,6 +136,7 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
     object Home : NavigationItem("home", R.drawable.ic_home, "StarWars")
     object Search : NavigationItem("search", R.drawable.ic_search, "Search")
     object Settings : NavigationItem("settings", R.drawable.ic_settings ,"Settings")
+    object Resources : NavigationItem("resources", R.drawable.ic_home ,"Resources")
 }
 
 /*
