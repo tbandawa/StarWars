@@ -11,11 +11,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.screens.MainScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
+import starwars.data.api.StarWarsApi
+import starwars.data.repo.StarWarsRepo
 import starwars.data.viewmodel.RootViewModel
 
 @Composable
@@ -71,15 +74,10 @@ class MainActivity : ComponentActivity(), KoinComponent {
     }
 }
 
-@Composable
-fun Greeting(text: String) {
-    Text(text = text)
-}
-
-/*@Preview
+@Preview
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        MainScreen()
+        MainScreen(viewModel = RootViewModel(starWarsRepo = StarWarsRepo(starWarsApi = StarWarsApi())))
     }
-}*/
+}
