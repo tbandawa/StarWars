@@ -2,24 +2,16 @@ package me.tbandawa.starwars.android.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
+import me.tbandawa.starwars.android.ui.components.BottomNavigationBar
 import starwars.data.viewmodel.RootViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,71 +64,6 @@ fun MainNavigation(
                 navController
             )
         }
-    }
-}
-
-@Composable
-fun BottomNavigationBar(
-    navController: NavController
-) {
-
-    val items = listOf(
-        NavigationItem.Home,
-        NavigationItem.Search,
-        NavigationItem.Settings
-    )
-
-    NavigationBar(
-        tonalElevation = 10.dp,
-        containerColor = Color.White,
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-
-        items.forEach { item ->
-
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        painterResource(
-                            id = item.icon
-                        ),
-                        item.title,
-                        modifier = Modifier
-                            .size(25.dp)
-                    )
-                },
-                label = {
-                    Text(
-                        text = item.title,
-                        fontSize = 9.sp
-                    )
-                },
-                selected = currentRoute == item.route,
-                colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color.White,
-                    selectedIconColor = Color.Black,
-                    selectedTextColor = Color.Black,
-                    unselectedIconColor = Color.Black.copy(0.4f),
-                    unselectedTextColor = Color.Black.copy(0.4f)
-                ),
-                onClick = {
-                    navController.navigate(item.route) {
-                        navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
-                                saveState = true
-                            }
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                })
-
-        }
-
     }
 }
 
