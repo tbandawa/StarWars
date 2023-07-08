@@ -17,6 +17,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.ResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.RootResource
@@ -27,7 +28,8 @@ import starwars.data.viewmodel.RootViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    starWarsViewModel: RootViewModel
+    starWarsViewModel: RootViewModel,
+    navController: NavController
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -59,7 +61,8 @@ fun HomeScreen(
                     is ResourceResult.Success -> {
                         val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
                         ResourceContent(
-                            resource = rootResource
+                            rootResource,
+                            navController
                         )
                     }
                     is ResourceResult.Error -> {
@@ -103,7 +106,8 @@ fun LoadingContent() {
 
 @Composable
 fun ResourceContent(
-    resource: RootResource
+    resource: RootResource,
+    navController: NavController
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
@@ -113,7 +117,7 @@ fun ResourceContent(
             Card(
                 modifier = Modifier
                     .clickable {
-
+                        navController.navigate("resources/${resource.iterator()[index].first}")
                     }
                     .padding(4.dp)
             ) {

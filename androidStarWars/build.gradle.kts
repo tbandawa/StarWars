@@ -51,10 +51,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
-    // Material
-    implementation("androidx.compose.material3:material3:1.1.0-alpha08")
-    implementation("androidx.compose.material3:material3-window-size-class:1.1.0-alpha08")
-
     // Koin
     implementation("io.insert-koin:koin-androidx-compose:3.2.0")
 

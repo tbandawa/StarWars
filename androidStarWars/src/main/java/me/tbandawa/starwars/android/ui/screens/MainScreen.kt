@@ -22,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
 import starwars.data.viewmodel.RootViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
@@ -53,7 +54,10 @@ fun MainNavigation(
         startDestination = NavigationItem.Home.route
     ) {
         composable(route = NavigationItem.Home.route) {
-            HomeScreen(viewModel)
+            HomeScreen(
+                viewModel,
+                navController
+            )
         }
         composable(route = NavigationItem.Search.route) {
             SearchScreen(viewModel)
@@ -61,8 +65,12 @@ fun MainNavigation(
         composable(route = NavigationItem.Settings.route) {
             SettingsScreen()
         }
-        composable(route = NavigationItem.Resources.route) {
-            SettingsScreen()
+        composable(route = "resources/{title}") { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title")
+            ResourcesScreen(
+                title!!,
+                navController
+            )
         }
     }
 }
@@ -136,7 +144,6 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
     object Home : NavigationItem("home", R.drawable.ic_home, "StarWars")
     object Search : NavigationItem("search", R.drawable.ic_search, "Search")
     object Settings : NavigationItem("settings", R.drawable.ic_settings ,"Settings")
-    object Resources : NavigationItem("resources", R.drawable.ic_home ,"Resources")
 }
 
 /*
