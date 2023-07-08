@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import me.tbandawa.starwars.android.ui.components.ResourceItem
+import me.tbandawa.starwars.android.ui.components.RootResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.RootResource
 import starwars.data.state.ResourceResult
@@ -121,7 +121,7 @@ fun ResourceContent(
                     }
                     .padding(4.dp)
             ) {
-                ResourceItem(title = resource.iterator()[index].first)
+                RootResourceItem(title = resource.iterator()[index].first)
             }
         }
     }
