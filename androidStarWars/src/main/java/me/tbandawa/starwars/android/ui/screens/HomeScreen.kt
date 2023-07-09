@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import me.tbandawa.starwars.android.ui.components.LoadingContent
 import me.tbandawa.starwars.android.ui.components.RootResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import org.koin.androidx.compose.koinViewModel
@@ -74,33 +75,6 @@ fun HomeScreen(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun LoadingContent() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .padding(bottom = 10.dp)
-                    .size(width = 35.dp, height = 35.dp)
-            )
-            Text(
-                text = "Loading...",
-                style = TextStyle(
-                    color = Color.Black,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 16.sp
-                )
-            )
         }
     }
 }
