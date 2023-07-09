@@ -1,9 +1,6 @@
 package me.tbandawa.starwars.android.ui.screens
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -19,11 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.LoadingContent
-import me.tbandawa.starwars.android.ui.components.RootResourceItem
+import me.tbandawa.starwars.android.ui.components.RootResourceContent
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import org.koin.androidx.compose.koinViewModel
 import starwars.data.models.RootResource
-import starwars.data.models.iterator
 import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.RootViewModel
 
@@ -62,7 +58,7 @@ fun HomeScreen(
                     }
                     is ResourceResult.Success -> {
                         val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
-                        ResourceContent(
+                        RootResourceContent(
                             rootResource,
                             navController
                         )
@@ -74,29 +70,6 @@ fun HomeScreen(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-fun ResourceContent(
-    resource: RootResource,
-    navController: NavController
-) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(10.dp)
-    ) {
-        items(resource.iterator().size) { index ->
-            Card(
-                modifier = Modifier
-                    .clickable {
-                        navController.navigate("resources/${resource.iterator()[index].first}")
-                    }
-                    .padding(4.dp)
-            ) {
-                RootResourceItem(title = resource.iterator()[index].first)
             }
         }
     }
