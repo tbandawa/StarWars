@@ -1,21 +1,15 @@
 package me.tbandawa.starwars.android.ui.screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.LoadingContent
+import me.tbandawa.starwars.android.ui.components.RetryContent
 import me.tbandawa.starwars.android.ui.components.RootResourceContent
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import org.koin.androidx.compose.koinViewModel
@@ -70,51 +64,6 @@ fun HomeScreen(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-fun RetryContent(
-    errorMessage: String,
-    retry: () -> Unit
-) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = errorMessage,
-                style = TextStyle(
-                    color = Color.Black,
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 14.sp
-                )
-            )
-            Button(
-                onClick = {
-                    retry.invoke()
-                },
-                modifier = Modifier
-                    .padding(top = 10.dp)
-                    .height(35.dp),
-                shape = RoundedCornerShape(50),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Black
-                )
-            ) {
-                Text(
-                    text = "Retry",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 14.sp
-                    )
-                )
             }
         }
     }
