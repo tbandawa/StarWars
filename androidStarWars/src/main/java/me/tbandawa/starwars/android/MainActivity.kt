@@ -5,7 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Typography
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -15,11 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.screens.MainScreen
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
-import starwars.data.api.StarWarsApi
-import starwars.data.repo.StarWarsRepo
-import starwars.data.viewmodel.RootViewModel
 
 @Composable
 fun MyApplicationTheme(
@@ -74,13 +74,11 @@ fun MyApplicationTheme(
 
 class MainActivity : ComponentActivity(), KoinComponent {
 
-    private val rootViewModel: RootViewModel by viewModel()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                MainScreen(rootViewModel)
+                MainScreen()
             }
         }
     }
@@ -90,6 +88,6 @@ class MainActivity : ComponentActivity(), KoinComponent {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        MainScreen(viewModel = RootViewModel(starWarsRepo = StarWarsRepo(starWarsApi = StarWarsApi())))
+        MainScreen()
     }
 }

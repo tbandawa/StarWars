@@ -12,5 +12,4 @@ class StarWars: Application() {
             androidContext(this@StarWars)
         }
     }
-
 }

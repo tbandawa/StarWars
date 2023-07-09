@@ -20,15 +20,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.RootResourceItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
+import org.koin.androidx.compose.koinViewModel
 import starwars.data.models.RootResource
-import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
+import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.RootViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    starWarsViewModel: RootViewModel,
+    rootViewModel: RootViewModel = koinViewModel(),
     navController: NavController
 ) {
     Surface(
@@ -37,7 +38,7 @@ fun HomeScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val viewModel = remember { starWarsViewModel }.also { it.getRootResources() }
+        val viewModel = remember { rootViewModel }.also { it.getRootResources() }
         val rootResources by viewModel.rootResources.collectAsState()
 
         Scaffold(

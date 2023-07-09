@@ -12,14 +12,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
 import me.tbandawa.starwars.android.ui.components.BottomNavigationBar
-import starwars.data.viewmodel.RootViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen(
-    viewModel: RootViewModel
-) {
+fun MainScreen() {
 
     val navController = rememberNavController()
 
@@ -27,7 +24,6 @@ fun MainScreen(
         content = { padding ->
             Box(modifier = Modifier.padding(padding)) {
                 MainNavigation(
-                    viewModel = viewModel,
                     navController = navController
                 )
             }
@@ -38,7 +34,6 @@ fun MainScreen(
 
 @Composable
 fun MainNavigation(
-    viewModel: RootViewModel,
     navController: NavHostController
 ) {
     NavHost(
@@ -47,12 +42,11 @@ fun MainNavigation(
     ) {
         composable(route = NavigationItem.Home.route) {
             HomeScreen(
-                viewModel,
-                navController
+                navController = navController
             )
         }
         composable(route = NavigationItem.Search.route) {
-            SearchScreen(viewModel)
+            SearchScreen()
         }
         composable(route = NavigationItem.Settings.route) {
             SettingsScreen()
@@ -72,10 +66,3 @@ sealed class NavigationItem(var route: String, var icon: Int, var title: String)
     object Search : NavigationItem("search", R.drawable.ic_search, "Search")
     object Settings : NavigationItem("settings", R.drawable.ic_settings ,"Settings")
 }
-
-/*
-@Preview(showBackground = true)
-@Composable
-fun MainScreenPreview() {
-    MainScreen()
-}*/

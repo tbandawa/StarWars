@@ -18,9 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.RecentItem
 import me.tbandawa.starwars.android.ui.components.ToolBar
+import org.koin.androidx.compose.koinViewModel
 import starwars.data.models.RootResource
-import starwars.data.state.ResourceResult
 import starwars.data.models.iterator
+import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.RootViewModel
 import java.util.*
 
@@ -28,7 +29,7 @@ import java.util.*
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
-    rootViewModel: RootViewModel
+    rootViewModel: RootViewModel = koinViewModel()
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -57,7 +58,6 @@ fun SearchScreen(
                         .padding(16.dp)
                 ) {
 
-                    //val data = listOf("Films", "People", "Planets", "Species", "Starships", "Vehicles")
                     var searchText by remember { mutableStateOf(TextFieldValue("")) }
 
                     TextField(
