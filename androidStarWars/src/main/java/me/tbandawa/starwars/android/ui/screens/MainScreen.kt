@@ -12,6 +12,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import me.tbandawa.starwars.android.R
 import me.tbandawa.starwars.android.ui.components.BottomNavigationBar
+import org.koin.androidx.compose.koinViewModel
+import starwars.data.viewmodel.ResourceViewModel
+import starwars.data.viewmodel.ResourcesViewModel
+import starwars.data.viewmodel.RootViewModel
+import starwars.data.viewmodel.SearchViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -19,12 +24,17 @@ import me.tbandawa.starwars.android.ui.components.BottomNavigationBar
 fun MainScreen() {
 
     val navController = rememberNavController()
+    val rootViewModel: RootViewModel = koinViewModel()
+    val resourcesViewModel: ResourcesViewModel = koinViewModel()
+    val resourceViewModel: ResourceViewModel = koinViewModel()
+    val searchViewModel: SearchViewModel = koinViewModel()
 
     Scaffold(
         content = { padding ->
             Box(modifier = Modifier.padding(padding)) {
                 MainNavigation(
-                    navController = navController
+                    navController = navController,
+                    rootViewModel = rootViewModel, resourcesViewModel, resourceViewModel, searchViewModel
                 )
             }
         },
@@ -34,7 +44,11 @@ fun MainScreen() {
 
 @Composable
 fun MainNavigation(
-    navController: NavHostController
+    navController: NavHostController,
+    rootViewModel: RootViewModel,
+    resourcesViewModel: ResourcesViewModel,
+    resourceViewModel: ResourceViewModel,
+    searchViewModel: SearchViewModel
 ) {
     NavHost(
         navController,
@@ -42,11 +56,14 @@ fun MainNavigation(
     ) {
         composable(route = NavigationItem.Home.route) {
             HomeScreen(
-                navController = navController
+                navController = navController,
+                viewModel = rootViewModel
             )
         }
         composable(route = NavigationItem.Search.route) {
-            SearchScreen()
+            SearchScreen(
+                viewModel = rootViewModel
+            )
         }
         composable(route = NavigationItem.Settings.route) {
             SettingsScreen()
@@ -54,8 +71,9 @@ fun MainNavigation(
         composable(route = "resources/{title}") { backStackEntry ->
             val title = backStackEntry.arguments?.getString("title")
             ResourcesScreen(
-                title!!,
-                navController
+                type = title!!,
+                navController = navController,
+                viewModel = resourcesViewModel
             )
         }
     }

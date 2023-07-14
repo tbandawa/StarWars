@@ -29,7 +29,7 @@ import java.util.*
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
-    rootViewModel: RootViewModel = koinViewModel()
+    viewModel: RootViewModel
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -37,7 +37,6 @@ fun SearchScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val viewModel = remember { rootViewModel }
         val rootResources by viewModel.rootResources.collectAsState()
 
         Scaffold(

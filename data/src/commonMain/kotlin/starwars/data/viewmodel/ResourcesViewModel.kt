@@ -10,12 +10,12 @@ import starwars.data.models.BaseResource
 import starwars.data.repo.StarWarsRepo
 import starwars.data.state.ResourceResult
 
-class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
+class ResourcesViewModel(var starWarsRepo: StarWarsRepo): BaseViewModel() {
 
     private var job: Job? = null
-    private var pageNumber = 0
-    private var resourceName = String()
-    private var resultsList = mutableListOf<Any>()
+    var pageNumber = 0
+    var resourceName = String()
+    var resultsList = mutableListOf<Any>()
 
     private val _resourceResults = MutableStateFlow<ResourceResult<Any>>(ResourceResult.Empty)
     val resourceResults: StateFlow<ResourceResult<Any>> = _resourceResults
@@ -41,7 +41,6 @@ class ResourcesViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel(
                     _resourceItems.value = resultsList.toList()
                     resourceName = resourceType
                     pageNumber = page
-
                 }
                 _resourceResults.value = results
             }

@@ -3,9 +3,9 @@ package me.tbandawa.starwars.android.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.LoadingContent
@@ -20,8 +20,8 @@ import starwars.data.viewmodel.RootViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    rootViewModel: RootViewModel = koinViewModel(),
-    navController: NavController
+    navController: NavController,
+    viewModel: RootViewModel
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -29,8 +29,11 @@ fun HomeScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val viewModel = remember { rootViewModel }.also { it.getRootResources() }
         val rootResources by viewModel.rootResources.collectAsState()
+
+        LaunchedEffect(Unit) {
+            viewModel.getRootResources()
+        }
 
         Scaffold(
             topBar = {

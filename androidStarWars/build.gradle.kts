@@ -54,6 +54,9 @@ dependencies {
     // Koin
     implementation("io.insert-koin:koin-androidx-compose:3.2.0")
 
+    // Timber
+    implementation("com.jakewharton.timber:timber:4.7.1")
+
     // Navigation
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.navigation:navigation-compose:2.6.0-alpha04")
