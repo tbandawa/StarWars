@@ -41,8 +41,6 @@ fun ResourcesScreen(
     val resourcesItems by viewModel.resourceItems.collectAsState()
 
     LaunchedEffect(Unit) {
-        //Timber.d("--------------------------passed resource = $type")
-        //Timber.d("--------------------------remembered resource = ${viewModel.resourceName}")
         if (type != viewModel.resourceName || viewModel.resultsList.size == 0) {
             viewModel.getResources(type, 1)
         }
