@@ -23,6 +23,10 @@ class ResourceState: ObservableObject {
     init() {
         viewModel = KotlinDependencies.shared.getResourceViewModel()
         viewModel.observeResourceItem { result in
+            
+            self.loading = true
+            self.resource = nil
+            
             switch result {
                 case let success as ResourceResultSuccess<AnyObject>:
                     self.resource = success

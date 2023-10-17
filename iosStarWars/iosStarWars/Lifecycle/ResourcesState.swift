@@ -31,7 +31,7 @@ class ResourcesState: ObservableObject {
         viewModel.observeResourceResults { result in
             // Loop resource availability states
             switch result {
-                case let success as AnyObject:
+                case let success as ResourceResultSuccess<AnyObject>?:
                     self.loading = false
                     self.error = nil
                     // Loop through result, cast to appropiate object,

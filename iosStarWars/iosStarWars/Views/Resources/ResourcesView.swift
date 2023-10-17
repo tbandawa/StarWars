@@ -53,7 +53,6 @@ struct ResourcesView: View {
         }
         .navigationTitle(title)
         .onAppear {
-            
             if ((title.lowercased() != ((resourcesState.items?.count == 0 ? "" : resourcesState.items?[0].type) ?? "")) || (resourcesState.items?.count == 0)) {
                 resourcesState.getResources(
                     resourceType: title.lowercased(),
