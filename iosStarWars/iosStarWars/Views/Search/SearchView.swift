@@ -104,6 +104,9 @@ struct SearchView: View {
                     showingSearchErrorAlert.toggle()
                 }
             }
+            .onAppear{
+                searchState.loading = false
+            }
         }
         .onDisappear {
             searchState.cancelJob()

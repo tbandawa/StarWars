@@ -13,25 +13,28 @@ import data
 class SearchState: ObservableObject {
     
     // MARK: View Change Properties
-    @Published var loading = true
+    @Published var loading = false
     @Published var error: String?
     @Published var items: [Item]? = []
     @Published var resources: PagedItems? = nil
     
     private var viewModel: SearchViewModel
     
-    // Start registering observables and
+    // Start registering observables
     init() {
         viewModel = KotlinDependencies.shared.getSearchViewModel()
         viewModel.observeResourceItems{ itemsList in
             self.items = self.mapToItems(resources: itemsList)
         }
         viewModel.observeResourceResults { result in
+            self.loading = true
+            self.error = nil
             // Loop resource availability states
             switch result {
-                case let success as AnyObject:
+                case let success as ResourceResultSuccess<AnyObject>?:
                     self.loading = false
                     self.error = nil
+                    //self.loading = false
                     // Loop through result, cast to appropiate object,
                     // append to items array and keep base result info
                     switch success {
