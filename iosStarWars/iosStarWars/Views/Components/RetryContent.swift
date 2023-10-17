@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct RetryContent: View {
+    
     var error: String
     var retry: () -> Void
+    
     var body: some View {
         VStack {
             Text(error)

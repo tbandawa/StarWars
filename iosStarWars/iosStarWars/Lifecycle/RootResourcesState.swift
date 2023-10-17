@@ -12,7 +12,7 @@ import data
 
 class RootResourcesState: ObservableObject {
     
-    @Published var loading = false
+    @Published var loading = true
     @Published var resources: [String:String]?
     @Published var error: String?
      
@@ -22,11 +22,6 @@ class RootResourcesState: ObservableObject {
         viewModel = KotlinDependencies.shared.getRootViewModel()
         viewModel.observeRootResources { result in
             switch result {
-                case _ as ResourceResultLoading:
-                    self.resources = nil
-                    self.loading = true
-                    self.error = nil
-                
                 case let success as ResourceResultSuccess<RootResource>:
                     self.resources = [:]
                     success.data!.iterator().forEach {

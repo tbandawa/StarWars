@@ -14,7 +14,7 @@ import data
 
 class ResourceState: ObservableObject {
     
-    @Published var loading = false
+    @Published var loading = true
     @Published var resource: Any?
     @Published var error: String?
     
@@ -24,11 +24,6 @@ class ResourceState: ObservableObject {
         viewModel = KotlinDependencies.shared.getResourceViewModel()
         viewModel.observeResourceItem { result in
             switch result {
-                case _ as ResourceResultLoading:
-                    self.resource = nil
-                    self.loading = true
-                    self.error = nil
-                
                 case let success as ResourceResultSuccess<AnyObject>:
                     self.resource = success
                     self.loading = false

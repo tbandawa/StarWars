@@ -17,9 +17,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if rootResourcesState.loading {
-                    LoadingContent()
-                }
+                
                 if let resourcesDictionary = rootResourcesState.resources {
                     LazyVGrid(columns: gridItems, spacing: 10) {
                         ForEach(Array(resourcesDictionary), id:\.key) { key, value in
@@ -32,14 +30,21 @@ struct HomeView: View {
                     .padding(.trailing, 15)
                     Spacer()
                 }
+                
                 if let errorMessage = rootResourcesState.error {
                     RetryContent(
                         error: errorMessage,
                         retry: { rootResourcesState.getRootResources() }
                     )
                 }
+                
+                if rootResourcesState.loading {
+                    LoadingContent()
+                }
+                
             }
             .navigationTitle("StarWars")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             
         }.onAppear {
             rootResourcesState.getRootResources()
@@ -47,4 +52,11 @@ struct HomeView: View {
         .navigationViewStyle(.stack)
 	}
     
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+            .environmentObject(RootResourcesState())
+    }
 }

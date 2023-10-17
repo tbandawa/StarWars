@@ -13,7 +13,7 @@ import data
 class ResourcesState: ObservableObject {
     
     // MARK: View Change Properties
-    @Published var loading = false
+    @Published var loading = true
     @Published var error: String?
     @Published var items: [Item]? = []
     
@@ -31,11 +31,6 @@ class ResourcesState: ObservableObject {
         viewModel.observeResourceResults { result in
             // Loop resource availability states
             switch result {
-                case _ as ResourceResultLoading:
-                    self.resources = nil
-                    self.loading = true
-                    self.error = nil
-                
                 case let success as AnyObject:
                     self.loading = false
                     self.error = nil

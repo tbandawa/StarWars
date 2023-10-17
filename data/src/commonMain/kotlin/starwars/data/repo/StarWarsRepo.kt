@@ -6,12 +6,11 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import starwars.data.api.BaseApiCall
 import starwars.data.api.StarWarsApi
-import starwars.data.models.BaseResource
-import starwars.data.models.RootResource
 import starwars.data.models.ErrorResponse
 import starwars.data.models.Film
 import starwars.data.models.Person
 import starwars.data.models.Planet
+import starwars.data.models.RootResource
 import starwars.data.models.Species
 import starwars.data.models.Starship
 import starwars.data.models.Vehicle
