@@ -29,11 +29,10 @@ class ResourcesState: ObservableObject {
             self.items = mapToItems(resources: itemsList)
         }
         viewModel.observeResourceResults { result in
+            self.loading = true
             // Loop resource availability states
             switch result {
                 case let success as ResourceResultSuccess<AnyObject>?:
-                    self.loading = false
-                    self.error = nil
                     // Loop through result, cast to appropiate object,
                     // append to items array and keep base result info
                     switch success {
