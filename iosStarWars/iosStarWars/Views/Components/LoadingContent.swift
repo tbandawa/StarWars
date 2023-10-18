@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct LoadingContent: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             ProgressView()
             Text("Loading...")
-                .foregroundColor(Color.black)
+                .foregroundColor(Color("infoFont"))
         }
     }
 }
