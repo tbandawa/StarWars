@@ -23,17 +23,24 @@ struct SearchView: View {
             ZStack {
                 
                 if let items = searchState.items {
-                    List(items) { item in
-                        ItemContent(name: item.name, date: item.date)
-                            .listRowSeparator(.hidden)
-                            .onAppear {
-                                if (items.last == item) {
-                                    if currentTokens.count > 0 {
-                                        searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                    VStack {
+                        List(items) { item in
+                            ItemContent(name: item.name, date: item.date)
+                                .listRowSeparator(.hidden)
+                                .onAppear {
+                                    if (items.last == item) {
+                                        if currentTokens.count > 0 {
+                                            searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                                        }
                                     }
                                 }
-                            }
-                            .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                                .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                        }
+                        if (searchState.loading && searchState.items!.count > 0) {
+                            Text("Loading more...")
+                                .foregroundColor(Color.black)
+                                .background(Color.white.opacity(1.0))
+                        }
                     }
                 }
                 

@@ -20,15 +20,23 @@ struct ResourcesView: View {
         ZStack {
             
             if let items = resourcesState.items {
-                List(items) { item in
-                    ItemContent(name: item.name, date: item.date)
-                        .listRowSeparator(.hidden)
-                        .onAppear {
-                            if (items.last == item) {
-                                resourcesState.getMoreResources(resourceType: title.lowercased())
+                
+                VStack {
+                    List(items) { item in
+                        ItemContent(name: item.name, date: item.date)
+                            .listRowSeparator(.hidden)
+                            .onAppear {
+                                if (items.last == item) {
+                                    resourcesState.getMoreResources(resourceType: title.lowercased())
+                                }
                             }
-                        }
-                        .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                            .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                    }
+                    if (resourcesState.loading && resourcesState.items!.count > 0) {
+                        Text("Loading more...")
+                            .foregroundColor(Color.black)
+                            .background(Color.white.opacity(1.0))
+                    }
                 }
             }
             

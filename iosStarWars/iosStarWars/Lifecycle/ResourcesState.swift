@@ -33,6 +33,8 @@ class ResourcesState: ObservableObject {
             // Loop resource availability states
             switch result {
                 case let success as ResourceResultSuccess<AnyObject>?:
+                    self.loading = false
+                    self.error = nil
                     // Loop through result, cast to appropiate object,
                     // append to items array and keep base result info
                     switch success {
