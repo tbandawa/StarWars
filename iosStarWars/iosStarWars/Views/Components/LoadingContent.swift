@@ -16,7 +16,6 @@ struct LoadingContent: View {
         VStack {
             ProgressView()
             Text("Loading...")
-                .foregroundColor(Color("infoFont"))
         }
     }
 }

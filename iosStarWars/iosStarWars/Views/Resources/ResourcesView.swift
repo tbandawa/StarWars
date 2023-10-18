@@ -34,8 +34,7 @@ struct ResourcesView: View {
                     }
                     if (resourcesState.loading && resourcesState.items!.count > 0) {
                         Text("Loading more...")
-                            .foregroundColor(Color.black)
-                            .background(Color.white.opacity(1.0))
+                            .frame(maxWidth: 200)
                     }
                 }
             }
