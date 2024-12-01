@@ -30,7 +30,7 @@ struct FilmView: View {
                             .padding(5)
                         Spacer()
                     }
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -52,7 +52,7 @@ struct FilmView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -69,7 +69,7 @@ struct FilmView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -90,7 +90,7 @@ struct FilmView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -111,7 +111,7 @@ struct FilmView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -121,14 +121,14 @@ struct FilmView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Characters")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(film.characters, id: \.self) { character in
                             Text("\(character)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -139,14 +139,14 @@ struct FilmView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Planets")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(film.planets, id: \.self) { planet in
                             Text("\(planet)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -157,14 +157,14 @@ struct FilmView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Species")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(film.species, id: \.self) { species in
                             Text("\(species)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -175,14 +175,14 @@ struct FilmView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Vehicles")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(film.vehicles, id: \.self) { vehicle in
                             Text("\(vehicle)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -193,14 +193,14 @@ struct FilmView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Starships")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(film.starships, id: \.self) { starship in
                             Text("\(starship)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -211,12 +211,12 @@ struct FilmView: View {
                     
                     Text("Last Edited")
                         .font(.system(size: 12, weight: .heavy, design: .default))
-                        .foregroundColor(Color("infoFont"))
+                        .foregroundColor(Color(.infoFont))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text(DateUtils.formatDate(resourceDate: film.edited))
                         .font(.system(size: 12))
-                        .foregroundColor(Color("infoFont"))
+                        .foregroundColor(Color(.infoFont))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                 }

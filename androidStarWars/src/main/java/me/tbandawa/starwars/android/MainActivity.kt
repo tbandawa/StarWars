@@ -26,6 +26,15 @@ fun MyApplicationTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+
+    val backGroundLight = Color.White
+    val surfaceLight = Color.Black
+    val textHeadingLight = Color.Black
+
+    val backGroundDark = Color.Gray
+    val surfaceDark = Color.Black
+    val textHeadingDark = Color.White
+
     val colors = if (darkTheme) {
         darkColorScheme(
             primary = Color(0xFFBB86FC),

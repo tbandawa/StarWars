@@ -23,7 +23,7 @@ struct ItemContent: View {
                 HStack {
                     Text(name)
                         .font(.system(size: 14, design: .rounded))
-                        .foregroundColor(Color("itemFont"))
+                        .foregroundColor(Color(.itemFont))
                         .fontWeight(.bold)
                     Spacer()
                 }
@@ -31,15 +31,16 @@ struct ItemContent: View {
                 
                 Text(DateUtils.formatDate(resourceDate: date))
                     .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(Color("itemFont"))
+                    .foregroundColor(Color(.itemFont))
                     .foregroundColor(Color.white)
                 
             }
             .padding(10)
-            .background(Color("itemBackground"))
+            .background(Color(.infoBackground))
             .cornerRadius(8)
         }
         .frame(maxWidth: .infinity)
+        
     }
 }
 
