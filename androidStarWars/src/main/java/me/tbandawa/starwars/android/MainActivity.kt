@@ -30,10 +30,12 @@ fun MyApplicationTheme(
     val backGroundLight = Color.White
     val surfaceLight = Color.Black
     val textHeadingLight = Color.Black
+    var textInfoLight = Color.Black
 
-    val backGroundDark = Color.Gray
-    val surfaceDark = Color.Black
+    val backGroundDark = Color.Black
+    val surfaceDark = Color.Gray
     val textHeadingDark = Color.White
+    var textInfoDark = Color.White
 
     val colors = if (darkTheme) {
         darkColorScheme(
