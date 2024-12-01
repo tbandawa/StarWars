@@ -30,7 +30,7 @@ fun MyApplicationTheme(
     val backGroundLight = Color.White
     val surfaceLight = Color.Black
     val textHeadingLight = Color.Black
-    var textInfoLight = Color.Black
+    var textInfoLight = Color.White
 
     val backGroundDark = Color.Black
     val surfaceDark = Color.Gray
@@ -39,15 +39,17 @@ fun MyApplicationTheme(
 
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFFBB86FC),
-            onSurfaceVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = textHeadingDark,
+            secondary = textInfoDark,
+            background = backGroundDark,
+            surface = surfaceLight
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE),
-            onSurfaceVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            primary = textHeadingLight,
+            secondary = textInfoLight,
+            background = backGroundLight,
+            surface = surfaceDark
         )
     }
     val typography = Typography(
