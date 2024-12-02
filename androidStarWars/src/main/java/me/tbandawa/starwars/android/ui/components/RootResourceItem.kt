@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import me.tbandawa.starwars.android.R
+import me.tbandawa.starwars.android.StarWarsTheme
 import java.util.*
 
 @Composable
@@ -26,14 +28,14 @@ fun RootResourceItem(
     Card(
         shape = RoundedCornerShape(3.dp),
         modifier = Modifier
-            .background(color = Color.White)
+            .background(color = Color.Transparent)
             .height(130.dp)
             .fillMaxWidth(1f)
     ) {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color.Black)
+                .background(color = MaterialTheme.colorScheme.surface)
         ) {
 
             val (titleView, iconView) = createRefs()
@@ -70,5 +72,7 @@ fun RootResourceItem(
 @Preview(showBackground = true)
 @Composable
 fun RootResourceItemPreview() {
-    RootResourceItem("StarWas")
+    StarWarsTheme(darkTheme = true) {
+        RootResourceItem("StarWas")
+    }
 }

@@ -22,7 +22,7 @@ import me.tbandawa.starwars.android.ui.screens.MainScreen
 import org.koin.core.component.KoinComponent
 
 @Composable
-fun MyApplicationTheme(
+fun StarWarsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -30,26 +30,38 @@ fun MyApplicationTheme(
     val backGroundLight = Color.White
     val surfaceLight = Color.Black
     val textHeadingLight = Color.Black
-    var textInfoLight = Color.White
+    val textInfoLight = Color.White
+    val selectedTabLight = Color.Black
+    val unSelectedTabLight = Color.LightGray.copy(alpha = 0.5f)
+    val indicatorTabLight = Color.White
 
     val backGroundDark = Color.Black
-    val surfaceDark = Color.Gray
+    val surfaceDark = Color.Black.copy(alpha = 0.5f)
     val textHeadingDark = Color.White
-    var textInfoDark = Color.White
+    val textInfoDark = Color.White
+    val selectedTabDark = Color.White
+    val unSelectedTabDark = Color.LightGray.copy(alpha = 0.5f)
+    val indicatorTabDark = Color.Black
 
     val colors = if (darkTheme) {
         darkColorScheme(
             primary = textHeadingDark,
             secondary = textInfoDark,
             background = backGroundDark,
-            surface = surfaceLight
+            surface = surfaceDark,
+            onPrimary = selectedTabDark,
+            onSecondary = unSelectedTabDark,
+            onTertiary = indicatorTabDark
         )
     } else {
         lightColorScheme(
             primary = textHeadingLight,
             secondary = textInfoLight,
             background = backGroundLight,
-            surface = surfaceDark
+            surface = surfaceLight,
+            onPrimary = selectedTabLight,
+            onSecondary = unSelectedTabLight,
+            onTertiary = indicatorTabLight
         )
     }
     val typography = Typography(
@@ -90,7 +102,7 @@ class MainActivity : ComponentActivity(), KoinComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            StarWarsTheme(darkTheme = true) {
                 MainScreen()
             }
         }
@@ -100,7 +112,7 @@ class MainActivity : ComponentActivity(), KoinComponent {
 @Preview
 @Composable
 fun DefaultPreview() {
-    MyApplicationTheme {
+    StarWarsTheme {
         MainScreen()
     }
 }
