@@ -102,7 +102,7 @@ class MainActivity : ComponentActivity(), KoinComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            StarWarsTheme(darkTheme = false) {
+            StarWarsTheme(darkTheme = true) {
                 MainScreen()
             }
         }

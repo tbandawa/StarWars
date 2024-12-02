@@ -1,5 +1,6 @@
 package me.tbandawa.starwars.android.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,8 +26,16 @@ import me.tbandawa.starwars.android.ui.components.LoadingContent
 import me.tbandawa.starwars.android.ui.components.NavigationToolbar
 import me.tbandawa.starwars.android.ui.components.ResourceItem
 import me.tbandawa.starwars.android.ui.components.RetryContent
+import starwars.data.models.Film
+import starwars.data.models.Person
+import starwars.data.models.Planet
+import starwars.data.models.Species
+import starwars.data.models.Starship
+import starwars.data.models.Vehicle
 import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.ResourcesViewModel
+import java.text.SimpleDateFormat
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,16 +85,18 @@ fun ResourcesScreen(
                     LazyColumn {
                         items(resourcesItems) { item ->
 
+                            val itemInfo = getItemInfo(item)
+
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(1f)
-                                    .padding(start = 16.dp, top = 2.dp, end = 16.dp, bottom = 2.dp)
+                                    .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp)
                                     .clickable {
 
                                     },
                                 shape = RoundedCornerShape(8.dp)
                             ) {
-                                ResourceItem(name = "Name", date = "Date")
+                                ResourceItem(name = itemInfo[0], date = itemInfo[1])
                             }
                         }
                     }
@@ -97,6 +108,37 @@ fun ResourcesScreen(
                     )
                 }
             }
+        }
+    }
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getItemInfo(item: Any): Array<String> {
+
+    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+    val formatter = SimpleDateFormat("MMMM dd, yyyy")
+
+    return when (item) {
+        is Person -> {
+            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        is Starship -> {
+            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        is Planet -> {
+            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        is Vehicle -> {
+            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        is Species -> {
+            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        is Film -> {
+            arrayOf(item.title, formatter.format(parser.parse(item.edited)), item.url)
+        }
+        else -> {
+            arrayOf("", "", "")
         }
     }
 }
