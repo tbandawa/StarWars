@@ -11,6 +11,7 @@ import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -19,7 +20,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.screens.MainScreen
+import me.tbandawa.starwars.android.utils.DataStoreTheme
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 @Composable
 fun StarWarsTheme(
@@ -99,10 +102,15 @@ fun StarWarsTheme(
 
 class MainActivity : ComponentActivity(), KoinComponent {
 
+    private val dataStoreTheme: DataStoreTheme by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            StarWarsTheme(darkTheme = false) {
+
+            val isDarkTheme = dataStoreTheme.isDarkTheme.collectAsState(initial = false).value!!
+
+            StarWarsTheme(darkTheme = isDarkTheme) {
                 MainScreen()
             }
         }

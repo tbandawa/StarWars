@@ -24,10 +24,12 @@ import me.tbandawa.starwars.android.ui.components.ToolBar
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(
+    isDarkTheme: Boolean,
+    changeTheme: () -> Unit
+) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        modifier = Modifier.fillMaxSize()
     ) {
 
         val uriHandler = LocalUriHandler.current
@@ -65,7 +67,7 @@ fun SettingsScreen() {
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier
                                     .clickable {
-
+                                        changeTheme.invoke()
                                     }
                                     .padding(start = 10.dp, top = 10.dp, end = 10.dp, bottom = 10.dp)
                             ) {
@@ -86,7 +88,7 @@ fun SettingsScreen() {
                                 )
                                 Spacer(modifier = Modifier.weight(1f))
                                 Text(
-                                    text = "Light",
+                                    text = if (isDarkTheme) "Dark" else "Light",
                                     style = TextStyle(
                                         color = Color.Black,
                                         fontWeight = FontWeight.Light,
@@ -192,5 +194,7 @@ fun SettingsScreen() {
 @Preview
 @Composable
 fun SettingsScreenPreview() {
-    SettingsScreen()
+    SettingsScreen(
+        isDarkTheme = true
+    ) { }
 }
