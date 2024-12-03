@@ -3,6 +3,7 @@ package me.tbandawa.starwars.android.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import me.tbandawa.starwars.android.StarWarsTheme
 
 @Composable
 fun ResourceItem(
@@ -23,7 +25,7 @@ fun ResourceItem(
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth(1f)
-            .background(Color.Black)
+            .background(color = MaterialTheme.colorScheme.surface)
             .padding(start = 8.dp)
     ) {
 
@@ -66,8 +68,10 @@ fun ResourceItem(
 @Preview
 @Composable
 fun ResourceItemPreview() {
-    ResourceItem(
-        name = "Resource Name",
-        date = "Resource Date"
-    )
+    StarWarsTheme(darkTheme = true) {
+        ResourceItem(
+            name = "Resource Name",
+            date = "Resource Date"
+        )
+    }
 }

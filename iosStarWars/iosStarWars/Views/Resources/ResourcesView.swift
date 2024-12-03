@@ -16,21 +16,25 @@ struct ResourcesView: View {
     @EnvironmentObject var resourcesState: ResourcesState
     @State private var showingAlert = false
     
+    var strings = ["a", "b"]
+    
     var body: some View {
         ZStack {
             
             if let items = resourcesState.items {
-                
                 VStack {
-                    List(items) { item in
-                        ItemContent(name: item.name, date: item.date)
-                            .listRowSeparator(.hidden)
-                            .onAppear {
-                                if (items.last == item) {
-                                    resourcesState.getMoreResources(resourceType: title.lowercased())
+                    List {
+                        ForEach(items, id: \.self) { item in
+                            ItemContent(name: item.name, date: item.date)
+                                .listRowSeparator(.hidden)
+                                .onAppear {
+                                    if (items.last == item) {
+                                        resourcesState.getMoreResources(resourceType: title.lowercased())
+                                    }
                                 }
-                            }
-                            .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                                .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                        }
+                        .listRowBackground(Color(.listBackGround))
                     }
                     if (resourcesState.loading && resourcesState.items!.count > 0) {
                         Text("Loading more...")

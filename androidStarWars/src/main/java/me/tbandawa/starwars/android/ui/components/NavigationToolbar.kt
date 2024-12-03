@@ -7,6 +7,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -29,7 +30,7 @@ fun NavigationToolbar(
 ) {
 
     MediumTopAppBar(
-        modifier = Modifier.background(color = Color.White),
+        modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
         title = {
             Text(
                 text = title.replaceFirstChar(Char::titlecase)
@@ -46,7 +47,7 @@ fun NavigationToolbar(
             }
         },
         colors = TopAppBarDefaults.largeTopAppBarColors(
-            containerColor = Color.White
+            containerColor = MaterialTheme.colorScheme.background
         ),
         scrollBehavior = scrollBehavior
     )

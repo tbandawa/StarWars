@@ -35,7 +35,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -52,7 +52,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -69,7 +69,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -90,7 +90,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -107,7 +107,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -124,7 +124,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -145,7 +145,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                     
                     VStack {
@@ -162,7 +162,7 @@ struct SpeciesView: View {
                             .padding(5)
                     }
                     .frame(minWidth: 40, maxHeight: 100)
-                    .background(Color("infoBackground"))
+                    .background(Color(.infoBackground))
                     .cornerRadius(8)
                                     
                 }
@@ -172,14 +172,14 @@ struct SpeciesView: View {
                     LazyVStack(alignment: .leading) {
                         Text("People")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(species.people, id: \.self) { person in
                             Text("\(person)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -190,14 +190,14 @@ struct SpeciesView: View {
                     LazyVStack(alignment: .leading) {
                         Text("Films")
                             .font(.system(size: 20, weight: .heavy, design: .default))
-                            .foregroundColor(Color("infoFont"))
+                            .foregroundColor(Color(.infoFont))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         ForEach(species.films, id: \.self) { film in
                             Text("\(film)")
                                 .padding(5)
                                 .font(.system(size: 14, weight: .regular, design: .rounded))
                                 .foregroundColor(.white)
-                                .background(Color("infoBackground"))
+                                .background(Color(.infoBackground))
                                 .cornerRadius(30)
                         }
                     }
@@ -208,12 +208,12 @@ struct SpeciesView: View {
                     
                     Text("Last Edited")
                         .font(.system(size: 12, weight: .heavy, design: .default))
-                        .foregroundColor(Color("infoFont"))
+                        .foregroundColor(Color(.infoFont))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text(DateUtils.formatDate(resourceDate: species.edited))
                         .font(.system(size: 12))
-                        .foregroundColor(Color("infoFont"))
+                        .foregroundColor(Color(.infoFont))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                 }

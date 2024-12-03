@@ -24,17 +24,20 @@ struct SearchView: View {
                 
                 if let items = searchState.items {
                     VStack {
-                        List(items) { item in
-                            ItemContent(name: item.name, date: item.date)
-                                .listRowSeparator(.hidden)
-                                .onAppear {
-                                    if (items.last == item) {
-                                        if currentTokens.count > 0 {
-                                            searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                        List {
+                            ForEach(items, id: \.self) { item in
+                                ItemContent(name: item.name, date: item.date)
+                                    .listRowSeparator(.hidden)
+                                    .onAppear {
+                                        if (items.last == item) {
+                                            if currentTokens.count > 0 {
+                                                searchState.searchMoreResources(resourceType: currentTokens[0].name.lowercased())
+                                            }
                                         }
                                     }
-                                }
-                                .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                                    .background( NavigationLink("", destination: ResourceView(item: item)).opacity(0) )
+                            }
+                            .listRowBackground(Color(.listBackGround))
                         }
                         if (searchState.loading && searchState.items!.count > 0) {
                             Text("Loading more...")
