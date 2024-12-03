@@ -21,6 +21,7 @@ import me.tbandawa.starwars.android.ui.components.NavigationToolbar
 import me.tbandawa.starwars.android.ui.components.PersonContent
 import me.tbandawa.starwars.android.ui.components.PlanetContent
 import me.tbandawa.starwars.android.ui.components.RetryContent
+import me.tbandawa.starwars.android.ui.components.SpeciesContent
 import me.tbandawa.starwars.android.ui.components.StarshipContent
 import me.tbandawa.starwars.android.ui.components.VehicleContent
 import starwars.data.models.Film
@@ -105,7 +106,7 @@ fun OpenResource(item: Any) {
             VehicleContent(vehicle = item)
         }
         is Species -> {
-            Text(text = item.name)
+            SpeciesContent(species = item)
         }
         is Film -> {
             FilmContent(film = item)
