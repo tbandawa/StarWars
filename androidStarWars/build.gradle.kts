@@ -63,4 +63,7 @@ dependencies {
 
     // ConstraintLayout
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha05")
+
+    // Datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }
