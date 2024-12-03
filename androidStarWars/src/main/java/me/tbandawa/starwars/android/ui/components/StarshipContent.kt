@@ -17,10 +17,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.screens.parseDate
-import starwars.data.models.Person
+import starwars.data.models.Starship
 
 @Composable
-fun PersonContent(person: Person) {
+fun StarshipContent(starship: Starship) {
 
     Column(
         modifier = Modifier
@@ -35,9 +35,9 @@ fun PersonContent(person: Person) {
                 .padding(top = 8.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ResourceInfo(title = "Height", value = person.height, Modifier.weight(1f))
-            ResourceInfo(title = "Mass", value = person.mass, Modifier.weight(1f))
-            ResourceInfo(title = "Skin Color", value = person.skin_color, Modifier.weight(1f))
+            ResourceInfo(title = "Model", value = starship.model, Modifier.weight(1f))
+            ResourceInfo(title = "Manufacturer", value = starship.manufacturer, Modifier.weight(1f))
+            ResourceInfo(title = "Cost in Credit", value = starship.cost_in_credits, Modifier.weight(1f))
         }
 
         Row(
@@ -46,9 +46,9 @@ fun PersonContent(person: Person) {
                 .padding(top = 8.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ResourceInfo(title = "Hair Color", value = person.hair_color, Modifier.weight(1f))
-            ResourceInfo(title = "Eye Color", value = person.eye_color, Modifier.weight(1f))
-            ResourceInfo(title = "Birth Year", value = person.birth_year, Modifier.weight(1f))
+            ResourceInfo(title = "Length", value = starship.length, Modifier.weight(1f))
+            ResourceInfo(title = "Max Atmospheric Speed", value = starship.max_atmosphering_speed, Modifier.weight(1f))
+            ResourceInfo(title = "Crew", value = starship.crew, Modifier.weight(1f))
         }
 
         Row(
@@ -57,7 +57,9 @@ fun PersonContent(person: Person) {
                 .padding(top = 8.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ResourceInfo(title = "Gender", value = person.gender, Modifier.weight(1f))
+            ResourceInfo(title = "passenger", value = starship.passengers, Modifier.weight(1f))
+            ResourceInfo(title = "Cargo Capacity", value = starship.cargo_capacity, Modifier.weight(1f))
+            ResourceInfo(title = "Consumables", value = starship.consumables, Modifier.weight(1f))
         }
 
         Row(
@@ -66,7 +68,9 @@ fun PersonContent(person: Person) {
                 .padding(top = 8.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            ResourceInfo(title = "home World", value = person.homeworld, Modifier.weight(1f))
+            ResourceInfo(title = "Hyperdrive Rating", value = starship.hyperdrive_rating, Modifier.weight(1f))
+            ResourceInfo(title = "MGLT", value = starship.MGLT, Modifier.weight(1f))
+            ResourceInfo(title = "Starship Class", value = starship.starship_class, Modifier.weight(1f))
         }
 
         Text(
@@ -80,12 +84,12 @@ fun PersonContent(person: Person) {
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 4.dp)
         )
-        person.films.forEach {
+        starship.films.forEach {
             LinkInfo(url = it)
         }
 
         Text(
-            text = "Vehicles",
+            text = "Pilots",
             style = TextStyle(
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
@@ -95,22 +99,7 @@ fun PersonContent(person: Person) {
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 4.dp)
         )
-        person.vehicles.forEach {
-            LinkInfo(url = it)
-        }
-
-        Text(
-            text = "Starships",
-            style = TextStyle(
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold,
-                fontSize = 17.sp
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp, bottom = 4.dp)
-        )
-        person.starships.forEach {
+        starship.pilots.forEach {
             LinkInfo(url = it)
         }
 
@@ -126,7 +115,7 @@ fun PersonContent(person: Person) {
                 .padding(top = 8.dp)
         )
         Text(
-            text = parseDate(person.edited),
+            text = parseDate(starship.edited),
             style = TextStyle(
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Normal,
