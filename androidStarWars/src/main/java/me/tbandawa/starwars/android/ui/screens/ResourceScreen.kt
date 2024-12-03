@@ -15,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavController
+import me.tbandawa.starwars.android.ui.components.FilmContent
 import me.tbandawa.starwars.android.ui.components.LoadingContent
 import me.tbandawa.starwars.android.ui.components.NavigationToolbar
 import me.tbandawa.starwars.android.ui.components.PersonContent
@@ -105,7 +106,7 @@ fun OpenResource(item: Any) {
             Text(text = item.name)
         }
         is Film -> {
-            Text(text = item.title)
+            FilmContent(film = item)
         }
         else -> {
             Text(text = "Unknown Item")
