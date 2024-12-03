@@ -1,9 +1,11 @@
 package me.tbandawa.starwars.android.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -12,8 +14,12 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.FilmContent
 import me.tbandawa.starwars.android.ui.components.LoadingContent
@@ -112,7 +118,21 @@ fun OpenResource(item: Any) {
             FilmContent(film = item)
         }
         else -> {
-            Text(text = "Unknown Item")
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = MaterialTheme.colorScheme.background)
+            ) {
+                Text(
+                    text = "Unknown Item",
+                    modifier = Modifier.align(Alignment.Center),
+                    style = TextStyle(
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp
+                    )
+                )
+            }
         }
     }
 }
