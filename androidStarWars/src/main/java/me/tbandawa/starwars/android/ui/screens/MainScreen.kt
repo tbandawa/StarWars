@@ -3,7 +3,8 @@ package me.tbandawa.starwars.android.ui.screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -74,6 +75,18 @@ fun MainNavigation(
                 type = title!!,
                 navController = navController,
                 viewModel = resourcesViewModel
+            )
+        }
+        composable(route = "resource/{id}/{type}/{title}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id")
+            val type = backStackEntry.arguments?.getString("type")
+            val title = backStackEntry.arguments?.getString("title")
+            ResourceScreen(
+                id = id!!,
+                type = type!!,
+                title = title!!,
+                navController = navController,
+                viewModel = resourceViewModel
             )
         }
     }

@@ -85,18 +85,18 @@ fun ResourcesScreen(
                     LazyColumn {
                         items(resourcesItems) { item ->
 
-                            val itemInfo = getItemInfo(item)
+                            val resourceItem = getItemInfo(item)
 
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(1f)
                                     .padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 8.dp)
                                     .clickable {
-
+                                        navController.navigate("resource/${resourceItem.id}/${resourceItem.type}/${resourceItem.name}")
                                     },
                                 shape = RoundedCornerShape(8.dp)
                             ) {
-                                ResourceItem(name = itemInfo[0], date = itemInfo[1])
+                                ResourceItem(name = resourceItem.name, date = resourceItem.date)
                             }
                         }
                     }
@@ -113,32 +113,54 @@ fun ResourcesScreen(
 }
 
 @SuppressLint("SimpleDateFormat")
-fun getItemInfo(item: Any): Array<String> {
+fun getItemInfo(item: Any): ResourceItem {
 
-    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-    val formatter = SimpleDateFormat("MMMM dd, yyyy")
+
 
     return when (item) {
         is Person -> {
-            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.name, parseDate(item.edited), getResourceType(item.url))
         }
         is Starship -> {
-            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.name, parseDate(item.edited), getResourceType(item.url))
         }
         is Planet -> {
-            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.name, parseDate(item.edited), getResourceType(item.url))
         }
         is Vehicle -> {
-            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.name, parseDate(item.edited), getResourceType(item.url))
         }
         is Species -> {
-            arrayOf(item.name, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.name, parseDate(item.edited), getResourceType(item.url))
         }
         is Film -> {
-            arrayOf(item.title, formatter.format(parser.parse(item.edited)), item.url)
+            ResourceItem(getResourceId(item.url), item.title, parseDate(item.edited), getResourceType(item.url))
         }
         else -> {
-            arrayOf("", "", "")
+            ResourceItem(0, "", "", "")
         }
     }
 }
+
+fun getResourceId(url: String): Int {
+    val segments = url.split("/")
+    return segments[segments.size - 2].toInt()
+}
+
+fun getResourceType(url: String): String {
+    val segments = url.split("/")
+    return segments[segments.size - 3]
+}
+
+fun parseDate(date: String) : String {
+    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+    val formatter = SimpleDateFormat("MMMM dd, yyyy")
+    return formatter.format(parser.parse(date))
+}
+
+data class ResourceItem(
+    val id: Int,
+    val name: String,
+    val date: String,
+    val type: String
+)
