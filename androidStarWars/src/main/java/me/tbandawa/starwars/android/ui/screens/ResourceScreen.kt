@@ -19,6 +19,7 @@ import me.tbandawa.starwars.android.ui.components.FilmContent
 import me.tbandawa.starwars.android.ui.components.LoadingContent
 import me.tbandawa.starwars.android.ui.components.NavigationToolbar
 import me.tbandawa.starwars.android.ui.components.PersonContent
+import me.tbandawa.starwars.android.ui.components.PlanetContent
 import me.tbandawa.starwars.android.ui.components.RetryContent
 import me.tbandawa.starwars.android.ui.components.StarshipContent
 import me.tbandawa.starwars.android.ui.components.VehicleContent
@@ -98,7 +99,7 @@ fun OpenResource(item: Any) {
             StarshipContent(starship = item)
         }
         is Planet -> {
-            Text(text = item.name)
+            PlanetContent(planet = item)
         }
         is Vehicle -> {
             VehicleContent(vehicle = item)
