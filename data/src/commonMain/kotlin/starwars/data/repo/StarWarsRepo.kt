@@ -1,10 +1,17 @@
 package starwars.data.repo
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.ResponseException
+import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import starwars.data.api.BaseApiCall
 import starwars.data.api.StarWarsApi
 import starwars.data.models.ErrorResponse
 import starwars.data.models.Film
@@ -16,14 +23,23 @@ import starwars.data.models.Starship
 import starwars.data.models.Vehicle
 import starwars.data.state.ResourceResult
 
-class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
+class StarWarsRepo(private val starWarsApi: StarWarsApi) {
+
+    fun getPagedResources(resourceType: String): Flow<PagingData<Any>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10, prefetchDistance = 2),
+            pagingSourceFactory = {
+                ResourcesPagingSource(resourceType, starWarsApi)
+            }
+        ).flow.flowOn(Dispatchers.IO)
+    }
 
     suspend fun getRootResources(): Flow<ResourceResult<RootResource>> = flow {
         emit(ResourceResult.Loading)
         emit(handleApiCall {
             starWarsApi.getRootResources()
         })
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(Dispatchers.IO)
 
     suspend fun getResources(resourceType: String, page: Int = 1): Flow<ResourceResult<Any>> = flow {
         emit(ResourceResult.Loading)
@@ -50,7 +66,7 @@ class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
                 else -> { ErrorResponse("Invalid resource type") }
             }
         })
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(Dispatchers.IO)
 
     suspend fun searchResources(resourceType: String, search: String, page: Int = 1): Flow<ResourceResult<Any>> = flow {
         emit(ResourceResult.Loading)
@@ -77,7 +93,7 @@ class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
                 else -> { ErrorResponse("Invalid resource type") }
             }
         })
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(Dispatchers.IO)
 
     suspend fun getResource(resourceType: String, resourceId: Int): Flow<ResourceResult<Any>> = flow {
         emit(ResourceResult.Loading)
@@ -104,5 +120,26 @@ class StarWarsRepo(private val starWarsApi: StarWarsApi): BaseApiCall() {
                 else -> { ErrorResponse("Invalid resource type") }
             }
         })
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(Dispatchers.IO)
+}
+
+suspend fun <T> handleApiCall(
+    apiCall: suspend () -> T
+): ResourceResult<T> {
+    return try {
+        val response = apiCall()
+        ResourceResult.Success(response)
+    } catch (exception: ResponseException) {
+        when(exception) {
+            is ClientRequestException -> {
+                ResourceResult.Error(exception.response.body<ErrorResponse>())
+            } else -> {
+            ResourceResult.Error(ErrorResponse(exception.message))
+        }
+        }
+    } catch (e: IOException) {
+        ResourceResult.Error(ErrorResponse("Unable to connect to host"))
+    } catch (e: Exception) {
+        ResourceResult.Error(ErrorResponse("Unknown Error"))
+    }
 }

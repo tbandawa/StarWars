@@ -24,6 +24,7 @@ kotlin {
 
     val coroutinesVersion = "1.6.4"
     val viewmodelVersion = "2.5.1"
+    val pagingVersion = "3.3.0"
     val ktorVersion = "2.1.2"
     val koinVersion = "3.2.0"
 
@@ -35,6 +36,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
+                implementation("androidx.paging:paging-common:$pagingVersion")
                 api("io.insert-koin:koin-core:$koinVersion")
             }
         }
@@ -72,9 +74,9 @@ kotlin {
 
 android {
     namespace = "starwars.data"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
     }
 }

@@ -1,5 +1,6 @@
 package starwars.data.viewmodel
 
+import androidx.paging.cachedIn
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,7 +11,9 @@ import starwars.data.models.BaseResource
 import starwars.data.repo.StarWarsRepo
 import starwars.data.state.ResourceResult
 
-class ResourcesViewModel(var starWarsRepo: StarWarsRepo): BaseViewModel() {
+class ResourcesViewModel(
+    private var starWarsRepo: StarWarsRepo
+): BaseViewModel() {
 
     private var job: Job? = null
     var pageNumber = 0
@@ -22,6 +25,30 @@ class ResourcesViewModel(var starWarsRepo: StarWarsRepo): BaseViewModel() {
 
     private val _resourceItems = MutableStateFlow(emptyList<Any>())
     val resourceItems: StateFlow<List<Any>> = _resourceItems
+
+    val pagedPeopleResources = starWarsRepo
+        .getPagedResources("people")
+        .cachedIn(coroutineScope)
+
+    val pagedPlanetsResources = starWarsRepo
+        .getPagedResources("planets")
+        .cachedIn(coroutineScope)
+
+    val pagedFilmsResources = starWarsRepo
+        .getPagedResources("films")
+        .cachedIn(coroutineScope)
+
+    val pagedSpeciesResources = starWarsRepo
+        .getPagedResources("species")
+        .cachedIn(coroutineScope)
+
+    val pagedVehiclesResources = starWarsRepo
+        .getPagedResources("vehicles")
+        .cachedIn(coroutineScope)
+
+    val pagedStarshipsResources = starWarsRepo
+        .getPagedResources("starships")
+        .cachedIn(coroutineScope)
 
     fun getResources(resourceType: String, page: Int) {
         job = coroutineScope.launch {
