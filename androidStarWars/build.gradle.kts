@@ -50,6 +50,8 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    implementation("androidx.paging:paging-compose-android:3.3.0")
+    implementation("androidx.paging:paging-common:3.3.0")
 
     // Koin
     implementation("io.insert-koin:koin-androidx-compose:3.2.0")
