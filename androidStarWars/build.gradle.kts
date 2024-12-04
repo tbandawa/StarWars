@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "me.tbandawa.starwars.android"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         applicationId = "me.tbandawa.starwars.android"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }

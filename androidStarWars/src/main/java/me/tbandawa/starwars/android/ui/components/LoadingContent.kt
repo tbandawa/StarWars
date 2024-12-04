@@ -29,7 +29,7 @@ fun LoadingContent() {
             CircularProgressIndicator(
                 modifier = Modifier
                     .padding(bottom = 10.dp)
-                    .size(width = 35.dp, height = 35.dp)
+                    .size(35.dp)
             )
             Text(
                 text = "Loading...",
