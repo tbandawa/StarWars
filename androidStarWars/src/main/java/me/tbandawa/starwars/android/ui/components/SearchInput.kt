@@ -54,12 +54,14 @@ fun SearchInput(
                 .height(35.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Search icon
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = "searchIcon",
                 modifier = Modifier
                     .size(25.dp)
             )
+            // Hide resource type if empty
             if (resourceType.isNotEmpty()) {
                 Text(
                     text = resourceType,
@@ -69,6 +71,7 @@ fun SearchInput(
                         .padding(4.dp)
                 )
             }
+            // Search input
             BasicTextField(
                 value = searchText,
                 onValueChange = { searchText = it },
@@ -78,6 +81,8 @@ fun SearchInput(
                 ),
                 keyboardActions = KeyboardActions(
                     onSearch = {
+                        // Perform search action with searchText
+                        // and resourceType as array parameters
                         onSearchResource(arrayOf(resourceType, searchText))
                     }
                 ),
@@ -86,6 +91,7 @@ fun SearchInput(
                     .padding(4.dp)
                     .weight(1f)
             )
+            // Clear search inputs
             Icon(
                 imageVector = Icons.Default.Clear,
                 contentDescription = "searchIcon",
