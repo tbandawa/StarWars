@@ -71,16 +71,20 @@ fun SearchScreen(
                         .padding(16.dp)
                 ) {
 
+                    // Search input
                     SearchInput(
                         resourceType = resourceType.value,
                         onSearchResource = {
 
                         },
+                        // Clear search inputs, sets resourceType
+                        // to empty and shows search filter
                         onCleared = {
                             resourceType.value = ""
                         }
                     )
 
+                    // Search filter, hides if resourceType is selected
                     AnimatedVisibility(resourceType.value.isEmpty()) {
                         Column {
                             Spacer(modifier = Modifier.height(25.dp))
