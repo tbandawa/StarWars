@@ -1,35 +1,54 @@
 package me.tbandawa.starwars.android.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberTopAppBarState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.RecentItem
+import me.tbandawa.starwars.android.ui.components.SearchInput
+import me.tbandawa.starwars.android.ui.components.SearchResults
 import me.tbandawa.starwars.android.ui.components.ToolBar
-import org.koin.androidx.compose.koinViewModel
 import starwars.data.models.RootResource
 import starwars.data.models.iterator
 import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.RootViewModel
-import java.util.*
+import starwars.data.viewmodel.SearchViewModel
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
-    viewModel: RootViewModel
+    rootViewModel: RootViewModel,
+    searchViewModel: SearchViewModel,
+    navController: NavController
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -37,7 +56,10 @@ fun SearchScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val rootResources by viewModel.rootResources.collectAsState()
+        val rootResources by rootViewModel.rootResources.collectAsState()
+        var resourceType by rememberSaveable { mutableStateOf("") }
+        var searchQuery by rememberSaveable { mutableStateOf("") }
+        var isSearching by rememberSaveable { mutableStateOf(false) }
 
         Scaffold(
             topBar = {
@@ -47,59 +69,35 @@ fun SearchScreen(
                 )
             }
         ) { it ->
-            Box(
+            Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxHeight()
                     .padding(it)
+                    .padding(horizontal = 16.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .padding(16.dp)
-                ) {
 
-                    var searchText by remember { mutableStateOf(TextFieldValue("")) }
+                // Search input
+                SearchInput(
+                    resourceType = resourceType,
+                    onSearchResource = { query ->
+                        if (resourceType.isNotEmpty() && query.isNotEmpty()) {
+                            searchQuery = query
+                            searchViewModel.getPagedSearchResults(resourceType, searchQuery)
 
-                    TextField(
-                        value = searchText,
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Search,
-                                contentDescription = "searchIcon",
-                                modifier = Modifier
-                                    .padding(start = 10.dp)
-                            )
-                        },
-                        onValueChange = {
-                            searchText = it
-                        },
-                        textStyle = TextStyle.Default.copy(fontSize = 15.sp),
-                        placeholder = {
-                            Text(
-                                text = "Search",
-                                style = TextStyle(
-                                    color = Color.Black,
-                                    fontSize = 15.sp
-                                )
-                            )
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp)
-                            .background(
-                                color = Color(0xffF0F5F1),
-                                shape = RoundedCornerShape(8.dp)
-                            ),
-                        shape = RoundedCornerShape(8.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent
-                        )
-                    )
+                            isSearching = true
+                        }
+                    },
+                    onCleared = {
+                        resourceType = ""
+                        searchQuery = ""
+                        isSearching = false
+                    }
+                )
 
+                // Search filter, hides if resourceType is selected
+                AnimatedVisibility(resourceType.isEmpty()) {
                     Column {
                         Spacer(modifier = Modifier.height(25.dp))
-
                         Text(
                             text = "Search Filter",
                             style = TextStyle(
@@ -110,14 +108,12 @@ fun SearchScreen(
                             modifier = Modifier
                                 .padding(bottom = 4.dp)
                         )
-
                         Spacer(
                             modifier = Modifier
-                                .height(0.25.dp)
+                                .height(1.dp)
                                 .fillMaxWidth()
-                                .background(color = Color.LightGray)
+                                .background(color = MaterialTheme.colorScheme.onSurface)
                         )
-
                         LazyColumn {
                             when (rootResources) {
                                 is ResourceResult.Success -> {
@@ -127,15 +123,22 @@ fun SearchScreen(
                                             if (char.isLowerCase()) char.titlecase(
                                                 Locale.getDefault()
                                             ) else char.toString()
-                                        })
+                                        }) {
+                                            resourceType = it
+                                        }
                                     }
                                 }
                                 else -> {}
                             }
                         }
-
                     }
+                }
 
+                // Search results
+                if (isSearching) {
+                    SearchResults(resourceType, searchQuery, searchViewModel) { resourceItem ->
+                        navController.navigate("resource/${resourceItem.id}/${resourceItem.type}/${resourceItem.name}")
+                    }
                 }
             }
         }
