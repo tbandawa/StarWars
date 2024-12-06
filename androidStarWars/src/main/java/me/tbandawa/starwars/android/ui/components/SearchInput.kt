@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -36,7 +35,7 @@ import me.tbandawa.starwars.android.StarWarsTheme
 @Composable
 fun SearchInput(
     resourceType: String,
-    onSearchResource: (Array<String>) -> Unit,
+    onSearchResource: (String) -> Unit,
     onCleared: () -> Unit
 ) {
 
@@ -82,8 +81,7 @@ fun SearchInput(
                 keyboardActions = KeyboardActions(
                     onSearch = {
                         // Perform search action with searchText
-                        // and resourceType as array parameters
-                        onSearchResource(arrayOf(resourceType, searchText))
+                        onSearchResource(searchText)
                     }
                 ),
                 singleLine = true,

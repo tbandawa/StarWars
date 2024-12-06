@@ -19,10 +19,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -31,18 +33,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.tbandawa.starwars.android.ui.components.RecentItem
 import me.tbandawa.starwars.android.ui.components.SearchInput
+import me.tbandawa.starwars.android.ui.components.SearchResults
 import me.tbandawa.starwars.android.ui.components.ToolBar
 import starwars.data.models.RootResource
 import starwars.data.models.iterator
 import starwars.data.state.ResourceResult
 import starwars.data.viewmodel.RootViewModel
+import starwars.data.viewmodel.SearchViewModel
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, InternalComposeApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
-    viewModel: RootViewModel
+    rootViewModel: RootViewModel,
+    searchViewModel: SearchViewModel
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -50,8 +55,10 @@ fun SearchScreen(
     ) {
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-        val rootResources by viewModel.rootResources.collectAsState()
-        val resourceType = remember { mutableStateOf("") }
+        val rootResources by rootViewModel.rootResources.collectAsState()
+        var resourceType by remember { mutableStateOf("") }
+        var searchQuery by remember { mutableStateOf("") }
+        var isSearching by remember { mutableStateOf(false) }
 
         Scaffold(
             topBar = {
@@ -73,19 +80,22 @@ fun SearchScreen(
 
                     // Search input
                     SearchInput(
-                        resourceType = resourceType.value,
-                        onSearchResource = {
-
+                        resourceType = resourceType,
+                        onSearchResource = { query ->
+                            if (resourceType.isNotEmpty() && query.isNotEmpty()) {
+                                searchQuery = query
+                                isSearching = true
+                            }
                         },
-                        // Clear search inputs, sets resourceType
-                        // to empty and shows search filter
                         onCleared = {
-                            resourceType.value = ""
+                            resourceType = ""
+                            searchQuery = ""
+                            isSearching = false
                         }
                     )
 
                     // Search filter, hides if resourceType is selected
-                    AnimatedVisibility(resourceType.value.isEmpty()) {
+                    AnimatedVisibility(resourceType.isEmpty()) {
                         Column {
                             Spacer(modifier = Modifier.height(25.dp))
                             Text(
@@ -114,7 +124,7 @@ fun SearchScreen(
                                                     Locale.getDefault()
                                                 ) else char.toString()
                                             }) {
-                                                resourceType.value = it
+                                                resourceType = it
                                             }
                                         }
                                     }
@@ -124,6 +134,10 @@ fun SearchScreen(
                         }
                     }
 
+                    // Search results
+                    if (isSearching) {
+                        SearchResults(resourceType, searchQuery, searchViewModel)
+                    }
                 }
             }
         }

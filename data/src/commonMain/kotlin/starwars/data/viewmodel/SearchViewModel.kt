@@ -1,13 +1,16 @@
 package starwars.data.viewmodel
 
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import starwars.data.models.BaseResource
-import starwars.data.models.RootResource
 import starwars.data.repo.StarWarsRepo
 import starwars.data.state.ResourceResult
 
@@ -23,6 +26,14 @@ class SearchViewModel(private val starWarsRepo: StarWarsRepo): BaseViewModel() {
 
     private val _resourceItems = MutableStateFlow(emptyList<Any>())
     val resourceItems: StateFlow<List<Any>> = _resourceItems
+
+    var pagedSearchResults: Flow<PagingData<Any>> = flowOf(PagingData.empty())
+
+    fun getPagedSearchResults(resourceType: String, searchQuery: String) {
+        pagedSearchResults = starWarsRepo
+            .getPagedSearchResults(resourceType.lowercase(), searchQuery)
+            .cachedIn(coroutineScope)
+    }
 
     fun searchResources(resourceType: String, search: String, page: Int) {
         job = coroutineScope.launch {

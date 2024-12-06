@@ -11,7 +11,6 @@ import starwars.data.models.Planet
 import starwars.data.models.Species
 import starwars.data.models.Starship
 import starwars.data.models.Vehicle
-import starwars.data.repo.ResourcesPagingSource.Companion
 import starwars.data.state.ResourceResult
 
 class SearchResultsPagingSource(
@@ -30,22 +29,22 @@ class SearchResultsPagingSource(
             val result = handleApiCall {
                 when (resourceType) {
                     "people" -> {
-                        starWarsApi.getResources<Person>(resourceType, position)
+                        starWarsApi.searchResources<Person>(resourceType, searchQuery, position)
                     }
                     "planets" -> {
-                        starWarsApi.getResources<Planet>(resourceType, position)
+                        starWarsApi.searchResources<Planet>(resourceType, searchQuery, position)
                     }
                     "films" -> {
-                        starWarsApi.getResources<Film>(resourceType, position)
+                        starWarsApi.searchResources<Film>(resourceType, searchQuery, position)
                     }
                     "species" -> {
-                        starWarsApi.getResources<Species>(resourceType, position)
+                        starWarsApi.searchResources<Species>(resourceType, searchQuery, position)
                     }
                     "vehicles" -> {
-                        starWarsApi.getResources<Vehicle>(resourceType, position)
+                        starWarsApi.searchResources<Vehicle>(resourceType, searchQuery, position)
                     }
                     "starships" -> {
-                        starWarsApi.getResources<Starship>(resourceType, position)
+                        starWarsApi.searchResources<Starship>(resourceType, searchQuery, position)
                     }
                     else -> { ErrorResponse("Invalid resource type") }
                 }
@@ -54,7 +53,7 @@ class SearchResultsPagingSource(
             is ResourceResult.Success -> {
                 LoadResult.Page(
                     data = (result.data as BaseResource<Any>).results,
-                    prevKey = if (position == ResourcesPagingSource.STARTING_PAGE_INDEX) null else position - 1,
+                    prevKey = if (position == STARTING_PAGE_INDEX) null else position - 1,
                     nextKey = if (result.data.results.isEmpty()) null else position + 1
                 )
             }

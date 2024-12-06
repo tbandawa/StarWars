@@ -69,7 +69,8 @@ fun MainNavigation(
         }
         composable(route = NavigationItem.Search.route) {
             SearchScreen(
-                viewModel = rootViewModel
+                rootViewModel = rootViewModel,
+                searchViewModel = searchViewModel
             )
         }
         composable(route = NavigationItem.Settings.route) {

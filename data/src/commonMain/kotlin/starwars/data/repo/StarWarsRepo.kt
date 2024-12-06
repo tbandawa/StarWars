@@ -34,6 +34,15 @@ class StarWarsRepo(private val starWarsApi: StarWarsApi) {
         ).flow.flowOn(Dispatchers.IO)
     }
 
+    fun getPagedSearchResults(resourceType: String, searchQuery: String): Flow<PagingData<Any>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10, prefetchDistance = 2),
+            pagingSourceFactory = {
+                SearchResultsPagingSource(resourceType, searchQuery, starWarsApi)
+            }
+        ).flow.flowOn(Dispatchers.IO)
+    }
+
     suspend fun getRootResources(): Flow<ResourceResult<RootResource>> = flow {
         emit(ResourceResult.Loading)
         emit(handleApiCall {
