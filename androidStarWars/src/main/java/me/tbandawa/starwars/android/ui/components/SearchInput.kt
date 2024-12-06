@@ -24,14 +24,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.tbandawa.starwars.android.StarWarsTheme
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchInput(
     resourceType: String,
@@ -39,6 +42,7 @@ fun SearchInput(
     onCleared: () -> Unit
 ) {
 
+    val keyboardController = LocalSoftwareKeyboardController.current
     var searchText by rememberSaveable { mutableStateOf("") }
 
     Card(
@@ -82,6 +86,7 @@ fun SearchInput(
                     onSearch = {
                         // Perform search action with searchText
                         onSearchResource(searchText)
+                        keyboardController?.hide()
                     }
                 ),
                 singleLine = true,

@@ -1,18 +1,17 @@
 package me.tbandawa.starwars.android.ui.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import me.tbandawa.starwars.android.ui.screens.ResourceItem
 import me.tbandawa.starwars.android.ui.screens.getItemInfo
 import starwars.data.viewmodel.SearchViewModel
 
@@ -20,19 +19,13 @@ import starwars.data.viewmodel.SearchViewModel
 fun SearchResults(
     resourceType: String,
     searchQuery: String,
-    searchViewModel: SearchViewModel
+    searchViewModel: SearchViewModel,
+    openResource: (ResourceItem) -> Unit
 ) {
 
     val pagingItems = searchViewModel.pagedSearchResults.collectAsLazyPagingItems()
 
-    LaunchedEffect(Unit) {
-        searchViewModel.getPagedSearchResults(resourceType, searchQuery)
-    }
-
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    LazyColumn {
         items(pagingItems.itemCount) { index ->
             val resourceItem = getItemInfo(pagingItems[index]!!)
             Card(
@@ -40,7 +33,7 @@ fun SearchResults(
                     .fillMaxWidth(1f)
                     .padding(vertical = 8.dp)
                     .clickable {
-
+                        openResource.invoke(resourceItem)
                     },
                 shape = RoundedCornerShape(8.dp)
             ) {
@@ -66,5 +59,4 @@ fun SearchResults(
             }
         }
     }
-
 }

@@ -3,9 +3,9 @@ package me.tbandawa.starwars.android.ui.screens
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,11 +19,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +30,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import me.tbandawa.starwars.android.ui.components.RecentItem
 import me.tbandawa.starwars.android.ui.components.SearchInput
 import me.tbandawa.starwars.android.ui.components.SearchResults
@@ -42,12 +42,13 @@ import starwars.data.viewmodel.RootViewModel
 import starwars.data.viewmodel.SearchViewModel
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class, InternalComposeApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
     rootViewModel: RootViewModel,
-    searchViewModel: SearchViewModel
+    searchViewModel: SearchViewModel,
+    navController: NavController
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -56,9 +57,9 @@ fun SearchScreen(
 
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
         val rootResources by rootViewModel.rootResources.collectAsState()
-        var resourceType by remember { mutableStateOf("") }
-        var searchQuery by remember { mutableStateOf("") }
-        var isSearching by remember { mutableStateOf(false) }
+        var resourceType by rememberSaveable { mutableStateOf("") }
+        var searchQuery by rememberSaveable { mutableStateOf("") }
+        var isSearching by rememberSaveable { mutableStateOf(false) }
 
         Scaffold(
             topBar = {
@@ -68,75 +69,75 @@ fun SearchScreen(
                 )
             }
         ) { it ->
-            Box(
+            Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxHeight()
                     .padding(it)
+                    .padding(horizontal = 16.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .padding(16.dp)
-                ) {
 
-                    // Search input
-                    SearchInput(
-                        resourceType = resourceType,
-                        onSearchResource = { query ->
-                            if (resourceType.isNotEmpty() && query.isNotEmpty()) {
-                                searchQuery = query
-                                isSearching = true
-                            }
-                        },
-                        onCleared = {
-                            resourceType = ""
-                            searchQuery = ""
-                            isSearching = false
+                // Search input
+                SearchInput(
+                    resourceType = resourceType,
+                    onSearchResource = { query ->
+                        if (resourceType.isNotEmpty() && query.isNotEmpty()) {
+                            searchQuery = query
+                            searchViewModel.getPagedSearchResults(resourceType, searchQuery)
+
+                            isSearching = true
                         }
-                    )
+                    },
+                    onCleared = {
+                        resourceType = ""
+                        searchQuery = ""
+                        isSearching = false
+                    }
+                )
 
-                    // Search filter, hides if resourceType is selected
-                    AnimatedVisibility(resourceType.isEmpty()) {
-                        Column {
-                            Spacer(modifier = Modifier.height(25.dp))
-                            Text(
-                                text = "Search Filter",
-                                style = TextStyle(
-                                    color = Color.LightGray,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 14.sp
-                                ),
-                                modifier = Modifier
-                                    .padding(bottom = 4.dp)
-                            )
-                            Spacer(
-                                modifier = Modifier
-                                    .height(1.dp)
-                                    .fillMaxWidth()
-                                    .background(color = MaterialTheme.colorScheme.onSurface)
-                            )
-                            LazyColumn {
-                                when (rootResources) {
-                                    is ResourceResult.Success -> {
-                                        val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
-                                        items(rootResource.iterator().size) { index ->
-                                            RecentItem(title = rootResource.iterator()[index].first.replaceFirstChar { char ->
-                                                if (char.isLowerCase()) char.titlecase(
-                                                    Locale.getDefault()
-                                                ) else char.toString()
-                                            }) {
-                                                resourceType = it
-                                            }
+                // Search filter, hides if resourceType is selected
+                AnimatedVisibility(resourceType.isEmpty()) {
+                    Column {
+                        Spacer(modifier = Modifier.height(25.dp))
+                        Text(
+                            text = "Search Filter",
+                            style = TextStyle(
+                                color = Color.LightGray,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 14.sp
+                            ),
+                            modifier = Modifier
+                                .padding(bottom = 4.dp)
+                        )
+                        Spacer(
+                            modifier = Modifier
+                                .height(1.dp)
+                                .fillMaxWidth()
+                                .background(color = MaterialTheme.colorScheme.onSurface)
+                        )
+                        LazyColumn {
+                            when (rootResources) {
+                                is ResourceResult.Success -> {
+                                    val rootResource = (rootResources as ResourceResult.Success<RootResource>).data
+                                    items(rootResource.iterator().size) { index ->
+                                        RecentItem(title = rootResource.iterator()[index].first.replaceFirstChar { char ->
+                                            if (char.isLowerCase()) char.titlecase(
+                                                Locale.getDefault()
+                                            ) else char.toString()
+                                        }) {
+                                            resourceType = it
                                         }
                                     }
-                                    else -> {}
                                 }
+                                else -> {}
                             }
                         }
                     }
+                }
 
-                    // Search results
-                    if (isSearching) {
-                        SearchResults(resourceType, searchQuery, searchViewModel)
+                // Search results
+                if (isSearching) {
+                    SearchResults(resourceType, searchQuery, searchViewModel) { resourceItem ->
+                        navController.navigate("resource/${resourceItem.id}/${resourceItem.type}/${resourceItem.name}")
                     }
                 }
             }
