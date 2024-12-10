@@ -34,7 +34,7 @@ fun RetryContent(
             Text(
                 text = errorMessage,
                 style = TextStyle(
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Normal,
                     fontSize = 14.sp
                 )
@@ -54,7 +54,7 @@ fun RetryContent(
                 Text(
                     text = "Retry",
                     style = TextStyle(
-                        color = MaterialTheme.colorScheme.primary,
+                        color = Color.White,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp
                     )
