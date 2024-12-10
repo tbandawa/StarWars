@@ -18,8 +18,8 @@ class StarWars: Application() {
         }
 
         // enable Timber in debug mode
-        if (BuildConfig.DEBUG)
-            Timber.plant(Timber.DebugTree())
+        //if (BuildConfig.DEBUG)
+        //    Timber.plant(Timber.DebugTree())
 
     }
 }
