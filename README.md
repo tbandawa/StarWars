@@ -5,7 +5,7 @@ Browse Films, People, Planets, Species, Starships and Vehicles from Star Wars AP
 	<img src="/blob/home_screens.png" width=100% height=40% alt="home">
 </p>
 <p align="center">
-	<img src="/blob/search_screens" width=100% height=40% alt="search">
+	<img src="/blob/search_screens.png" width=100% height=40% alt="search">
 </p>
 
 <p align="center">
