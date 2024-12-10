@@ -18,11 +18,10 @@ class SearchState: ObservableObject {
     @Published var items: [Item]? = []
     @Published var resources: PagedItems? = nil
     
-    private var viewModel: SearchViewModel
+    let viewModel: SearchViewModel = DataHelper().searchViewModel
     
     // Start registering observables
     init() {
-        viewModel = KotlinDependencies.shared.getSearchViewModel()
         viewModel.observeResourceItems{ itemsList in
             self.items = self.mapToItems(resources: itemsList)
         }

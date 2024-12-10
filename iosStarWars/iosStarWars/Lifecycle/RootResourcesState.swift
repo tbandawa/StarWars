@@ -16,10 +16,9 @@ class RootResourcesState: ObservableObject {
     @Published var resources: [String:String]?
     @Published var error: String?
      
-    private var viewModel: RootViewModel
+    let viewModel: RootViewModel = DataHelper().rootViewModel
     
     init() {
-        viewModel = KotlinDependencies.shared.getRootViewModel()
         viewModel.observeRootResources { result in
             switch result {
                 case let success as ResourceResultSuccess<RootResource>:

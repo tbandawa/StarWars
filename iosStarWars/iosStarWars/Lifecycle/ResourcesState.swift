@@ -20,11 +20,10 @@ class ResourcesState: ObservableObject {
     // Track resource pages
     private var resources: PagedItems?
     
-    private var viewModel: ResourcesViewModel
+    let viewModel: ResourcesViewModel = DataHelper().resourcesViewModel
     
     // Start registering observables and
     init() {
-        viewModel = KotlinDependencies.shared.getResourcesViewModel()
         viewModel.observeResourceItems{ [self] itemsList in
             self.items = mapToItems(resources: itemsList)
         }

@@ -18,10 +18,9 @@ class ResourceState: ObservableObject {
     @Published var resource: Any?
     @Published var error: String?
     
-    private var viewModel: ResourceViewModel
+    let viewModel: ResourceViewModel = DataHelper().resourceViewModel
     
     init() {
-        viewModel = KotlinDependencies.shared.getResourceViewModel()
         viewModel.observeResourceItem { result in
             
             self.loading = true

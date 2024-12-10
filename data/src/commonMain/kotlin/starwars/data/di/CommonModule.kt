@@ -1,6 +1,7 @@
 package starwars.data.di
 
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
@@ -10,15 +11,6 @@ import starwars.data.viewmodel.ResourceViewModel
 import starwars.data.viewmodel.ResourcesViewModel
 import starwars.data.viewmodel.RootViewModel
 import starwars.data.viewmodel.SearchViewModel
-
-fun initKoin(appDeclaration: KoinAppDeclaration) = startKoin {
-    appDeclaration()
-    modules(
-        apiModule,
-        repoModule,
-        viewModelModule
-    )
-}
 
 private val apiModule = module {
     single { StarWarsApi() }
@@ -35,12 +27,28 @@ private val viewModelModule = module {
     single { ResourceViewModel(get()) }
 }
 
-@Suppress("unused")
-object KotlinDependencies : KoinComponent {
-    fun getRootViewModel() = getKoin().get<RootViewModel>()
-    fun getResourcesViewModel() = getKoin().get<ResourcesViewModel>()
-    fun getSearchViewModel() = getKoin().get<SearchViewModel>()
-    fun getResourceViewModel() = getKoin().get<ResourceViewModel>()
+fun initKoin(appDeclaration: KoinAppDeclaration) = startKoin {
+    appDeclaration()
+    modules(
+        apiModule,
+        repoModule,
+        viewModelModule
+    )
 }
 
-fun initKoin() = initKoin {}
+fun initKoin(){
+    startKoin {
+        modules(
+            apiModule,
+            repoModule,
+            viewModelModule
+        )
+    }
+}
+
+class DataHelper: KoinComponent {
+    val rootViewModel: RootViewModel by inject()
+    val resourcesViewModel: ResourcesViewModel by inject()
+    val resourceViewModel: ResourceViewModel by inject()
+    val searchViewModel: SearchViewModel by inject()
+}
